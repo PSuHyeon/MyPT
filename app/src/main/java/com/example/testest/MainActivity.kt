@@ -72,8 +72,11 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
                     if (it != "login failed"){
                         val intent = Intent(this@MainActivity, Menu::class.java)
-                        Log.d("keyid", it)
-                        intent.putExtra("keyid", it)
+                        val temp = it.split(",")
+                        Log.d("keyid", temp.get(0))
+                        Log.d("name", temp.get(1))
+                        intent.putExtra("keyid", temp.get(0))
+                        intent.putExtra("name", temp.get(1))
                         startActivity(intent)
                     }
                 }, null
@@ -97,11 +100,15 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
             val id = data?.getStringExtra("id")
             val password = data?.getStringExtra("pw")
+            val name = data?.getStringExtra("name")
+            val position = data?.getStringExtra("who")
             var params = HashMap<String,String>()
             params["id"] = id!!
             params["password"] = password!!
+            params["name"] = name!!
+            params["position"] = position!!
             val jsonObject = JSONObject(Gson().toJson(params))
-            Log.d("checkec", ""+jsonObject)
+
             val url = "http://172.10.5.119:80/sign_up"
             val request = object : JsonObjectRequest(
                 Request.Method.POST,
@@ -134,7 +141,7 @@ class MainActivity : AppCompatActivity() {
         val profileCallback = object : NidProfileCallback<NidProfileResponse> {
             override fun onSuccess(response: NidProfileResponse) {
                 val userId = response.profile?.id
-
+                val username = response.profile?.name
                 naverToken?.replace("/", "")
 
                 val checkUrl = "http://172.10.5.119:80/checkid/" + userId
@@ -147,11 +154,13 @@ class MainActivity : AppCompatActivity() {
                             var params = HashMap<String,String>()
                             params["id"] = userId!!
                             params["password"] = "naver"
+                            params["name"] = username!!
+                            params["position"] = "TRAINEE"
                             val jsonObject = JSONObject(Gson().toJson(params))
                             val request = object : JsonObjectRequest(
                                 Request.Method.POST,
                                 url,null, Response.Listener {
-                                    keyid = it.get("keyid") as String
+                                    keyid = "" + it.get("keyid")
                                 }, Response.ErrorListener {
 
                                 }
@@ -169,13 +178,17 @@ class MainActivity : AppCompatActivity() {
                             requestQueue?.add(request)
                             val intent = Intent(this@MainActivity, Menu::class.java)
                             intent.putExtra("keyid", keyid)
+                            intent.putExtra("name", username)
                             startActivity(intent)
                             Toast.makeText(this@MainActivity, "네이버 아이디 회원가입 성공", Toast.LENGTH_SHORT).show()
                         }
                         else{
-                            Log.d("keyid", it)
+                            val temp = it.split(",")
+                            Log.d("keyid", temp.get(0))
+                            Log.d("name", temp.get(1))
                             val intent = Intent(this@MainActivity, Menu::class.java)
-                            intent.putExtra("keyid", it)
+                            intent.putExtra("keyid", temp.get(0))
+                            intent.putExtra("name", temp.get(1))
                             Toast.makeText(this@MainActivity, "네이버 아이디 로그인 성공", Toast.LENGTH_SHORT).show()
                             startActivity(intent)
                         }

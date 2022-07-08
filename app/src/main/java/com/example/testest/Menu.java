@@ -1,5 +1,6 @@
 package com.example.testest;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,12 +29,14 @@ public class Menu extends AppCompatActivity {
     private ListFragment listFragment = new ListFragment();
     private ChatFragment chatFragment = new ChatFragment();
     private CommunityFragment communityFragment = new CommunityFragment();
-
+    public String key_id = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        Intent intent = getIntent();
+        key_id = intent.getStringExtra("keyid");
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame, listFragment).commitAllowingStateLoss();
 

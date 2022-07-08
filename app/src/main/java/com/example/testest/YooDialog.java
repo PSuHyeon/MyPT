@@ -25,7 +25,7 @@ public class YooDialog extends Dialog {
     String time;
     String number;
     String set;
-
+    Menu menu = new Menu();
     public YooDialog(@NonNull Context context) {
         super(context);
         setContentView(R.layout.exercisedialog);
@@ -33,7 +33,6 @@ public class YooDialog extends Dialog {
         chipGroup = findViewById(R.id.yooChipGroup);
         timeEditText = findViewById(R.id.yootime);
         doneButton = findViewById(R.id.yooDoneButton);
-
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +46,7 @@ public class YooDialog extends Dialog {
                 exercise = chip.getText().toString();
 
                 Log.d("chipGroup.getCheckedChipId()", chip.getText().toString());
+//                Exercise exercise = new Exercise(menu.key_id, ,  );
                 dismiss();
             }
         });
