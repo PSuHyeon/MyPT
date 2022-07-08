@@ -83,7 +83,7 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Fill the blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent = new Intent();
+                Intent intent = getIntent();
                 RadioButton selectedButton = (RadioButton) findViewById(whoRadioGroup.getCheckedRadioButtonId());
                 intent.putExtra("who", selectedButton.getText().toString());
                 intent.putExtra("name", nameTextView.getEditText().toString());
