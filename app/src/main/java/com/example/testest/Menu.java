@@ -35,7 +35,6 @@ public class Menu extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new Menu.ItemSelectedListener());
-
     }
 
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -54,8 +53,7 @@ public class Menu extends AppCompatActivity {
                     transaction.replace(R.id.frame, communityFragment).commitAllowingStateLoss();
                     break;
             }
-
-            return true;
+                return true;
         }
     }
 }

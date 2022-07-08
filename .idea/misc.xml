@@ -11,13 +11,14 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3619791666666667" />
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.19881134033203127" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.282684326171875" />
         <entry key="app/src/main/res/layout/content_menu.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/exercisedialog.xml" value="0.48047538200339557" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.20878623188405798" />
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.20878623188405798" />
-        <entry key="app/src/main/res/layout/fragment_list.xml" value="0.19171142578125006" />
-        <entry key="app/src/main/res/layout/listviewitem.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/fragment_list.xml" value="0.34470367431640625" />
+        <entry key="app/src/main/res/layout/listviewitem.xml" value="0.3483795166015626" />
         <entry key="app/src/main/res/layout/main.xml" value="0.22" />
         <entry key="app/src/main/res/menu/main_menu_bottom.xml" value="0.1" />
       </map>

@@ -10,27 +10,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+import com.prolificinteractive.materialcalendarview.OnRangeSelectedListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 
 public class ListFragment extends Fragment {
 
     View rootView;
     MaterialCalendarView materialCalendarView;
+    CalendarView calendarView;
     ListView listView;
     ArrayAdapter<String> adapter;
+    EditText planEditText;
     ArrayList<String> listItem;
     TextView dateTextView;
     androidx.appcompat.widget.AppCompatButton deleteButton;
     androidx.appcompat.widget.AppCompatButton addButton;
+    HashMap<String, ArrayList<String>> plan_map = new HashMap<>();
+    String selectedDate;
 
     public ListFragment() {
     }
@@ -45,7 +55,6 @@ public class ListFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_list, container, false);
 
-        // calendar
         materialCalendarView = rootView.findViewById(R.id.calendarView);
         materialCalendarView.state().edit()
                 .setFirstDayOfWeek(Calendar.SUNDAY)
@@ -56,13 +65,14 @@ public class ListFragment extends Fragment {
 
         materialCalendarView.addDecorators(new OnDateDecorator());
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
-
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-                Log.d("clicked", "clicked");
                 dateTextView = rootView.findViewById(R.id.dateTextView);
-                Log.d("materialCalendarView.getSelectedDate().toString()", materialCalendarView.getSelectedDate().toString());
-                dateTextView.setText(materialCalendarView.getSelectedDate().toString());
+                selectedDate = materialCalendarView.getSelectedDate().toString().split("\\{|\\}")[1];
+                String month = Integer.toString(Integer.parseInt(selectedDate.split("-")[1]) + 1);
+                String day = selectedDate.split("-")[2];
+                selectedDate = selectedDate.split("-")[0] + "-" + month + "-" + day;
+                dateTextView.setText(month + " / " + day);
             }
         });
 
@@ -71,12 +81,15 @@ public class ListFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listItem.add("0");
             }
         });
-        listItem = new ArrayList<String>();
 
-                // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        listItem = new ArrayList<String>();
+        //adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, listItem);
+        //listView = rootView.findViewById(R.id.listView);
+        //listView.setAdapter(adapter);
+
+        // rootview로 작성해주어야 갱신된 값이 반영됨
+        return rootView;
     }
 }

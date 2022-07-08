@@ -66,10 +66,6 @@ class MainActivity : AppCompatActivity() {
                     text_from_server = it
                     //val booklist = Gson().fromJson(text_from_server, Array<Person>::class.java)
                     Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
-                    if (it == "login success"){
-                        val intent = Intent(this@MainActivity, MainActivity2::class.java)
-                        startActivity(intent)
-                    }
                 }, null
             ) {
 

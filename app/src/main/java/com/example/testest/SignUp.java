@@ -77,15 +77,15 @@ public class SignUp extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (idTextView.getEditText().toString().length() == 0 ||
-                        pwTextView.getEditText().toString().length() == 0 ||
-                        nameTextView.getEditText().toString().length() == 0 ||
-                        ageTextView.getEditText().toString().length() == 0 ||
-                        phoneTextView.getEditText().toString().length() == 0 ||
+                if (idTextView.getEditText().getText().toString().length() == 0 ||
+                        pwTextView.getEditText().getText().toString().length() == 0 ||
+                        nameTextView.getEditText().getText().toString().length() == 0 ||
+                        ageTextView.getEditText().getText().toString().length() == 0 ||
+                        phoneTextView.getEditText().getText().toString().length() == 0 ||
                         genderSpinner.getSelectedItem().toString() == "성별" ||
                         weightSpinner.getSelectedItem().toString() == "몸무게" ||
                         heightSpinner.getSelectedItem().toString() == "키" ||
-                        purposeTextView.getEditText().toString().length() == 0) {
+                        purposeTextView.getEditText().getText().toString().length() == 0) {
                     Toast.makeText(getApplicationContext(), "Fill the blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -101,6 +101,7 @@ public class SignUp extends AppCompatActivity {
                 intent.putExtra("weight", weightSpinner.getSelectedItem().toString());
                 intent.putExtra("height", heightSpinner.getSelectedItem().toString());
                 intent.putExtra("purpose", purposeTextView.getEditText().toString());
+
                 setResult(RESULT_OK, intent);
                 finish();
             }

@@ -35,8 +35,9 @@ tools:context=".ListFragment">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
+        android:layout_marginStart="20dp"
         android:layout_gravity="center"
-        android:text="2022.07.08"
+        android:text="6 / 22"
         android:textStyle="bold"
         android:textSize="20sp"/>
 
@@ -45,10 +46,10 @@ tools:context=".ListFragment">
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:layout_gravity="center"
             android:background="@drawable/circlebutton"
-            android:backgroundTint="#6DC9F3"
+            android:backgroundTint="#a9dbf0cb"
             android:drawableTop="@drawable/add"/>
 
             <View
@@ -61,9 +62,9 @@ tools:context=".ListFragment">
                 android:clickable="false"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_gravity="right"
+                android:layout_gravity="center"
                 android:background="@drawable/circlebutton"
                 android:drawableTop="@drawable/check"/>
 
@@ -71,7 +72,7 @@ tools:context=".ListFragment">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:text="5"
+                android:text="0"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
 
