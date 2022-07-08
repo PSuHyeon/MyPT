@@ -148,7 +148,7 @@ public class SignUp extends AppCompatActivity {
                 intent.putExtra("who", selectedButton.getText().toString());
                 intent.putExtra("id", idTextView.getEditText().getText().toString());
                 intent.putExtra("pw", pwTextView.getEditText().getText().toString());
-                intent.putExtra("name", nameTextView.getEditText().toString());
+                intent.putExtra("name", nameTextView.getEditText().getText().toString());
                 intent.putExtra("age", ageTextView.getEditText().toString());
                 intent.putExtra("phone", phoneTextView.getEditText().toString());
                 intent.putExtra("gender", genderSpinner.getSelectedItem().toString());

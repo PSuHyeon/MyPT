@@ -1,7 +1,7 @@
 package com.example.testest;
 
 public class Exercise {
-    int id;
+    String id;
     String name; // 사람 이름 ex. 우다연
     String date; // 날짜 2022-07-08
     String type; // 운동 종류 유산소
