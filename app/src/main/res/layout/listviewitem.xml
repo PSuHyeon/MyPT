@@ -13,11 +13,34 @@
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"/>
 
-    <TextView
-        android:id="@+id/listEditText"
-        android:layout_width="250dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"/>
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/exerciseTypeTextView"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:text="유산소"/>
+
+    <TextView
+        android:id="@+id/exerciseNameTextView"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="윗몸일으키기"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/exerciseInfoTextView"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="30분"
+        android:textAlignment="textEnd"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/deleteButton"

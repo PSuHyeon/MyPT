@@ -1,6 +1,7 @@
 package com.example.testest;
 
 import android.app.Dialog;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,12 +18,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnRangeSelectedListener;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -32,7 +38,6 @@ public class ListFragment extends Fragment {
 
     View rootView;
     MaterialCalendarView materialCalendarView;
-    CalendarView calendarView;
     ListView listView;
     ArrayAdapter<String> adapter;
     EditText planEditText;
@@ -99,13 +104,36 @@ public class ListFragment extends Fragment {
             }
         });
 
-
         listItem = new ArrayList<String>();
         //adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, listItem);
         //listView = rootView.findViewById(R.id.listView);
         //listView.setAdapter(adapter);
 
+        try {
+            AssetManager assetManager = getActivity().getAssets();
+            InputStream is = assetManager.open("exercise.json");
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader reader = new BufferedReader(isr);
+
+            StringBuffer buffer = new StringBuffer();
+            String line = reader.readLine();
+            while (line != null) {
+                buffer.append(line + "\n");
+                line = reader.readLine();
+            }
+            // json 파일 내용이 string으로 변환되어 담김
+            String exerciseData = buffer.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+            /*String myResponse =
+        Gson gson = new Gson();
+        gson
+        final Exercise data1 = gson.fromJson() */
+
         // rootview로 작성해주어야 갱신된 값이 반영됨
         return rootView;
     }
-}
+    }

@@ -32,8 +32,6 @@ public class YooDialog extends Dialog {
 
         chipGroup = findViewById(R.id.yooChipGroup);
         timeEditText = findViewById(R.id.yootime);
-        numberEditText = findViewById(R.id.yoonumber);
-        setEditText = findViewById(R.id.yooset);
         doneButton = findViewById(R.id.yooDoneButton);
 
         doneButton.setOnClickListener(new View.OnClickListener() {

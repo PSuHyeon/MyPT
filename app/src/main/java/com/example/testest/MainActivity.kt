@@ -124,8 +124,6 @@ class MainActivity : AppCompatActivity() {
 
             // Add the volley post request to the request queue
             VolleySingleton.getInstance(this).addToRequestQueue(request)
-
-
     }
 
 

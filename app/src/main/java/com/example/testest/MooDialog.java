@@ -21,7 +21,6 @@ public class MooDialog extends Dialog {
     Button doneButton;
     Chip chip;
     String exercise;
-    String time;
     String number;
     String set;
     String weight;
@@ -31,7 +30,6 @@ public class MooDialog extends Dialog {
         setContentView(R.layout.exercisemoodialog);
 
         chipGroup = findViewById(R.id.mooChipGroup);
-        timeEditText = findViewById(R.id.mootime);
         numberEditText = findViewById(R.id.moonumber);
         setEditText = findViewById(R.id.mooset);
         weightEditText = findViewById(R.id.mooweight);
@@ -42,7 +40,6 @@ public class MooDialog extends Dialog {
             public void onClick(View view) {
 
                 try {
-                    time = timeEditText.getText().toString();
                     number = numberEditText.getText().toString();
                     set = setEditText.getText().toString();
                     weight = weightEditText.getText().toString();
