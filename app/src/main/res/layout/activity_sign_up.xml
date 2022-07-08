@@ -17,7 +17,7 @@
         android:text="Create Account"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -70,11 +70,11 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameEditText"
+        android:id="@+id/idEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="NAME"
+        android:hint="ID"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="15dp">
@@ -84,11 +84,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ageEditText"
+        android:id="@+id/pwEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="AGE"
+        android:hint="PASSWORD"
+        android:inputType="textPassword"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="15dp">
@@ -96,11 +97,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameEditText"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="NAME"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ageEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="AGE"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="15dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/contactEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="PHONE"
         android:layout_marginStart="30dp"
@@ -116,41 +151,42 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    <Spinner
-        android:id="@+id/genderSpinner"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp" />
+        <Spinner
+            android:id="@+id/genderSpinner"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="15dp" />
 
-    <Spinner
-        android:id="@+id/weightSpinner"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="15dp" />
+        <Spinner
+            android:id="@+id/weightSpinner"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="15dp" />
 
-    <Spinner
-        android:id="@+id/heightSpinner"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="15dp"/>
+        <Spinner
+            android:id="@+id/heightSpinner"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="15dp"/>
 
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/purposeEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="PURPOSE"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -162,7 +198,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="15dp"
         android:text="DONE"/>
 
 </LinearLayout>

@@ -18,6 +18,8 @@ public class SignUp extends AppCompatActivity {
     RadioGroup whoRadioGroup;
     RadioButton trainerCheckBox;
     RadioButton traineeCheckBox;
+    com.google.android.material.textfield.TextInputLayout idTextView;
+    com.google.android.material.textfield.TextInputLayout pwTextView;
     com.google.android.material.textfield.TextInputLayout nameTextView;
     com.google.android.material.textfield.TextInputLayout ageTextView;
     com.google.android.material.textfield.TextInputLayout phoneTextView;
@@ -38,6 +40,8 @@ public class SignUp extends AppCompatActivity {
         whoRadioGroup = findViewById(R.id.radioGroup);
         trainerCheckBox = findViewById(R.id.trainerCheckBox);
         traineeCheckBox = findViewById(R.id.traineeCheckBox);
+        idTextView = findViewById(R.id.idEditText);
+        pwTextView = findViewById(R.id.pwEditText);
         nameTextView = findViewById(R.id.nameEditText);
         ageTextView = findViewById(R.id.ageEditText);
         genderSpinner = findViewById(R.id.genderSpinner);
@@ -73,19 +77,23 @@ public class SignUp extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (nameTextView.getEditText().toString().length() == 0 ||
-                ageTextView.getEditText().toString().length() == 0 ||
-                phoneTextView.getEditText().toString().length() == 0 ||
-                genderSpinner.getSelectedItem().toString() == "성별" ||
-                weightSpinner.getSelectedItem().toString() == "몸무게" ||
-                heightSpinner.getSelectedItem().toString() == "키" ||
-                purposeTextView.getEditText().toString().length() == 0) {
+                if (idTextView.getEditText().toString().length() == 0 ||
+                        pwTextView.getEditText().toString().length() == 0 ||
+                        nameTextView.getEditText().toString().length() == 0 ||
+                        ageTextView.getEditText().toString().length() == 0 ||
+                        phoneTextView.getEditText().toString().length() == 0 ||
+                        genderSpinner.getSelectedItem().toString() == "성별" ||
+                        weightSpinner.getSelectedItem().toString() == "몸무게" ||
+                        heightSpinner.getSelectedItem().toString() == "키" ||
+                        purposeTextView.getEditText().toString().length() == 0) {
                     Toast.makeText(getApplicationContext(), "Fill the blank!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 Intent intent = getIntent();
                 RadioButton selectedButton = (RadioButton) findViewById(whoRadioGroup.getCheckedRadioButtonId());
                 intent.putExtra("who", selectedButton.getText().toString());
+                intent.putExtra("id", idTextView.getEditText().toString());
+                intent.putExtra("pw", pwTextView.getEditText().toString());
                 intent.putExtra("name", nameTextView.getEditText().toString());
                 intent.putExtra("age", ageTextView.getEditText().toString());
                 intent.putExtra("phone", phoneTextView.getEditText().toString());
@@ -101,26 +109,26 @@ public class SignUp extends AppCompatActivity {
 
     public void onRadioButtonClicked(View view) {
 
-            boolean checked = ((RadioButton) view).isChecked();
+        boolean checked = ((RadioButton) view).isChecked();
 
-            switch (view.getId()) {
-                case R.id.trainerCheckBox:
-                    if (checked) {
-                        Toast.makeText(getApplicationContext(), "Hello, Trainer!", Toast.LENGTH_SHORT).show();
-                        weightSpinner.setVisibility(View.GONE);
-                        heightSpinner.setVisibility(View.GONE);
-                        purposeTextView.setVisibility(View.GONE);
-                    }
-                    break;
+        switch (view.getId()) {
+            case R.id.trainerCheckBox:
+                if (checked) {
+                    Toast.makeText(getApplicationContext(), "Hello, Trainer!", Toast.LENGTH_SHORT).show();
+                    weightSpinner.setVisibility(View.GONE);
+                    heightSpinner.setVisibility(View.GONE);
+                    purposeTextView.setVisibility(View.GONE);
+                }
+                break;
 
-                case R.id.traineeCheckBox:
-                    if (checked) {
-                        Toast.makeText(getApplicationContext(), "Hello, Trainee!", Toast.LENGTH_SHORT).show();
-                        weightSpinner.setVisibility(View.VISIBLE);
-                        heightSpinner.setVisibility(View.VISIBLE);
-                        purposeTextView.setVisibility(View.VISIBLE);
-                    }
-                    break;
+            case R.id.traineeCheckBox:
+                if (checked) {
+                    Toast.makeText(getApplicationContext(), "Hello, Trainee!", Toast.LENGTH_SHORT).show();
+                    weightSpinner.setVisibility(View.VISIBLE);
+                    heightSpinner.setVisibility(View.VISIBLE);
+                    purposeTextView.setVisibility(View.VISIBLE);
+                }
+                break;
 
         }
     }
