@@ -25,7 +25,7 @@ public class MooDialog extends Dialog {
     String set;
     String weight;
 
-    public MooDialog(@NonNull Context context) {
+    public MooDialog(@NonNull Context context, String selectedDate) {
         super(context);
         setContentView(R.layout.exercisemoodialog);
 
@@ -48,7 +48,7 @@ public class MooDialog extends Dialog {
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
 
-                Log.d("chipGroup.getCheckedChipId()", chip.getText().toString());
+                Log.d("selectedDate", selectedDate);
                 dismiss();
             }
         });

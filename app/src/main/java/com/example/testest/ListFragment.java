@@ -50,6 +50,7 @@ public class ListFragment extends Fragment {
     String selectedDate;
     Dialog yooDialog;
     Dialog mooDialog;
+    String exerciseData;
 
     public ListFragment() {
     }
@@ -99,7 +100,7 @@ public class ListFragment extends Fragment {
         addmooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mooDialog = new MooDialog(getContext());
+                mooDialog = new MooDialog(getContext(), selectedDate);
                 mooDialog.show();
             }
         });
@@ -122,16 +123,18 @@ public class ListFragment extends Fragment {
                 line = reader.readLine();
             }
             // json 파일 내용이 string으로 변환되어 담김
-            String exerciseData = buffer.toString();
+            exerciseData = buffer.toString();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-            /*String myResponse =
+        /*
         Gson gson = new Gson();
-        gson
-        final Exercise data1 = gson.fromJson() */
+        final Exercise data1 = gson.fromJson(exerciseData, Exercise.class);
+
+        Log.d("data1.name", data1.name); */
+
 
         // rootview로 작성해주어야 갱신된 값이 반영됨
         return rootView;
