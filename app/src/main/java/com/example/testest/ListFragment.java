@@ -1,5 +1,6 @@
 package com.example.testest;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -38,9 +39,12 @@ public class ListFragment extends Fragment {
     ArrayList<String> listItem;
     TextView dateTextView;
     androidx.appcompat.widget.AppCompatButton deleteButton;
-    androidx.appcompat.widget.AppCompatButton addButton;
+    androidx.appcompat.widget.AppCompatButton addyooButton;
+    androidx.appcompat.widget.AppCompatButton addmooButton;
     HashMap<String, ArrayList<String>> plan_map = new HashMap<>();
     String selectedDate;
+    Dialog yooDialog;
+    Dialog mooDialog;
 
     public ListFragment() {
     }
@@ -77,12 +81,24 @@ public class ListFragment extends Fragment {
         });
 
         // listview
-        addButton = rootView.findViewById(R.id.addButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
+        addyooButton = rootView.findViewById(R.id.yooaddButton);
+        addyooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                yooDialog = new YooDialog(getContext());
+                yooDialog.show();
             }
         });
+
+        addmooButton = rootView.findViewById(R.id.mooaddButton);
+        addmooButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mooDialog = new MooDialog(getContext());
+                mooDialog.show();
+            }
+        });
+
 
         listItem = new ArrayList<String>();
         //adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, listItem);
