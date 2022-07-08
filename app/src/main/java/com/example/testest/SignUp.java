@@ -42,6 +42,7 @@ public class SignUp extends AppCompatActivity {
     ArrayList<String> genderList = new ArrayList<String>();
     ArrayList<String> weightList = new ArrayList<String>();
     ArrayList<String> heightList = new ArrayList<String>();
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,30 +132,53 @@ public class SignUp extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (idTextView.getEditText().getText().toString().length() == 0 ||
-                        pwTextView.getEditText().getText().toString().length() == 0 ||
-                        nameTextView.getEditText().getText().toString().length() == 0 ||
-                        ageTextView.getEditText().getText().toString().length() == 0 ||
-                        phoneTextView.getEditText().getText().toString().length() == 0 ||
-                        genderSpinner.getSelectedItem().toString() == "성별" ||
-                        weightSpinner.getSelectedItem().toString() == "몸무게" ||
-                        heightSpinner.getSelectedItem().toString() == "키" ||
-                        purposeTextView.getEditText().getText().toString().length() == 0) {
-                    Toast.makeText(getApplicationContext(), "Fill the blank!", Toast.LENGTH_SHORT).show();
-                    return;
+                RadioButton selectedButton_ = (RadioButton) findViewById(whoRadioGroup.getCheckedRadioButtonId());
+
+                if (selectedButton_.getText() == "TRAINEE") {
+                    if (idTextView.getEditText().getText().toString().length() == 0 ||
+                            pwTextView.getEditText().getText().toString().length() == 0 ||
+                            nameTextView.getEditText().getText().toString().length() == 0 ||
+                            ageTextView.getEditText().getText().toString().length() == 0 ||
+                            phoneTextView.getEditText().getText().toString().length() == 0 ||
+                            genderSpinner.getSelectedItem().toString() == "성별" ||
+                            weightSpinner.getSelectedItem().toString() == "몸무게" ||
+                            heightSpinner.getSelectedItem().toString() == "키" ||
+                            purposeTextView.getEditText().getText().toString().length() == 0) {
+                        Toast.makeText(getApplicationContext(), "Fill the blank!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    intent = getIntent();
+                    RadioButton selectedButton = (RadioButton) findViewById(whoRadioGroup.getCheckedRadioButtonId());
+                    intent.putExtra("who", selectedButton.getText().toString());
+                    intent.putExtra("id", idTextView.getEditText().getText().toString());
+                    intent.putExtra("pw", pwTextView.getEditText().getText().toString());
+                    intent.putExtra("name", nameTextView.getEditText().getText().toString());
+                    intent.putExtra("age", ageTextView.getEditText().toString());
+                    intent.putExtra("phone", phoneTextView.getEditText().toString());
+                    intent.putExtra("gender", genderSpinner.getSelectedItem().toString());
+                    intent.putExtra("weight", weightSpinner.getSelectedItem().toString());
+                    intent.putExtra("height", heightSpinner.getSelectedItem().toString());
+                    intent.putExtra("purpose", purposeTextView.getEditText().toString());
+                } else {
+                    if (idTextView.getEditText().getText().toString().length() == 0 ||
+                            pwTextView.getEditText().getText().toString().length() == 0 ||
+                            nameTextView.getEditText().getText().toString().length() == 0 ||
+                            ageTextView.getEditText().getText().toString().length() == 0 ||
+                            phoneTextView.getEditText().getText().toString().length() == 0 ||
+                            genderSpinner.getSelectedItem().toString() == "성별") {
+                        Toast.makeText(getApplicationContext(), "Fill the blank!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    intent = getIntent();
+                    RadioButton selectedButton = (RadioButton) findViewById(whoRadioGroup.getCheckedRadioButtonId());
+                    intent.putExtra("who", selectedButton.getText().toString());
+                    intent.putExtra("id", idTextView.getEditText().getText().toString());
+                    intent.putExtra("pw", pwTextView.getEditText().getText().toString());
+                    intent.putExtra("name", nameTextView.getEditText().getText().toString());
+                    intent.putExtra("age", ageTextView.getEditText().toString());
+                    intent.putExtra("phone", phoneTextView.getEditText().toString());
+                    intent.putExtra("gender", genderSpinner.getSelectedItem().toString());
                 }
-                Intent intent = getIntent();
-                RadioButton selectedButton = (RadioButton) findViewById(whoRadioGroup.getCheckedRadioButtonId());
-                intent.putExtra("who", selectedButton.getText().toString());
-                intent.putExtra("id", idTextView.getEditText().getText().toString());
-                intent.putExtra("pw", pwTextView.getEditText().getText().toString());
-                intent.putExtra("name", nameTextView.getEditText().getText().toString());
-                intent.putExtra("age", ageTextView.getEditText().toString());
-                intent.putExtra("phone", phoneTextView.getEditText().toString());
-                intent.putExtra("gender", genderSpinner.getSelectedItem().toString());
-                intent.putExtra("weight", weightSpinner.getSelectedItem().toString());
-                intent.putExtra("height", heightSpinner.getSelectedItem().toString());
-                intent.putExtra("purpose", purposeTextView.getEditText().toString());
 
                 setResult(RESULT_OK, intent);
                 finish();
