@@ -1,5 +1,6 @@
 package com.example.testest
 
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
@@ -53,6 +54,8 @@ class MainActivity : AppCompatActivity() {
 
         sign_up_button.setOnClickListener {     //버튼으로 서버에서 데이터 가져오는 코드
             Log.d("check", "pressed")
+
+            /*
             val request = object : StringRequest(
                 Request.Method.GET,
                 "http://172.10.5.119:80/login/5UyRRh3qI5Y783vE5r6oZnGUJUAc3HudH6K2GBh4R9M,AAAAOO4i6XX4zBeDb/Viy0nYH2ZjS1FkgINiuj+qkdeCkvO5Bc0+TCPlsyHzOpdUiJlgNf8GM2C41L9AAF87ahkLpBE=", {
@@ -60,16 +63,26 @@ class MainActivity : AppCompatActivity() {
                     text_from_server = it
                     //val booklist = Gson().fromJson(text_from_server, Array<Person>::class.java)
                     Log.d("check", "" + it)
+
+
                 }, null
             ) {
 
             }
             request.setShouldCache(false)
-            requestQueue?.add(request)
+            requestQueue?.add(request) */
 
+            // intent: 회원가입 액티비티로 전환
+            val intent = Intent(this, SignUp::class.java)
+            startActivity(intent)
 
         }
 
+        // 로그인 버튼 클릭 시 내부 액티비티 이동
+        sign_in_button.setOnClickListener {
+            val intent2 = Intent(this, Menu::class.java)
+            startActivity(intent2)
+        }
     }
     private fun startNaverLogin(){
         var naverToken :String? = ""
