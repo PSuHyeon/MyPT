@@ -1,5 +1,6 @@
 package com.example.testest
 
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity() {
         val sign_in_button = findViewById<Button>(R.id.sign_in)
         val sign_up_button = findViewById<TextView>(R.id.sign_up)
         val naver_login = findViewById<Button>(R.id.naver_login_button)
+        val id_text = findViewById<TextView>(R.id.id_text)
+        val pass_text = findViewById<TextView>(R.id.password_text)
+
+
         requestQueue = Volley.newRequestQueue(applicationContext)
 
         var text_from_server = ""
@@ -51,22 +56,31 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        sign_up_button.setOnClickListener {     //버튼으로 서버에서 데이터 가져오는 코드
-            Log.d("check", "pressed")
+        sign_in_button.setOnClickListener {     //버튼으로 서버에서 데이터 가져오는 코드
+            val id = id_text.text.toString()
+            val password = pass_text.text.toString()
+            val url = "http://172.10.5.119:80/" +id + "," + password
             val request = object : StringRequest(
                 Request.Method.GET,
-                "http://172.10.5.119:80/login/5UyRRh3qI5Y783vE5r6oZnGUJUAc3HudH6K2GBh4R9M,AAAAOO4i6XX4zBeDb/Viy0nYH2ZjS1FkgINiuj+qkdeCkvO5Bc0+TCPlsyHzOpdUiJlgNf8GM2C41L9AAF87ahkLpBE=", {
-
+                url, {
                     text_from_server = it
                     //val booklist = Gson().fromJson(text_from_server, Array<Person>::class.java)
-                    Log.d("check", "" + it)
+                    Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
+                    if (it == "login success"){
+                        val intent = Intent(this@MainActivity, MainActivity2::class.java)
+                        startActivity(intent)
+                    }
                 }, null
             ) {
 
             }
+
             request.setShouldCache(false)
             requestQueue?.add(request)
 
+        }
+
+        sign_up_button.setOnClickListener{
 
         }
 
