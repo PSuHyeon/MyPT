@@ -41,16 +41,45 @@ tools:context=".ListFragment">
         android:textStyle="bold"
         android:textSize="20sp"/>
 
+            <TextView
+                android:id="@+id/yooTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:text="유산소"
+                android:textSize="20sp"/>
+
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/addButton"
+            android:id="@+id/yooaddButton"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:layout_gravity="center"
             android:background="@drawable/circlebutton"
             android:backgroundTint="#a9dbf0cb"
             android:drawableTop="@drawable/add"/>
+
+            <TextView
+                android:id="@+id/mooTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center"
+                android:text="무산소"
+                android:textSize="20sp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mooaddButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circlebutton"
+                android:backgroundTint="#A9F1D7B1"
+                android:drawableTop="@drawable/add"/>
 
             <View
                 android:layout_width="0dp"

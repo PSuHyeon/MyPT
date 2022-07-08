@@ -58,79 +58,79 @@
         android:textStyle="bold"/>
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/yooChipGroup"
+        android:id="@+id/mooChipGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginTop="5dp"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/walking"
+            android:id="@+id/squat"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="걷기"/>
+            android:text="스쿼트"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/running"
+            android:id="@+id/benchpress"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="달리기"/>
+            android:text="벤치프레스"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/riding"
+            android:id="@+id/deadlift"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="자전거타기"/>
+            android:text="데드리프트"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/joolnumki"
+            android:id="@+id/pullup"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="줄넘기"/>
+            android:text="턱걸기"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/yoga"
+            android:id="@+id/pushup"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="요가"/>
+            android:text="팔굽혀펴기"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/pilatets"
+            android:id="@+id/situp"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="필라테스"/>
+            android:text="윗몸일으키기"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/football"
+            android:id="@+id/crunch"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="축구"/>
+            android:text="크런치"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/basketball"
+            android:id="@+id/etc"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="농구"/>
+            android:text="기타"/>
 
-    </com.google.android.material.chip.ChipGroup>
+   </com.google.android.material.chip.ChipGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -152,7 +152,7 @@
         android:textStyle="bold"/>
 
     <EditText
-        android:id="@+id/yootime"
+        android:id="@+id/mootime"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"/>
@@ -169,14 +169,14 @@
                 android:text="NUMBER"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:textStyle="bold"/>
 
             <EditText
-                android:id="@+id/yoonumber"
+                android:id="@+id/moonumber"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="10dp"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
@@ -191,21 +191,43 @@
                 android:text="SET"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:textStyle="bold"/>
 
             <EditText
-                android:id="@+id/yooset"
+                android:id="@+id/mooset"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WEIGHT"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/mooweight"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/yooDoneButton"
+        android:id="@+id/mooDoneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
