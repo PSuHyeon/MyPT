@@ -70,8 +70,10 @@ class MainActivity : AppCompatActivity() {
                     text_from_server = it
                     //val booklist = Gson().fromJson(text_from_server, Array<Person>::class.java)
                     Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
-                    if (it == "login success"){
+                    if (it != "login failed"){
                         val intent = Intent(this@MainActivity, Menu::class.java)
+                        Log.d("keyid", it)
+                        intent.putExtra("keyid", it)
                         startActivity(intent)
                     }
                 }, null
@@ -141,15 +143,8 @@ class MainActivity : AppCompatActivity() {
                 val check_request = object : StringRequest(
                     Request.Method.GET,
                     checkUrl, {
-                        if (it == "not_ok"){
-                            Log.d("herere", it)
-                            val intent = Intent(this@MainActivity, Menu::class.java)
-                            Toast.makeText(this@MainActivity, "네이버 아이디 로그인 성공", Toast.LENGTH_SHORT).show()
-                            startActivity(intent)
-                        }
-                        else{
-                            Log.d("herere", "ok 왔음")
-                            Log.d("naver", ""+ userId)
+                        if (it == "ok"){
+                            var keyid = ""
                             val url = "http://172.10.5.119:80/sign_up"
                             var params = HashMap<String,String>()
                             params["id"] = userId!!
@@ -158,7 +153,7 @@ class MainActivity : AppCompatActivity() {
                             val request = object : JsonObjectRequest(
                                 Request.Method.POST,
                                 url,null, Response.Listener {
-
+                                    keyid = it.get("keyid") as String
                                 }, Response.ErrorListener {
 
                                 }
@@ -175,8 +170,16 @@ class MainActivity : AppCompatActivity() {
                             )
                             requestQueue?.add(request)
                             val intent = Intent(this@MainActivity, Menu::class.java)
+                            intent.putExtra("keyid", keyid)
                             startActivity(intent)
                             Toast.makeText(this@MainActivity, "네이버 아이디 회원가입 성공", Toast.LENGTH_SHORT).show()
+                        }
+                        else{
+                            Log.d("keyid", it)
+                            val intent = Intent(this@MainActivity, Menu::class.java)
+                            intent.putExtra("keyid", it)
+                            Toast.makeText(this@MainActivity, "네이버 아이디 로그인 성공", Toast.LENGTH_SHORT).show()
+                            startActivity(intent)
                         }
                     }, null
                 ) {
@@ -229,9 +232,7 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class Person(val name: String, val age: Int, val position: Int, val id: Int){
 
-}
 class VolleySingleton constructor(context: Context) {
     companion object {
         @Volatile
