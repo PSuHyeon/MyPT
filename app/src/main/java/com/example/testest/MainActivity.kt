@@ -1,13 +1,15 @@
 package com.example.testest
 
+import android.app.PendingIntent.getActivity
+import android.content.Context
 import android.content.Intent
-import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -21,11 +23,9 @@ import com.navercorp.nid.oauth.OAuthLoginCallback
 import com.navercorp.nid.profile.NidProfileCallback
 import com.navercorp.nid.profile.data.NidProfileResponse
 import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
 
+var id = ""
+var password = ""
 class MainActivity : AppCompatActivity() {
 
     companion object{
@@ -59,10 +59,11 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        sign_in_button.setOnClickListener {     //버튼으로 서버에서 데이터 가져오는 코드
-            val id = id_text.text.toString()
-            val password = pass_text.text.toString()
-            val url = "http://172.10.5.119:80/login/" +id + "," + password
+        sign_in_button.setOnClickListener {
+
+            val id = findViewById<TextView>(R.id.id_text)
+            val pw = findViewById<TextView>(R.id.password_text)
+            val url = "http://172.10.5.119:80/login/" +id.text.toString() + "," + pw.text.toString()
             val request = object : StringRequest(
                 Request.Method.GET,
                 url, {
@@ -91,29 +92,37 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == 200){
-            super.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
             val id = data?.getStringExtra("id")
-            val password = data?.getStringExtra("password")
+            val password = data?.getStringExtra("pw")
             var params = HashMap<String,String>()
             params["id"] = id!!
             params["password"] = password!!
-            val jsonObject = JSONObject(params as Map<*, *>?)
-            val url = "http://172.10.5.119:80/signup"
+            val jsonObject = JSONObject(Gson().toJson(params))
+            Log.d("checkec", ""+jsonObject)
+            val url = "http://172.10.5.119:80/sign_up"
             val request = object : JsonObjectRequest(
                 Request.Method.POST,
-                url, jsonObject , Response.Listener {
-                    Toast.makeText(this@MainActivity, ""+it, Toast.LENGTH_SHORT).show()
-                    Log.d("checkec", ""+it)
-                }, null
+                url,null, Response.Listener {
+
+                }, Response.ErrorListener {
+
+                }
             ) {
-
+                override fun getBody(): ByteArray {
+                    return jsonObject.toString().toByteArray()
+                }
             }
+            request.retryPolicy = DefaultRetryPolicy(
+                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+                // 0 means no retry
+                0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
+                1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+            )
 
-            request.setShouldCache(false)
-            requestQueue?.add(request)
+            // Add the volley post request to the request queue
+            VolleySingleton.getInstance(this).addToRequestQueue(request)
 
-        }
 
     }
 
@@ -125,25 +134,63 @@ class MainActivity : AppCompatActivity() {
         val profileCallback = object : NidProfileCallback<NidProfileResponse> {
             override fun onSuccess(response: NidProfileResponse) {
                 val userId = response.profile?.id
-                val test_text = findViewById<TextView>(R.id.test_text)
+
                 naverToken?.replace("/", "")
-                Log.d("naver", ""+ userId)
-                val url = "http://172.10.5.119:80/login/" +userId + "," + "naver"
-                val request = object : StringRequest(
+
+                val checkUrl = "http://172.10.5.119:80/checkid/" + userId
+                val check_request = object : StringRequest(
                     Request.Method.GET,
-                    url, {
-                        Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
-                        if (it == "login success"){
+                    checkUrl, {
+                        if (it == "not_ok"){
+                            Log.d("herere", it)
+                            val intent = Intent(this@MainActivity, Menu::class.java)
+                            Toast.makeText(this@MainActivity, "네이버 아이디 로그인 성공", Toast.LENGTH_SHORT).show()
+                            startActivity(intent)
+                        }
+                        else{
+                            Log.d("herere", "ok 왔음")
+                            Log.d("naver", ""+ userId)
+                            val url = "http://172.10.5.119:80/sign_up"
+                            var params = HashMap<String,String>()
+                            params["id"] = userId!!
+                            params["password"] = "naver"
+                            val jsonObject = JSONObject(Gson().toJson(params))
+                            val request = object : JsonObjectRequest(
+                                Request.Method.POST,
+                                url,null, Response.Listener {
+
+                                }, Response.ErrorListener {
+
+                                }
+                            ) {
+                                override fun getBody(): ByteArray {
+                                    return jsonObject.toString().toByteArray()
+                                }
+                            }
+                            request.retryPolicy = DefaultRetryPolicy(
+                                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+                                // 0 means no retry
+                                0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
+                                1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                            )
+                            requestQueue?.add(request)
                             val intent = Intent(this@MainActivity, Menu::class.java)
                             startActivity(intent)
+                            Toast.makeText(this@MainActivity, "네이버 아이디 회원가입 성공", Toast.LENGTH_SHORT).show()
                         }
                     }, null
                 ) {
 
                 }
-                request.setShouldCache(false)
-                requestQueue?.add(request)
-                Toast.makeText(this@MainActivity, "네이버 아이디 로그인 성공!", Toast.LENGTH_SHORT).show()
+
+                check_request.setShouldCache(false)
+                requestQueue?.add(check_request)
+
+
+
+
+                // Add the volley post request to the request queue
+
             }
             override fun onFailure(httpStatus: Int, message: String) {
                 val errorCode = NaverIdLoginSDK.getLastErrorCode().code
@@ -184,4 +231,24 @@ class MainActivity : AppCompatActivity() {
 
 class Person(val name: String, val age: Int, val position: Int, val id: Int){
 
+}
+class VolleySingleton constructor(context: Context) {
+    companion object {
+        @Volatile
+        private var INSTANCE: VolleySingleton? = null
+        fun getInstance(context: Context) =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: VolleySingleton(context).also {
+                    INSTANCE = it
+                }
+            }
+    }
+    private val requestQueue: RequestQueue by lazy {
+        // applicationContext is key, it keeps you from leaking the
+        // Activity or BroadcastReceiver if someone passes one in.
+        Volley.newRequestQueue(context.applicationContext)
+    }
+    fun <T> addToRequestQueue(req: Request<T>) {
+        requestQueue.add(req)
+    }
 }
