@@ -80,8 +80,16 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        // 회원가입 액티비티 이동
         sign_up_button.setOnClickListener{
+            val intent = Intent(this, SignUp::class.java)
+            startActivity(intent)
+        }
 
+        // 로그인 버튼 클릭 시 내부 액티비티 이동
+        sign_in_button.setOnClickListener {
+            val intent2 = Intent(this, Menu::class.java)
+            startActivity(intent2)
         }
 
     }
