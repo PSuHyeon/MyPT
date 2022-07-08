@@ -94,7 +94,7 @@ public class ListFragment extends Fragment {
         addmooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mooDialog = new YooDialog(getContext());
+                mooDialog = new MooDialog(getContext());
                 mooDialog.show();
             }
         });

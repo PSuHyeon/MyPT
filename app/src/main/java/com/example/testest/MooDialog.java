@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 public class MooDialog extends Dialog {
@@ -18,10 +19,16 @@ public class MooDialog extends Dialog {
     EditText setEditText;
     EditText weightEditText;
     Button doneButton;
+    Chip chip;
+    String exercise;
+    String time;
+    String number;
+    String set;
+    String weight;
 
     public MooDialog(@NonNull Context context) {
         super(context);
-        setContentView(R.layout.exercisedialog);
+        setContentView(R.layout.exercisemoodialog);
 
         chipGroup = findViewById(R.id.mooChipGroup);
         timeEditText = findViewById(R.id.mootime);
@@ -33,11 +40,18 @@ public class MooDialog extends Dialog {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("chipGroup.getCheckedChipId()", String.valueOf(chipGroup.getCheckedChipId()));
-                Log.d("timeEditText.getText().toString()", timeEditText.getText().toString());
-                Log.d("numberEditText.getText().toString()", numberEditText.getText().toString());
-                Log.d("setEditText.getText().toString()", setEditText.getText().toString());
-                Log.d("weightEditText.getText().toString()", weightEditText.getText().toString());
+
+                try {
+                    time = timeEditText.getText().toString();
+                    number = numberEditText.getText().toString();
+                    set = setEditText.getText().toString();
+                    weight = weightEditText.getText().toString();
+                } catch (Exception e) {
+                }
+                chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
+                exercise = chip.getText().toString();
+
+                Log.d("chipGroup.getCheckedChipId()", chip.getText().toString());
                 dismiss();
             }
         });
