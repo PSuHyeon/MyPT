@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity() {
                     //val booklist = Gson().fromJson(text_from_server, Array<Person>::class.java)
                     Log.d("check", "" + it)
 
-
                 }, null
             ) {
 
