@@ -1,6 +1,10 @@
 package com.example.testest;
 
 public class Exercise {
+    public void setCurrent(String current) {
+        this.current = current;
+    }
+
     String id;
     String name; // 사람 이름 ex. 우다연
     String date; // 날짜 2022-07-08
@@ -10,8 +14,18 @@ public class Exercise {
     String number; // 횟수(1세트에 하는 횟수) 1
     String sett; // 세트 1
     String weight; // 무게 0
+    String current;
 
-    public Exercise(String name, String date, String type, String exercise, String time, String number, String sett, String weight) {
+    public Exercise(String current) {
+        this.current = current;
+    }
+
+    public String getCurrent() {
+        return current;
+    }
+
+    public Exercise(String id, String name, String date, String type, String exercise, String time, String number, String sett, String weight, String current) {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.type = type;
@@ -20,6 +34,7 @@ public class Exercise {
         this.number = number;
         this.sett = sett;
         this.weight = weight;
+        this.current = current;
     }
 
     public String getName() {

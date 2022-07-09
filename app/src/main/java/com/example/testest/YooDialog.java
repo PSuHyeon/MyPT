@@ -67,6 +67,7 @@ public class YooDialog extends Dialog {
                 params.put("name", menu.name);
                 params.put("id", menu.key_id);
                 params.put("exercise", exercise);
+                params.put("current", "no");
                 JSONObject jsonObject = new JSONObject(params);
                 // Request a string response from the provided URL.
                 JsonObjectRequest Request = new JsonObjectRequest(com.android.volley.Request.Method.POST, url,null,
@@ -74,6 +75,7 @@ public class YooDialog extends Dialog {
                             @Override
                             public void onResponse(JSONObject response) {
                                 // Display the first 500 characters of the response string.
+
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -96,8 +98,11 @@ public class YooDialog extends Dialog {
                 // Add the request to the RequestQueue.
                 queue.add(Request);
 
-                //listItem.add(new Exercise("이름", selectedDate, "유산소", exercise, time, "0", "0", "0"));
-                listItem.add(new Exercise("이름", selectedDate, "yoo", exercise, time, "0", "0", "0"));
+
+
+
+
+                listItem.add(new Exercise(menu.key_id,menu.name, selectedDate, "yoo", exercise, time, "", "", "", "no"));
                 ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
                 listView.setAdapter(listViewAdapter);
 

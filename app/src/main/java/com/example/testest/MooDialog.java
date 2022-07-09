@@ -78,6 +78,7 @@ public class MooDialog extends Dialog {
                 params.put("name", menu.name);
                 params.put("id", menu.key_id);
                 params.put("exercise", exercise);
+                params.put("current", "no");
                 JSONObject jsonObject = new JSONObject(params);
                 // Request a string response from the provided URL.
                 JsonObjectRequest Request = new JsonObjectRequest(com.android.volley.Request.Method.POST, url,null,
@@ -109,7 +110,7 @@ public class MooDialog extends Dialog {
                 queue.add(Request);
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
-                listItem.add(new Exercise("이름", selectedDate, "moo", exercise, "0", number, set, weight));
+                listItem.add(new Exercise(menu.key_id, menu.name, selectedDate, "moo", exercise, "", number, set, weight, "no"));
                 ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
                 listView.setAdapter(listViewAdapter);
                 dismiss();
