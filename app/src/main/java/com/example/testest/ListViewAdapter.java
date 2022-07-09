@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -45,10 +46,10 @@ public class ListViewAdapter extends BaseAdapter {
         TextView exerciseTypeTextView = view.findViewById(R.id.exerciseTypeTextView);
         TextView exerciseNameTextView = view.findViewById(R.id.exerciseNameTextView);
         TextView exerciseInfoTextView = view.findViewById(R.id.exerciseInfoTextView);
+        Button deleteButton = view.findViewById(R.id.deleteButton);
 
         String info;
-
-          if (items.get(i).type.equals("유산소")) {
+          if (items.get(i).type.equals("yoo")) {
               info = items.get(i).time + "분";
           } else {
               info = items.get(i).number + "회 * " + items.get(i).sett + "세트 " + items.get(i).weight + "kg";
@@ -57,6 +58,13 @@ public class ListViewAdapter extends BaseAdapter {
         exerciseTypeTextView.setText(items.get(i).type);
         exerciseNameTextView.setText(items.get(i).exercise);
         exerciseInfoTextView.setText(info);
+
+//        deleteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                items.remove()
+//            }
+//        });
 
         return view;
     }

@@ -109,7 +109,7 @@ public class MooDialog extends Dialog {
                 queue.add(Request);
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
-                listItem.add(new Exercise("이름", selectedDate, "무산소", exercise, "0", number, set, weight));
+                listItem.add(new Exercise("이름", selectedDate, "moo", exercise, "0", number, set, weight));
                 ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext());
                 listView.setAdapter(listViewAdapter);
                 dismiss();

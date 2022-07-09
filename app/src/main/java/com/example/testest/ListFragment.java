@@ -146,13 +146,13 @@ public class ListFragment extends Fragment {
             e.printStackTrace();
         }
 
-//        deleteButton = rootView.findViewById(R.id.deleteButton);
-//        deleteButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+
+//        try {
+//            deleteButton = rootView.findViewById(R.id.deleteButton);
+//            Log.d(listView.getSelectedItemPosition()
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         // rootview로 작성해주어야 갱신된 값이 반영됨
         return rootView;

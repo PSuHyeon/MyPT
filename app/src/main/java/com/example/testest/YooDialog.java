@@ -102,6 +102,7 @@ public class YooDialog extends Dialog {
 
 
                 listItem.add(new Exercise("이름", selectedDate, "유산소", exercise, time, "0", "0", "0"));
+                listItem.add(new Exercise("이름", selectedDate, "yoo", exercise, time, "0", "0", "0"));
                 ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext());
                 listView.setAdapter(listViewAdapter);
 
