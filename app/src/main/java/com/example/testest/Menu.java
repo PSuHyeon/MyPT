@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -29,14 +30,18 @@ public class Menu extends AppCompatActivity {
     private ListFragment listFragment = new ListFragment();
     private ChatFragment chatFragment = new ChatFragment();
     private CommunityFragment communityFragment = new CommunityFragment();
-    public String key_id = "";
+    public static String key_id = "";
+    public static String name = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
         Intent intent = getIntent();
+        Log.d("keyid", ""+ intent.getStringExtra("keyid"));
         key_id = intent.getStringExtra("keyid");
+        name = intent.getStringExtra("name");
+
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame, listFragment).commitAllowingStateLoss();
 
