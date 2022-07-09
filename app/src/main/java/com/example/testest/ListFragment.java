@@ -16,6 +16,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -159,11 +166,50 @@ public class ListFragment extends Fragment {
     }
 
     public void ShowSelectedDate() {
+
+        Menu menu = new Menu();
+
         dateTextView = rootView.findViewById(R.id.dateTextView);
         selectedDate = materialCalendarView.getSelectedDate().toString().split("\\{|\\}")[1];
         String month = Integer.toString(Integer.parseInt(selectedDate.split("-")[1]) + 1);
         String day = selectedDate.split("-")[2];
         selectedDate = selectedDate.split("-")[0] + "-" + month + "-" + day;
         dateTextView.setText(month + " / " + day);
+
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        String url ="http://172.10.18.125:80/get_exercise";
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("date", ""+selectedDate);
+        params.put("keyid", menu.key_id);
+        JSONObject jsonObject = new JSONObject(params);
+        JsonArrayRequest Request = new JsonArrayRequest(com.android.volley.Request.Method.POST, url,null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        // Display the first 500 characters of the response string.
+                        Log.d("check", "" + response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("check", "" + error);
+                Log.d("check", "got error");
+            }
+
+        }
+        ){
+            @Override
+            public byte[] getBody() {
+                return jsonObject.toString().getBytes();
+            }
+        };
+        Request.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        // Add the request to the RequestQueue.
+        queue.add(Request);
     }
 }
