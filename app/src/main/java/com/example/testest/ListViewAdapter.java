@@ -54,14 +54,16 @@ public class ListViewAdapter extends BaseAdapter {
         TextView exerciseInfoTextView = view.findViewById(R.id.exerciseInfoTextView);
         Button deleteButton = view.findViewById(R.id.deleteButton);
 
-        String info;
+        String info, type;
           if (items.get(i).type.equals("yoo")) {
+              type = "유산소";
               info = items.get(i).time + "분";
           } else {
+              type = "무산소";
               info = items.get(i).number + "회 * " + items.get(i).sett + "세트 " + items.get(i).weight + "kg";
           }
 
-        exerciseTypeTextView.setText(items.get(i).type);
+        exerciseTypeTextView.setText(type);
         exerciseNameTextView.setText(items.get(i).exercise);
         exerciseInfoTextView.setText(info);
 
