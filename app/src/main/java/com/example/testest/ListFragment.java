@@ -155,6 +155,8 @@ public class ListFragment extends Fragment {
 
                         listView.setAdapter(listViewAdapter);
 
+
+
                         Log.d("check", "" + response);
                     }
                 }, new Response.ErrorListener() {
