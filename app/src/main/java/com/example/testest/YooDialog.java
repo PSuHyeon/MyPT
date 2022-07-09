@@ -67,6 +67,7 @@ public class YooDialog extends Dialog {
                 params.put("name", menu.name);
                 params.put("id", menu.key_id);
                 params.put("exercise", exercise);
+                params.put("current", "no");
                 JSONObject jsonObject = new JSONObject(params);
                 // Request a string response from the provided URL.
                 JsonObjectRequest Request = new JsonObjectRequest(com.android.volley.Request.Method.POST, url,null,
