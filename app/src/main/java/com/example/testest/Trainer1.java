@@ -17,9 +17,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class Trainer1 extends Fragment {
     View rootView;
@@ -143,11 +156,34 @@ public class Trainer1 extends Fragment {
                         daySpinner.setVisibility(View.GONE);
                         personSpinner.setVisibility(View.VISIBLE);
 
-                        personList.add("회원명");
-                        ArrayAdapter<String> personAdapter = new ArrayAdapter<>(getContext(), com.airbnb.lottie.R.layout.support_simple_spinner_dropdown_item, personList);
-                        personSpinner.setAdapter(personAdapter);
-                        personSpinner.setSelection(0);
-                        break;
+                        RequestQueue queue = Volley.newRequestQueue(getActivity());
+                        String url ="http://172.10.18.125:80/get_trainee";
+                        StringRequest Request = new StringRequest(com.android.volley.Request.Method.GET, url,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        // Display the first 500 characters of the response string.
+                                        ArrayList<String> personList = new ArrayList<String>(Arrays.asList(response.split(",")));
+                                        Log.d("byhuman", ""+personList);
+                                        personList.set(0, "회원명");
+                                        ArrayAdapter<String> personAdapter = new ArrayAdapter<>(getContext(), com.airbnb.lottie.R.layout.support_simple_spinner_dropdown_item, personList);
+                                        personSpinner.setAdapter(personAdapter);
+                                        personSpinner.setSelection(0);
+                                    }
+                                }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d("byhuman", "got error" + personList);
+                            }
+
+                        }
+                        );
+                        // Add the request to the RequestQueue.
+                        queue.add(Request);
+
+
+
+
                 }
             }
         });
@@ -172,6 +208,38 @@ public class Trainer1 extends Fragment {
                     day = daySpinner.getSelectedItem().toString();
                     date = year + "-" + month + "-" + day; // 최종날짜 (2022-06-08 형식)
 
+                    RequestQueue queue = Volley.newRequestQueue(getActivity());
+                    String url ="http://172.10.18.125:80/get_by_date";
+                    HashMap<String, String> params = new HashMap<String, String>();
+                    params.put("date", date);
+                    JSONObject jsonObject = new JSONObject(params);
+                    JsonArrayRequest Request = new JsonArrayRequest(com.android.volley.Request.Method.POST, url,null,
+                            new Response.Listener<JSONArray>() {
+                                @Override
+                                public void onResponse(JSONArray response) {
+                                    // Display the first 500 characters of the response string.
+                                    Log.d("bydate", ""+response);
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+
+                    }
+                    ){
+                        @Override
+                        public byte[] getBody() {
+                            return jsonObject.toString().getBytes();
+                        }
+                    };
+                    Request.setRetryPolicy(new DefaultRetryPolicy(
+                            0,
+                            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                    // Add the request to the RequestQueue.
+                    queue.add(Request);
                     // 서버 요청 필요
 
                 } else { // 회원별
@@ -180,9 +248,43 @@ public class Trainer1 extends Fragment {
                         Toast.makeText(getContext(), "회원명을 선택하세요", Toast.LENGTH_SHORT).show();
                         return;
                     }
-
                     String trainee; // 선택된 회원
                     trainee = personSpinner.getSelectedItem().toString();
+
+                    RequestQueue queue = Volley.newRequestQueue(getActivity());
+                    String url ="http://172.10.18.125:80/get_by_name";
+                    HashMap<String, String> params = new HashMap<String, String>();
+                    params.put("name", trainee);
+                    JSONObject jsonObject = new JSONObject(params);
+                    JsonArrayRequest Request = new JsonArrayRequest(com.android.volley.Request.Method.POST, url,null,
+                            new Response.Listener<JSONArray>() {
+                                @Override
+                                public void onResponse(JSONArray response) {
+                                    // Display the first 500 characters of the response string.
+                                    Log.d("byname", ""+response);
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+
+                    }
+                    ){
+                        @Override
+                        public byte[] getBody() {
+                            return jsonObject.toString().getBytes();
+                        }
+                    };
+                    Request.setRetryPolicy(new DefaultRetryPolicy(
+                            0,
+                            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                    // Add the request to the RequestQueue.
+                    queue.add(Request);
+                    // 서버 요청 필요
+
 
                     // 서버 요청 필요
 
