@@ -11,6 +11,17 @@ public class Exercise {
     String sett; // 세트 1
     String weight; // 무게 0
 
+    public Exercise(String name, String date, String type, String exercise, String time, String number, String sett, String weight) {
+        this.name = name;
+        this.date = date;
+        this.type = type;
+        this.exercise = exercise;
+        this.time = time;
+        this.number = number;
+        this.sett = sett;
+        this.weight = weight;
+    }
+
     public String getName() {
         return name;
     }

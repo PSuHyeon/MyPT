@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
@@ -26,6 +27,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import java.util.ArrayList;
+
 public class MooDialog extends Dialog {
     ChipGroup chipGroup;
     EditText numberEditText;
@@ -37,9 +40,10 @@ public class MooDialog extends Dialog {
     String number;
     String set;
     String weight;
-    Menu menu = new Menu();
-    public MooDialog(@NonNull Context context, String selectedDate) {
+
+    public MooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView) {
         super(context);
+        Menu menu = new Menu();
         setContentView(R.layout.exercisemoodialog);
 
         chipGroup = findViewById(R.id.mooChipGroup);
@@ -103,6 +107,11 @@ public class MooDialog extends Dialog {
 
                 // Add the request to the RequestQueue.
                 queue.add(Request);
+                chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
+                exercise = chip.getText().toString();
+                listItem.add(new Exercise("이름", selectedDate, "1", exercise, "0", number, set, weight));
+                ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext());
+                listView.setAdapter(listViewAdapter);
                 dismiss();
             }
         });
