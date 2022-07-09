@@ -74,7 +74,6 @@ public class YooDialog extends Dialog {
                             @Override
                             public void onResponse(JSONObject response) {
                                 // Display the first 500 characters of the response string.
-
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -97,11 +96,7 @@ public class YooDialog extends Dialog {
                 // Add the request to the RequestQueue.
                 queue.add(Request);
 
-
-
-
-
-                listItem.add(new Exercise("이름", selectedDate, "유산소", exercise, time, "0", "0", "0"));
+                //listItem.add(new Exercise("이름", selectedDate, "유산소", exercise, time, "0", "0", "0"));
                 listItem.add(new Exercise("이름", selectedDate, "yoo", exercise, time, "0", "0", "0"));
                 ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
                 listView.setAdapter(listViewAdapter);

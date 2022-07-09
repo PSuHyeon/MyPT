@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 public class Menu extends AppCompatActivity {
 
-    public ArrayList<Exercise> exercise_list = new ArrayList<Exercise>();
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private ListFragment listFragment = new ListFragment();
     private ChatFragment chatFragment = new ChatFragment();
