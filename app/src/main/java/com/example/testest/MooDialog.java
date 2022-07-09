@@ -41,7 +41,7 @@ public class MooDialog extends Dialog {
     String set;
     String weight;
 
-    public MooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView) {
+    public MooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView, View rootView) {
         super(context);
         Menu menu = new Menu();
         setContentView(R.layout.exercisemoodialog);
@@ -110,7 +110,7 @@ public class MooDialog extends Dialog {
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
                 listItem.add(new Exercise("이름", selectedDate, "moo", exercise, "0", number, set, weight));
-                ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext());
+                ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
                 listView.setAdapter(listViewAdapter);
                 dismiss();
             }

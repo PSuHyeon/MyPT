@@ -2,12 +2,16 @@ package com.example.testest;
 
 import android.content.Context;
 import android.util.Log;
+import android.util.Pair;
+import android.util.proto.ProtoOutputStream;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,10 +19,12 @@ import java.util.ArrayList;
 public class ListViewAdapter extends BaseAdapter {
     ArrayList<Exercise> items;
     Context context;
+    View rootView;
 
-    public ListViewAdapter(ArrayList<Exercise> items, Context context) {
+    public ListViewAdapter(ArrayList<Exercise> items, Context context, View rootView) {
         this.items = items;
         this.context = context;
+        this.rootView = rootView;
     }
 
     @Override
@@ -48,24 +54,42 @@ public class ListViewAdapter extends BaseAdapter {
         TextView exerciseInfoTextView = view.findViewById(R.id.exerciseInfoTextView);
         Button deleteButton = view.findViewById(R.id.deleteButton);
 
-        String info;
+        String info, type;
           if (items.get(i).type.equals("yoo")) {
+              type = "유산소";
               info = items.get(i).time + "분";
           } else {
+              type = "무산소";
               info = items.get(i).number + "회 * " + items.get(i).sett + "세트 " + items.get(i).weight + "kg";
           }
 
-        exerciseTypeTextView.setText(items.get(i).type);
+        exerciseTypeTextView.setText(type);
         exerciseNameTextView.setText(items.get(i).exercise);
         exerciseInfoTextView.setText(info);
 
-//        deleteButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                items.remove()
-//            }
-//        });
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                items.remove(i);
+                notifyDataSetChanged();
+                Log.d("items", String.valueOf(items.size()));
+            }
+        });
 
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                TextView completeTextView = rootView.findViewById(R.id.completeTextView);
+                String complete;
+
+                if (b == true) {
+                    complete = Integer.toString(Integer.parseInt(completeTextView.getText().toString()) + 1);
+                } else {
+                    complete = Integer.toString(Integer.parseInt(completeTextView.getText().toString()) - 1);
+                }
+                completeTextView.setText(complete);
+            }
+        });
         return view;
     }
 }
