@@ -26,11 +26,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -45,6 +49,8 @@ public class Trainer1 extends Fragment {
     RadioGroup radioGroup;
     Button trainerDoneButton;
     int condition = 0; // 날짜별이면 0, 회원별이면 1
+    HashMap<String, JSONArray> recyclerItems;
+    ArrayList<String> names;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +111,15 @@ public class Trainer1 extends Fragment {
                     case R.id.dayRadioButton:
                         condition = 0; // 날짜별이면 0
                         Toast.makeText(getContext(), "날짜별 리스트를 조회합니다", Toast.LENGTH_SHORT).show();
+
+                        recyclerItems = new HashMap<String, JSONArray>();
+                        names = new ArrayList<String>();
+                        RecyclerView recyclerView = rootView.findViewById(R.id.dateRecyclerView);
+                        DateRecyclerViewAdapter adapter = new DateRecyclerViewAdapter(recyclerView, getContext(), names, recyclerItems);
+
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        recyclerView.setAdapter(adapter);
+
                         ArrayList<String> yearList = new ArrayList<String>();
                         ArrayList<String> monthList = new ArrayList<String>();
                         ArrayList<String> dayList = new ArrayList<String>();
@@ -148,6 +163,15 @@ public class Trainer1 extends Fragment {
                     case R.id.personRadioButton:
                         condition = 1; // 회원별이면 1
                         Toast.makeText(getContext(), "회원별 리스트를 조회합니다", Toast.LENGTH_SHORT).show();
+
+                        recyclerItems = new HashMap<String, JSONArray>();
+                        names = new ArrayList<String>();
+                        RecyclerView recyclerView2 = rootView.findViewById(R.id.dateRecyclerView);
+                        DateRecyclerViewAdapter adapter2 = new DateRecyclerViewAdapter(recyclerView2, getContext(), names, recyclerItems);
+
+                        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
+                        recyclerView2.setAdapter(adapter2);
+
                         ArrayList<String> personList = new ArrayList<String>();
                         personSpinner = rootView.findViewById(R.id.personSpinner);
                         yearSpinner = rootView.findViewById(R.id.yearSpinner);
@@ -182,10 +206,6 @@ public class Trainer1 extends Fragment {
                         );
                         // Add the request to the RequestQueue.
                         queue.add(Request);
-
-
-
-
                 }
             }
         });
@@ -223,7 +243,46 @@ public class Trainer1 extends Fragment {
                                 @Override
                                 public void onResponse(JSONArray response) {
                                     // Display the first 500 characters of the response string.
+
+                                    HashMap<String, JSONArray> datearr = new HashMap<String, JSONArray>();
+                                    names = new ArrayList<String>();
+
+                                    for (int i = 0; i < response.length(); i++) {
+                                        try {
+                                            JSONObject jo = response.getJSONObject(i);
+                                            Log.d("jsonobject jo", String.valueOf(jo));
+                                            String name = jo.getString("name");
+                                            JSONArray jsonarr;
+                                            if (datearr.containsKey(name)) {
+                                                jsonarr = datearr.get(name);
+                                                Log.d("jsonarr before", String.valueOf(jsonarr));
+                                                jsonarr.put(response.get(i));
+                                                Log.d("jsonarr after", String.valueOf(jsonarr));
+                                                datearr.remove(name);
+                                                datearr.put(name, jsonarr);
+                                            } else {
+                                                Log.d("id", jo.getString("id"));
+                                                jsonarr = new JSONArray();
+                                                jsonarr.put(response.get(i));
+                                                datearr.put(name, jsonarr);
+                                                names.add(name);
+                                            }
+
+                                            //Gson gson = new Gson();
+                                            //Type listType = new TypeToken<ArrayList<Exercise>>(){}.getType();
+                                            recyclerItems = datearr;
+
+                                            DateRecyclerViewAdapter adapter = new DateRecyclerViewAdapter(dateRecyclerView, getContext(), names, recyclerItems);
+                                            dateRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                                            dateRecyclerView.setAdapter(adapter);
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
                                     Log.d("bydate", ""+response);
+
                                 }
                             }, new Response.ErrorListener() {
                         @Override
@@ -265,7 +324,14 @@ public class Trainer1 extends Fragment {
                             new Response.Listener<JSONArray>() {
                                 @Override
                                 public void onResponse(JSONArray response) {
-                                    // Display the first 500 characters of the response string.
+                                    Gson gson = new Gson();
+                                    Type listType = new TypeToken<ArrayList<Exercise>>(){}.getType();
+                                    ArrayList<Exercise> myExList = new Gson().fromJson(String.valueOf(response), listType);
+                                    //recyclerItems = myExList;
+
+                                    //PersonRecyclerViewAdapter adapter = new PersonRecyclerViewAdapter(dateRecyclerView, getContext(), recyclerItems);
+                                    //dateRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                                    //dateRecyclerView.setAdapter(adapter);
                                     Log.d("byname", ""+response);
                                 }
                             }, new Response.ErrorListener() {
@@ -288,11 +354,6 @@ public class Trainer1 extends Fragment {
 
                     // Add the request to the RequestQueue.
                     queue.add(Request);
-                    // 서버 요청 필요
-
-
-                    // 서버 요청 필요
-
                 }
             }
         });

@@ -1,25 +1,35 @@
 package com.example.testest;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DateRecyclerViewAdapter extends RecyclerView.Adapter<DateRecyclerViewAdapter.ViewHolder> implements View.OnClickListener{
     RecyclerView recyclerView;
     Context context;
-    ArrayList<Exercise> items;
+    HashMap<String, JSONArray> items;
+    int idx;
+    ArrayList<String> names;
 
-    public DateRecyclerViewAdapter(RecyclerView recyclerView, Context context, ArrayList<Exercise> items) {
+    public DateRecyclerViewAdapter(RecyclerView recyclerView, Context context, ArrayList<String> names, HashMap<String, JSONArray> items) {
         this.recyclerView = recyclerView;
         this.context = context;
         this.items = items;
+        this.names = names;
     }
 
     @Override
@@ -39,16 +49,20 @@ public class DateRecyclerViewAdapter extends RecyclerView.Adapter<DateRecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull DateRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.dateName.setText(items.get(position).name);
-        holder.dateExercise.setText(items.get(position).exercise);
-        String info;
-        if (items.get(position).type.equals("yoo")) {
-            info = items.get(position).time + "분";
-        } else {
-            info = items.get(position).number + "회 * " + items.get(position).sett + "세트 "
-                    + items.get(position).weight + " kg";
-        }
-        holder.dateExercise.setText(info);
+        String name = names.get(position);
+        int num = items.get(name).length();
+        holder.dateName.setText(names.get(position));
+        holder.dateNum.setText(Integer.toString(num) + " 건");
+
+        //holder.dateExercise.setText(items.get(position).exercise);
+//        String info;
+//        if (items.get(position).type.equals("yoo")) {
+//            info = items.get(position).time + "분";
+//        } else {
+//            info = items.get(position).number + "회 * " + items.get(position).sett + "세트 "
+//                    + items.get(position).weight + " kg";
+//        }
+//        holder.dateInfo.setText(info);
     }
 
     @Override
@@ -58,14 +72,29 @@ public class DateRecyclerViewAdapter extends RecyclerView.Adapter<DateRecyclerVi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView dateName;
-        TextView dateExercise;
-        TextView dateInfo;
+        TextView dateNum;
+//        TextView dateExercise;
+//        TextView dateInfo;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dateName = itemView.findViewById(R.id.date_name);
-            dateExercise = itemView.findViewById(R.id.date_exercise);
-            dateInfo = itemView.findViewById(R.id.date_info);
+            dateNum = itemView.findViewById(R.id.date_num);
+//            dateExercise = itemView.findViewById(R.id.date_exercise);
+//            dateInfo = itemView.findViewById(R.id.date_info);
+            cardView = itemView.findViewById(R.id.cardView);
+
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    idx = getAdapterPosition();
+                    String name = names.get(idx);
+                    Intent intent = new Intent(context, Trainer_PersonInfo.class);
+                    intent.putExtra("array", String.valueOf(items.get(name)));
+                    ((Activity) context).startActivityForResult(intent, 0);
+                }
+            });
 
         }
     }
