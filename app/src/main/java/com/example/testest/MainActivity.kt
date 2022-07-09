@@ -69,15 +69,22 @@ class MainActivity : AppCompatActivity() {
                 url, {
                     text_from_server = it
                     //val booklist = Gson().fromJson(text_from_server, Array<Person>::class.java)
-                    Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
                     if (it != "login failed"){
-                        val intent = Intent(this@MainActivity, Menu::class.java)
                         val temp = it.split(",")
-                        Log.d("keyid", temp.get(0))
-                        Log.d("name", temp.get(1))
-                        intent.putExtra("keyid", temp.get(0))
-                        intent.putExtra("name", temp.get(1))
-                        startActivity(intent)
+                        if (temp.get(2) == "TRAINEE"){
+                            val intent = Intent(this@MainActivity, Menu::class.java)
+                            intent.putExtra("keyid", temp.get(0))
+                            intent.putExtra("name", temp.get(1))
+                            Toast.makeText(this@MainActivity, "${temp.get(1)} 회원님 환영합니다", Toast.LENGTH_SHORT).show()
+                            startActivity(intent)
+                        }
+                        else{
+                            val intent = Intent(this@MainActivity, TrainerMenu::class.java)
+                            intent.putExtra("keyid", temp.get(0))
+                            intent.putExtra("name", temp.get(1))
+                            Toast.makeText(this@MainActivity, "${temp.get(1)} 코치님 환영합니다", Toast.LENGTH_SHORT).show()
+                            startActivity(intent)
+                        }
                     }
                 }, null
             ) {
@@ -190,13 +197,22 @@ class MainActivity : AppCompatActivity() {
                         }
                         else{
                             val temp = it.split(",")
-                            Log.d("keyid", temp.get(0))
-                            Log.d("name", temp.get(1))
-                            val intent = Intent(this@MainActivity, Menu::class.java)
-                            intent.putExtra("keyid", temp.get(0))
-                            intent.putExtra("name", temp.get(1))
-                            Toast.makeText(this@MainActivity, "네이버 아이디 로그인 성공", Toast.LENGTH_SHORT).show()
-                            startActivity(intent)
+                            Log.d("array", "" + temp)
+                            if (temp.get(2) == "TRAINEE" || temp.get(2) == "trainee"){
+                                val intent = Intent(this@MainActivity, Menu::class.java)
+                                intent.putExtra("keyid", temp.get(0))
+                                intent.putExtra("name", temp.get(1))
+                                Toast.makeText(this@MainActivity, "${temp.get(1)} 회원님 환영합니다", Toast.LENGTH_SHORT).show()
+                                startActivity(intent)
+                            }
+                            else{
+                                val intent = Intent(this@MainActivity, TrainerMenu::class.java)
+                                intent.putExtra("keyid", temp.get(0))
+                                intent.putExtra("name", temp.get(1))
+                                Toast.makeText(this@MainActivity, "${temp.get(1)} 코치님 환영합니다", Toast.LENGTH_SHORT).show()
+                                startActivity(intent)
+                            }
+
                         }
                     }, null
                 ) {
