@@ -99,7 +99,7 @@ public class ListFragment extends Fragment {
         addmooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mooDialog = new MooDialog(getContext());
+                mooDialog = new MooDialog(getContext(), selectedDate);
                 mooDialog.show();
             }
         });
