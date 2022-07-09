@@ -61,7 +61,7 @@ public class YooDialog extends Dialog {
                 params.put("number", "");
                 params.put("sett", "");
                 params.put("weight", "");
-                params.put("type", "moo");
+                params.put("type", "yoo");
                 params.put("date", selectedDate);
                 params.put("time", time);
                 params.put("name", menu.name);
