@@ -55,7 +55,9 @@ class MainActivity : AppCompatActivity() {
         NaverIdLoginSDK.initialize(this, naverClientId, naverClientSecret , naverClientName)
 
         naver_login.setOnClickListener {
-            startNaverLogin()
+            val intent = Intent(this@MainActivity, Menu::class.java)
+            startActivity(intent)
+            //startNaverLogin()
         }
 
 

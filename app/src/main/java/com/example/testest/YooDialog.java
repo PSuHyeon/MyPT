@@ -28,7 +28,7 @@ public class YooDialog extends Dialog {
     Menu menu = new Menu();
     ArrayList<Exercise> myExList;
 
-    public YooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView) {
+    public YooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView, View rootView) {
         super(context);
         setContentView(R.layout.exercisedialog);
 
@@ -45,7 +45,7 @@ public class YooDialog extends Dialog {
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
                 listItem.add(new Exercise("이름", selectedDate, "yoo", exercise, time, "0", "0", "0"));
-                ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext());
+                ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
                 listView.setAdapter(listViewAdapter);
 
 //                Exercise exercise = new Exercise(menu.key_id, ,  );

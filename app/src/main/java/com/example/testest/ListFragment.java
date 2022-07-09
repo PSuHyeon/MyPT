@@ -44,11 +44,10 @@ public class ListFragment extends Fragment {
     ListViewAdapter listViewAdapter;
     //ArrayAdapter<String> adapter;
     ArrayAdapter<Exercise> adapter;
-    EditText planEditText;
     //ArrayList<String> listItem;
     ArrayList<Exercise> listItem;
     TextView dateTextView;
-    androidx.appcompat.widget.AppCompatButton deleteButton;
+    TextView completeTextView;
     androidx.appcompat.widget.AppCompatButton addyooButton;
     androidx.appcompat.widget.AppCompatButton addmooButton;
     HashMap<String, ArrayList<Exercise>> plan_map = new HashMap<>();
@@ -69,6 +68,8 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_list, container, false);
+
+        completeTextView = (TextView) rootView.findViewById(R.id.completeTextView);
 
         materialCalendarView = rootView.findViewById(R.id.calendarView);
         materialCalendarView.state().edit()
@@ -96,7 +97,7 @@ public class ListFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.d("listItem.size() before", String.valueOf(listItem.size()));
-                yooDialog = new YooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView);
+                yooDialog = new YooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView, rootView);
                 yooDialog.show();
                 Log.d("listItem.size() after", String.valueOf(listItem.size()));
             }
@@ -107,7 +108,7 @@ public class ListFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.d("listItem.size() before", String.valueOf(listItem.size()));
-                mooDialog = new MooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView);
+                mooDialog = new MooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView, rootView);
                 mooDialog.show();
                 Log.d("listItem.size() after", String.valueOf(listItem.size()));
             }
@@ -138,21 +139,13 @@ public class ListFragment extends Fragment {
 
             listItem = myExList;
             listView = rootView.findViewById(R.id.listView);
-            listViewAdapter = new ListViewAdapter(listItem, getContext());
+            listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
 
             listView.setAdapter(listViewAdapter);
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-
-
-//        try {
-//            deleteButton = rootView.findViewById(R.id.deleteButton);
-//            Log.d(listView.getSelectedItemPosition()
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
 
         // rootview로 작성해주어야 갱신된 값이 반영됨
         return rootView;
@@ -165,5 +158,14 @@ public class ListFragment extends Fragment {
         String day = selectedDate.split("-")[2];
         selectedDate = selectedDate.split("-")[0] + "-" + month + "-" + day;
         dateTextView.setText(month + " / " + day);
+    }
+
+    public void SetCompleteTextView(String text) {
+        if (completeTextView == null) {
+            if (rootView == null) {
+                Log.d("rootview is null", "null");
+            }
+            completeTextView = rootView.findViewById(R.id.completeTextView);
+        }
     }
 }
