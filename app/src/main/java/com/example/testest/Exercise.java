@@ -24,7 +24,8 @@ public class Exercise {
         return current;
     }
 
-    public Exercise(String name, String date, String type, String exercise, String time, String number, String sett, String weight, String current) {
+    public Exercise(String id, String name, String date, String type, String exercise, String time, String number, String sett, String weight, String current) {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.type = type;

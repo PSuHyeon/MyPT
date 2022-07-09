@@ -97,10 +97,57 @@ public class ListViewAdapter extends BaseAdapter {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RequestQueue queue = Volley.newRequestQueue(context);
+                String url ="http://172.10.18.125:80/delete";
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put("name", items.get(i).name);
+                params.put("id", items.get(i).id);
+                params.put("date", items.get(i).date);
+                params.put("type", items.get(i).type);
+                params.put("exercise", items.get(i).exercise);
+                params.put("time", items.get(i).time);
+                params.put("sett", items.get(i).sett);
+                params.put("weight", items.get(i).weight);
+                params.put("number", items.get(i).number);
+                params.put("current", "yes");
+                JSONObject jsonObject = new JSONObject(params);
+                JsonArrayRequest Request = new JsonArrayRequest(com.android.volley.Request.Method.POST, url,null,
+                        new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                // Display the first 500 characters of the response string.
+
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+
+                }
+                ){
+                    @Override
+                    public byte[] getBody() {
+                        return jsonObject.toString().getBytes();
+                    }
+                };
+                Request.setRetryPolicy(new DefaultRetryPolicy(
+                        0,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                // Add the request to the RequestQueue.
+                queue.add(Request);
                 items.remove(i);
                 notifyDataSetChanged();
                 Log.d("items", String.valueOf(items.size()));
             }
+
+
+
+
+
+
         });
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
