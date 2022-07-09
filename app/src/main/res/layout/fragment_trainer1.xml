@@ -110,7 +110,7 @@
             android:text="완료"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tab1RecyclerView"
+            android:id="@+id/dateRecyclerView"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

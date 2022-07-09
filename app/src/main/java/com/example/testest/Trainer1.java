@@ -3,6 +3,8 @@ package com.example.testest;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -151,6 +153,9 @@ public class Trainer1 extends Fragment {
                 }
             }
         });
+
+        RecyclerView dateRecyclerView = rootView.findViewById(R.id.dateRecyclerView);
+        dateRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         trainerDoneButton = rootView.findViewById(R.id.trainerDoneButton);
         trainerDoneButton.setOnClickListener(new View.OnClickListener() {
