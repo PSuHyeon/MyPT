@@ -103,10 +103,8 @@ public class ListFragment extends Fragment {
         addyooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("listItem.size() before", String.valueOf(listItem.size()));
                 yooDialog = new YooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView, rootView);
                 yooDialog.show();
-                Log.d("listItem.size() after", String.valueOf(listItem.size()));
             }
         });
 
@@ -114,45 +112,10 @@ public class ListFragment extends Fragment {
         addmooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("listItem.size() before", String.valueOf(listItem.size()));
                 mooDialog = new MooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView, rootView);
                 mooDialog.show();
-                Log.d("listItem.size() after", String.valueOf(listItem.size()));
             }
         });
-
-        try {
-            AssetManager assetManager = getActivity().getAssets();
-            InputStream is = assetManager.open("exercise.json");
-            InputStreamReader isr = new InputStreamReader(is);
-            BufferedReader reader = new BufferedReader(isr);
-
-            StringBuffer buffer = new StringBuffer();
-            String line = reader.readLine();
-            while (line != null) {
-                buffer.append(line + "\n");
-                line = reader.readLine();
-            }
-            exerciseData = buffer.toString();
-            Log.d("exerciseData", exerciseData);
-            JSONObject jsonObject = new JSONObject(exerciseData);
-            JSONArray jsonArray = jsonObject.getJSONArray("result");
-            Log.d("jsonArray", String.valueOf(jsonArray.get(1)));
-
-            Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<Exercise>>(){}.getType();
-            ArrayList<Exercise> myExList = new Gson().fromJson(String.valueOf(jsonArray), listType);
-            Log.d("myExList", String.valueOf(myExList.get(1)));
-
-            listItem = myExList;
-            listView = rootView.findViewById(R.id.listView);
-            listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
-
-            listView.setAdapter(listViewAdapter);
-
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
 
         // rootview로 작성해주어야 갱신된 값이 반영됨
         return rootView;
@@ -182,9 +145,16 @@ public class ListFragment extends Fragment {
                     public void onResponse(JSONArray response) {
                         // Display the first 500 characters of the response string.
 
+                        Gson gson = new Gson();
+                        Type listType = new TypeToken<ArrayList<Exercise>>(){}.getType();
+                        ArrayList<Exercise> myExList = new Gson().fromJson(String.valueOf(response), listType);
 
+                        listItem = myExList;
+                        listView = rootView.findViewById(R.id.listView);
+                        listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
 
-                        // __________________________________________________________________________________________________________________________________________________________
+                        listView.setAdapter(listViewAdapter);
+
                         Log.d("check", "" + response);
                     }
                 }, new Response.ErrorListener() {
