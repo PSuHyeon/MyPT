@@ -97,7 +97,7 @@ public class SignUp extends AppCompatActivity {
                 else{
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                    String url ="http://172.10.5.119:80/checkid/" + idTextView.getEditText().toString();
+                    String url ="http://172.10.18.125:80/checkid/" + idTextView.getEditText().toString();
 
                     // Request a string response from the provided URL.
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
             val id = findViewById<TextView>(R.id.id_text)
             val pw = findViewById<TextView>(R.id.password_text)
-            val url = "http://172.10.5.119:80/login/" +id.text.toString() + "," + pw.text.toString()
+            val url = "http://172.10.18.125:80/login/" +id.text.toString() + "," + pw.text.toString()
             val request = object : StringRequest(
                 Request.Method.GET,
                 url, {
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
             params["position"] = position!!
             val jsonObject = JSONObject(Gson().toJson(params))
 
-            val url = "http://172.10.5.119:80/sign_up"
+            val url = "http://172.10.18.125:80/sign_up"
             val request = object : JsonObjectRequest(
                 Request.Method.POST,
                 url,null, Response.Listener {
@@ -144,13 +144,13 @@ class MainActivity : AppCompatActivity() {
                 val username = response.profile?.name
                 naverToken?.replace("/", "")
 
-                val checkUrl = "http://172.10.5.119:80/checkid/" + userId
+                val checkUrl = "http://172.10.18.125:80/checkid/" + userId
                 val check_request = object : StringRequest(
                     Request.Method.GET,
                     checkUrl, {
                         if (it == "ok"){
                             var keyid = ""
-                            val url = "http://172.10.5.119:80/sign_up"
+                            val url = "http://172.10.18.125:80/sign_up"
                             var params = HashMap<String,String>()
                             params["id"] = userId!!
                             params["password"] = "naver"

@@ -67,7 +67,7 @@ public class MooDialog extends Dialog {
 
                 Log.d("chipGroup.getCheckedChipId()", chip.getText().toString());
                 RequestQueue queue = Volley.newRequestQueue(getContext());
-                String url ="http://172.10.5.119:80/moo";
+                String url ="http://172.10.18.125:80/moo";
                 HashMap<String, String> params = new HashMap<String, String>();
                 params.put("number", number);
                 params.put("sett", set);
