@@ -44,7 +44,7 @@ public class YooDialog extends Dialog {
                 }
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
-                listItem.add(new Exercise("이름", selectedDate, "0", exercise, time, "0", "0", "0"));
+                listItem.add(new Exercise("이름", selectedDate, "유산소", exercise, time, "0", "0", "0"));
                 ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext());
                 listView.setAdapter(listViewAdapter);
 
