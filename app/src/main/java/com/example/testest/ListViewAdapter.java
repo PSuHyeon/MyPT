@@ -80,10 +80,8 @@ public class ListViewAdapter extends BaseAdapter {
               type = "무산소";
               info = items.get(i).number + "회 * " + items.get(i).sett + "세트 " + items.get(i).weight + "kg";
           }
-        Log.d("hey", items.get(i).current);
           temp = 0;
         if (items.get(i).current.equals("yes")){
-            Log.d("hey", "check on");
             checkBox.setChecked(true);
         }
         else{
@@ -140,14 +138,13 @@ public class ListViewAdapter extends BaseAdapter {
                 queue.add(Request);
                 items.remove(i);
                 notifyDataSetChanged();
-                Log.d("items", String.valueOf(items.size()));
+
+                if (checkBox.isChecked() == true) {
+                    TextView completeTextView = rootView.findViewById(R.id.completeTextView);
+                    int complete = Integer.parseInt(completeTextView.getText().toString()) - 1;
+                    completeTextView.setText(Integer.toString(complete));
+                }
             }
-
-
-
-
-
-
         });
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
