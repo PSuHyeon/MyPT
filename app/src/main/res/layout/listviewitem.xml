@@ -10,8 +10,7 @@
         android:id="@+id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginEnd="10dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -44,14 +43,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/deleteButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="10dp"
         android:background="@drawable/circlebutton"
         android:backgroundTint="#FA7575"
-        android:drawableTop="@drawable/close"
-        android:paddingTop="3dp"/>
+        android:drawableTop="@drawable/close"/>
 
 
 </LinearLayout>

@@ -12,36 +12,41 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
-import com.prolificinteractive.materialcalendarview.OnRangeSelectedListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 public class ListFragment extends Fragment {
 
     View rootView;
     MaterialCalendarView materialCalendarView;
     ListView listView;
-    ArrayAdapter<String> adapter;
+    ListViewAdapter listViewAdapter;
+    //ArrayAdapter<String> adapter;
+    ArrayAdapter<Exercise> adapter;
     EditText planEditText;
-    ArrayList<String> listItem;
+    //ArrayList<String> listItem;
+    ArrayList<Exercise> listItem;
     TextView dateTextView;
     androidx.appcompat.widget.AppCompatButton deleteButton;
     androidx.appcompat.widget.AppCompatButton addyooButton;
@@ -73,16 +78,15 @@ public class ListFragment extends Fragment {
                 .setCalendarDisplayMode(CalendarMode.MONTHS)
                 .commit();
 
+        // default: 오늘 날짜
+        materialCalendarView.setSelectedDate(CalendarDay.today());
+        ShowSelectedDate();
+
         materialCalendarView.addDecorators(new OnDateDecorator());
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-                dateTextView = rootView.findViewById(R.id.dateTextView);
-                selectedDate = materialCalendarView.getSelectedDate().toString().split("\\{|\\}")[1];
-                String month = Integer.toString(Integer.parseInt(selectedDate.split("-")[1]) + 1);
-                String day = selectedDate.split("-")[2];
-                selectedDate = selectedDate.split("-")[0] + "-" + month + "-" + day;
-                dateTextView.setText(month + " / " + day);
+                ShowSelectedDate();
             }
         });
 
@@ -100,15 +104,11 @@ public class ListFragment extends Fragment {
         addmooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("selectedDate", selectedDate);
                 mooDialog = new MooDialog(getContext(), selectedDate);
                 mooDialog.show();
             }
         });
-
-        listItem = new ArrayList<String>();
-        //adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, listItem);
-        //listView = rootView.findViewById(R.id.listView);
-        //listView.setAdapter(adapter);
 
         try {
             AssetManager assetManager = getActivity().getAssets();
@@ -122,21 +122,38 @@ public class ListFragment extends Fragment {
                 buffer.append(line + "\n");
                 line = reader.readLine();
             }
-            // json 파일 내용이 string으로 변환되어 담김
             exerciseData = buffer.toString();
+            Log.d("exerciseData", exerciseData);
+            JSONObject jsonObject = new JSONObject(exerciseData);
+            JSONArray jsonArray = jsonObject.getJSONArray("result");
+            Log.d("jsonArray", String.valueOf(jsonArray.get(1)));
 
-        } catch (IOException e) {
+            Gson gson = new Gson();
+            Type listType = new TypeToken<ArrayList<Exercise>>(){}.getType();
+            ArrayList<Exercise> myExList = new Gson().fromJson(String.valueOf(jsonArray), listType);
+            Log.d("myExList", String.valueOf(myExList.get(1)));
+
+            listItem = myExList;
+            listView = rootView.findViewById(R.id.listView);
+            listViewAdapter = new ListViewAdapter(listItem, getContext());
+
+            listView.setAdapter(listViewAdapter);
+
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-
-        /*
-        Gson gson = new Gson();
-        final Exercise data1 = gson.fromJson(exerciseData, Exercise.class);
-
-        Log.d("data1.name", data1.name); */
 
 
         // rootview로 작성해주어야 갱신된 값이 반영됨
         return rootView;
     }
+
+    public void ShowSelectedDate() {
+        dateTextView = rootView.findViewById(R.id.dateTextView);
+        selectedDate = materialCalendarView.getSelectedDate().toString().split("\\{|\\}")[1];
+        String month = Integer.toString(Integer.parseInt(selectedDate.split("-")[1]) + 1);
+        String day = selectedDate.split("-")[2];
+        selectedDate = selectedDate.split("-")[0] + "-" + month + "-" + day;
+        dateTextView.setText(month + " / " + day);
     }
+}
