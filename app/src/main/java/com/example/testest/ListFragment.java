@@ -155,7 +155,13 @@ public class ListFragment extends Fragment {
 
                         listView.setAdapter(listViewAdapter);
 
-
+                        int completeNum = 0;
+                        for (int i = 0; i < listItem.size(); i++) {
+                            if (listItem.get(i).current.equals("yes")) {
+                                completeNum += 1;
+                            }
+                        }
+                        completeTextView.setText(Integer.toString(completeNum));
 
                         Log.d("check", "" + response);
                     }
