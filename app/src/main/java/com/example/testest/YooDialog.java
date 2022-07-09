@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class YooDialog extends Dialog {
@@ -23,10 +25,10 @@ public class YooDialog extends Dialog {
     Chip chip;
     String exercise;
     String time;
-    String number;
-    String set;
     Menu menu = new Menu();
-    public YooDialog(@NonNull Context context) {
+    ArrayList<Exercise> myExList;
+
+    public YooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView) {
         super(context);
         setContentView(R.layout.exercisedialog);
 
@@ -38,14 +40,14 @@ public class YooDialog extends Dialog {
             public void onClick(View view) {
                 try {
                     time = timeEditText.getText().toString();
-                    number = numberEditText.getText().toString();
-                    set = setEditText.getText().toString();
                 } catch (Exception e) {
                 }
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
+                listItem.add(new Exercise("이름", selectedDate, "0", exercise, time, "0", "0", "0"));
+                ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext());
+                listView.setAdapter(listViewAdapter);
 
-                Log.d("chipGroup.getCheckedChipId()", chip.getText().toString());
 //                Exercise exercise = new Exercise(menu.key_id, ,  );
                 dismiss();
             }

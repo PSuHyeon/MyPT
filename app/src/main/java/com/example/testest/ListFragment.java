@@ -51,7 +51,7 @@ public class ListFragment extends Fragment {
     androidx.appcompat.widget.AppCompatButton deleteButton;
     androidx.appcompat.widget.AppCompatButton addyooButton;
     androidx.appcompat.widget.AppCompatButton addmooButton;
-    HashMap<String, ArrayList<String>> plan_map = new HashMap<>();
+    HashMap<String, ArrayList<Exercise>> plan_map = new HashMap<>();
     String selectedDate;
     Dialog yooDialog;
     Dialog mooDialog;
@@ -79,7 +79,7 @@ public class ListFragment extends Fragment {
                 .commit();
 
         // default: 오늘 날짜
-        materialCalendarView.setSelectedDate(CalendarDay.today());
+       materialCalendarView.setSelectedDate(CalendarDay.today());
         ShowSelectedDate();
 
         materialCalendarView.addDecorators(new OnDateDecorator());
@@ -95,8 +95,10 @@ public class ListFragment extends Fragment {
         addyooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                yooDialog = new YooDialog(getContext());
+                Log.d("listItem.size() before", String.valueOf(listItem.size()));
+                yooDialog = new YooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView);
                 yooDialog.show();
+                Log.d("listItem.size() after", String.valueOf(listItem.size()));
             }
         });
 
@@ -104,9 +106,10 @@ public class ListFragment extends Fragment {
         addmooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("selectedDate", selectedDate);
-                mooDialog = new MooDialog(getContext(), selectedDate);
+                Log.d("listItem.size() before", String.valueOf(listItem.size()));
+                mooDialog = new MooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView);
                 mooDialog.show();
+                Log.d("listItem.size() after", String.valueOf(listItem.size()));
             }
         });
 
@@ -143,6 +146,13 @@ public class ListFragment extends Fragment {
             e.printStackTrace();
         }
 
+        deleteButton = rootView.findViewById(R.id.deleteButton);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         // rootview로 작성해주어야 갱신된 값이 반영됨
         return rootView;

@@ -6,11 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+
+import java.util.ArrayList;
 
 public class MooDialog extends Dialog {
     ChipGroup chipGroup;
@@ -25,7 +28,7 @@ public class MooDialog extends Dialog {
     String set;
     String weight;
 
-    public MooDialog(@NonNull Context context, String selectedDate) {
+    public MooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView) {
         super(context);
         setContentView(R.layout.exercisemoodialog);
 
@@ -48,7 +51,11 @@ public class MooDialog extends Dialog {
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
 
-                Log.d("selectedDate", selectedDate);
+                chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
+                exercise = chip.getText().toString();
+                listItem.add(new Exercise("이름", selectedDate, "1", exercise, "0", number, set, weight));
+                ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext());
+                listView.setAdapter(listViewAdapter);
                 dismiss();
             }
         });
