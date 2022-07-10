@@ -115,11 +115,15 @@ class MainActivity : AppCompatActivity() {
             val password = data?.getStringExtra("pw")
             val name = data?.getStringExtra("name")
             val position = data?.getStringExtra("who")
+            val age = data?.getStringExtra("age")
+            val weight = data?.getStringExtra("weight")
             var params = HashMap<String,String>()
             params["id"] = id!!
             params["password"] = password!!
             params["name"] = name!!
             params["position"] = position!!
+            params["age"] = age!!
+            params["weight"] = weight!!
             val jsonObject = JSONObject(Gson().toJson(params))
 
             val url = "http://172.10.18.125:80/sign_up"
@@ -154,8 +158,6 @@ class MainActivity : AppCompatActivity() {
             override fun onSuccess(response: NidProfileResponse) {
                 val userId = response.profile?.id
                 val username = response.profile?.name
-                naverToken?.replace("/", "")
-
                 val checkUrl = "http://172.10.18.125:80/checkid/" + userId
                 val check_request = object : StringRequest(
                     Request.Method.GET,
@@ -168,6 +170,8 @@ class MainActivity : AppCompatActivity() {
                             params["password"] = "naver"
                             params["name"] = username!!
                             params["position"] = "TRAINEE"
+                            params["age"] = "no info"
+                            params["weight"] = "no info"
                             val jsonObject = JSONObject(Gson().toJson(params))
                             val request = object : JsonObjectRequest(
                                 Request.Method.POST,

@@ -12,10 +12,9 @@
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.19881134033203127" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.3660537719726563" />
+        <entry key="app/src/main/res/layout/activity_trainer22.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/activity_trainer_menu.xml" value="0.17708333333333334" />
-        <entry key="app/src/main/res/layout/activity_trainer_person_info.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/clickrecyclerview.xml" value="0.24895833333333334" />
-        <entry key="app/src/main/res/layout/clickrecyclerviewitem.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/chat_item.xml" value="0.34427083333333336" />
         <entry key="app/src/main/res/layout/content_menu.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/exercisedialog.xml" value="0.3387568265071754" />
@@ -23,13 +22,11 @@
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.20878623188405798" />
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.20878623188405798" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.25915222167968754" />
-        <entry key="app/src/main/res/layout/fragment_trainer1.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_trainer2.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_trainer1.xml" value="0.17708333333333334" />
+        <entry key="app/src/main/res/layout/fragment_trainer2.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/fragment_trainer3.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/listviewitem.xml" value="0.28225806451612906" />
         <entry key="app/src/main/res/layout/main.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/personrecyclerviewitem.xml" value="0.361773681640625" />
-        <entry key="app/src/main/res/layout/recyclerviewitem.xml" value="0.24172185430463577" />
         <entry key="app/src/main/res/layout/trainerdatelistitem.xml" value="0.23002522786458335" />
         <entry key="app/src/main/res/menu/main_menu_bottom.xml" value="0.1" />
         <entry key="app/src/main/res/menu/trainer_main_menu_bottom.xml" value="0.17708333333333334" />
