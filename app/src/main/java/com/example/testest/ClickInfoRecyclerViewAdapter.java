@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,13 +16,13 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class ClickInfoRecyclerViewAdapter extends RecyclerView.Adapter<ClickInfoRecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
-    RecyclerView clickInfoRecyclerViewAdapter;
+    RecyclerView clickInfoRecyclerView;
     Context context;
     ArrayList<Exercise> items;
     int idx;
 
-    public ClickInfoRecyclerViewAdapter(RecyclerView clickInfoRecyclerViewAdapter, Context context, ArrayList<Exercise> items) {
-        this.clickInfoRecyclerViewAdapter = clickInfoRecyclerViewAdapter;
+    public ClickInfoRecyclerViewAdapter(RecyclerView clickInfoRecyclerView, Context context, ArrayList<Exercise> items) {
+        this.clickInfoRecyclerView = clickInfoRecyclerView;
         this.context = context;
         this.items = items;
     }
@@ -51,6 +52,11 @@ public class ClickInfoRecyclerViewAdapter extends RecyclerView.Adapter<ClickInfo
             info = items.get(position).number + "회 * " + items.get(position).sett + "세트 "
                     + items.get(position).weight + " kg";
         }
+
+        if (items.get(position).current.equals("yes")) {
+            holder.checkBox.setChecked(true);
+        }
+
         holder.clickInfo.setText(info);
     }
 
@@ -62,12 +68,13 @@ public class ClickInfoRecyclerViewAdapter extends RecyclerView.Adapter<ClickInfo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView clickExercise;
         TextView clickInfo;
+        CheckBox checkBox;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             clickExercise = itemView.findViewById(R.id.click_exercise);
             clickInfo = itemView.findViewById(R.id.click_info);
-
+            checkBox = itemView.findViewById(R.id.checkbox);
         }
     }
 }

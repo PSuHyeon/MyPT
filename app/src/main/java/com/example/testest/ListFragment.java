@@ -49,19 +49,14 @@ public class ListFragment extends Fragment {
     MaterialCalendarView materialCalendarView;
     ListView listView;
     ListViewAdapter listViewAdapter;
-    //ArrayAdapter<String> adapter;
-    ArrayAdapter<Exercise> adapter;
-    //ArrayList<String> listItem;
     ArrayList<Exercise> listItem;
     TextView dateTextView;
     TextView completeTextView;
     androidx.appcompat.widget.AppCompatButton addyooButton;
     androidx.appcompat.widget.AppCompatButton addmooButton;
-    HashMap<String, ArrayList<Exercise>> plan_map = new HashMap<>();
     String selectedDate;
     Dialog yooDialog;
     Dialog mooDialog;
-    String exerciseData;
 
     public ListFragment() {
     }
