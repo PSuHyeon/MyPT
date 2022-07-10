@@ -49,8 +49,12 @@ public class Trainer1 extends Fragment {
     RadioGroup radioGroup;
     Button trainerDoneButton;
     int condition = 0; // 날짜별이면 0, 회원별이면 1
-    HashMap<String, JSONArray> recyclerItems;
+    HashMap<String, JSONArray> recyclerItems = new HashMap<String, JSONArray>();
     ArrayList<String> names;
+    ArrayList<String> days;
+    DateRecyclerViewAdapter adapter;
+    int clickDateNum = 0;
+    int clickPersonNum;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -99,7 +103,6 @@ public class Trainer1 extends Fragment {
         monthSpinner.setAdapter(monthAdapter);
         daySpinner.setAdapter(dayAdapter);
 
-        Log.d("yearList.get(0)", yearList.get(0));
         yearSpinner.setSelection(0);
         monthSpinner.setSelection(0);
         daySpinner.setSelection(0);
@@ -172,7 +175,6 @@ public class Trainer1 extends Fragment {
                         recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
                         recyclerView2.setAdapter(adapter2);
 
-                        ArrayList<String> personList = new ArrayList<String>();
                         personSpinner = rootView.findViewById(R.id.personSpinner);
                         yearSpinner = rootView.findViewById(R.id.yearSpinner);
                         monthSpinner = rootView.findViewById(R.id.monthSpinner);
@@ -181,6 +183,13 @@ public class Trainer1 extends Fragment {
                         monthSpinner.setVisibility(View.GONE);
                         daySpinner.setVisibility(View.GONE);
                         personSpinner.setVisibility(View.VISIBLE);
+
+                        ArrayList<String> personSamList = new ArrayList<String>();
+                        ArrayList<String> personList = new ArrayList<String>();
+                        personSamList.add("회원명");
+                        ArrayAdapter<String> personAdapter = new ArrayAdapter<String>(getContext(), com.airbnb.lottie.R.layout.support_simple_spinner_dropdown_item, personSamList);
+                        personSpinner.setAdapter(personAdapter);
+                        personSpinner.setSelection(0);
 
                         RequestQueue queue = Volley.newRequestQueue(getActivity());
                         String url ="http://172.10.18.125:80/get_trainee";
@@ -201,9 +210,7 @@ public class Trainer1 extends Fragment {
                             public void onErrorResponse(VolleyError error) {
                                 Log.d("byhuman", "got error" + personList);
                             }
-
-                        }
-                        );
+                        });
                         // Add the request to the RequestQueue.
                         queue.add(Request);
                 }
@@ -242,10 +249,26 @@ public class Trainer1 extends Fragment {
                             new Response.Listener<JSONArray>() {
                                 @Override
                                 public void onResponse(JSONArray response) {
-                                    // Display the first 500 characters of the response string.
 
+                                    recyclerItems = new HashMap<String, JSONArray>();
                                     HashMap<String, JSONArray> datearr = new HashMap<String, JSONArray>();
                                     names = new ArrayList<String>();
+
+                                    if (response.length() == 0 && clickDateNum == 0) {
+                                        recyclerItems.clear();
+                                        adapter = new DateRecyclerViewAdapter(dateRecyclerView, getContext(), names, recyclerItems);
+                                        adapter.notifyDataSetChanged();
+                                        Toast.makeText(getContext(), "해당 날짜에 운동한 회원 정보가 없습니다.", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    } else if (response.length() == 0) {
+                                        Log.d("response", String.valueOf(response));
+                                        Log.d("recyclerItems before", String.valueOf(recyclerItems.size()));
+                                        recyclerItems.clear();
+                                        Log.d("recyclerItems after", String.valueOf(recyclerItems.size()));
+                                        adapter.notifyDataSetChanged();
+                                        Toast.makeText(getContext(), "해당 날짜에 운동한 회원 정보가 없습니다.", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
 
                                     for (int i = 0; i < response.length(); i++) {
                                         try {
@@ -268,11 +291,9 @@ public class Trainer1 extends Fragment {
                                                 names.add(name);
                                             }
 
-                                            //Gson gson = new Gson();
-                                            //Type listType = new TypeToken<ArrayList<Exercise>>(){}.getType();
                                             recyclerItems = datearr;
 
-                                            DateRecyclerViewAdapter adapter = new DateRecyclerViewAdapter(dateRecyclerView, getContext(), names, recyclerItems);
+                                            adapter = new DateRecyclerViewAdapter(dateRecyclerView, getContext(), names, recyclerItems);
                                             dateRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                                             dateRecyclerView.setAdapter(adapter);
 
@@ -280,9 +301,8 @@ public class Trainer1 extends Fragment {
                                             e.printStackTrace();
                                         }
                                     }
-
+                                    clickDateNum += 1;
                                     Log.d("bydate", ""+response);
-
                                 }
                             }, new Response.ErrorListener() {
                         @Override
@@ -324,14 +344,55 @@ public class Trainer1 extends Fragment {
                             new Response.Listener<JSONArray>() {
                                 @Override
                                 public void onResponse(JSONArray response) {
-                                    Gson gson = new Gson();
-                                    Type listType = new TypeToken<ArrayList<Exercise>>(){}.getType();
-                                    ArrayList<Exercise> myExList = new Gson().fromJson(String.valueOf(response), listType);
-                                    //recyclerItems = myExList;
+//
+                                    HashMap<String, JSONArray> personarr = new HashMap<String, JSONArray>();
+                                    days = new ArrayList<String>();
 
-                                    //PersonRecyclerViewAdapter adapter = new PersonRecyclerViewAdapter(dateRecyclerView, getContext(), recyclerItems);
-                                    //dateRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                                    //dateRecyclerView.setAdapter(adapter);
+                                    if (response.length() == 0 && clickPersonNum == 0) {
+                                        recyclerItems.clear();
+                                        adapter = new DateRecyclerViewAdapter(dateRecyclerView, getContext(), days, recyclerItems);
+                                        adapter.notifyDataSetChanged();
+                                        Toast.makeText(getContext(), "해당 회원의 운동 정보가 없습니다.", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    } else if (response.length() == 0) {
+                                        recyclerItems.clear();
+                                        adapter.notifyDataSetChanged();
+                                        Toast.makeText(getContext(), "해당 회원의 운동 정보가 없습니다.", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+
+                                    for (int i = 0; i < response.length(); i++) {
+                                        try {
+                                            JSONObject jo = response.getJSONObject(i);
+                                            Log.d("jsonobject jo", String.valueOf(jo));
+                                            String date = jo.getString("date");
+                                            JSONArray jsonarr;
+                                            if (personarr.containsKey(date)) {
+                                                jsonarr = personarr.get(date);
+                                                Log.d("jsonarr before", String.valueOf(jsonarr));
+                                                jsonarr.put(response.get(i));
+                                                Log.d("jsonarr after", String.valueOf(jsonarr));
+                                                personarr.remove(date);
+                                                personarr.put(date, jsonarr);
+                                            } else {
+                                                jsonarr = new JSONArray();
+                                                jsonarr.put(response.get(i));
+                                                personarr.put(date, jsonarr);
+                                                days.add(date);
+                                                Log.d("days", String.valueOf(days.size()));
+                                            }
+
+                                            recyclerItems = personarr;
+
+                                            PersonRecyclerViewAdapter adapter = new PersonRecyclerViewAdapter(dateRecyclerView, getContext(), days, recyclerItems);
+                                            dateRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                                            dateRecyclerView.setAdapter(adapter);
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                    clickPersonNum += 1;
                                     Log.d("byname", ""+response);
                                 }
                             }, new Response.ErrorListener() {

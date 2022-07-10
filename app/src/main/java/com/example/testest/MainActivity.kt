@@ -128,7 +128,6 @@ class MainActivity : AppCompatActivity() {
                 url,null, Response.Listener {
 
                 }, Response.ErrorListener {
-
                 }
             ) {
                 override fun getBody(): ByteArray {

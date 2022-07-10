@@ -1,25 +1,34 @@
 package com.example.testest;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecyclerViewAdapter.ViewHolder> implements View.OnClickListener{
     RecyclerView recyclerView;
     Context context;
-    ArrayList<Exercise> items;
+    HashMap<String, JSONArray> items;
+    ArrayList<String> days;
+    int idx;
 
-    public PersonRecyclerViewAdapter(RecyclerView recyclerView, Context context, ArrayList<Exercise> items) {
+    public PersonRecyclerViewAdapter(RecyclerView recyclerView, Context context, ArrayList<String> days, HashMap<String, JSONArray> items) {
         this.recyclerView = recyclerView;
         this.context = context;
         this.items = items;
+        this.days = days;
     }
 
     @Override
@@ -39,16 +48,13 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
 
     @Override
     public void onBindViewHolder(@NonNull PersonRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.personDate.setText(items.get(position).date);
-        holder.personExercise.setText(items.get(position).exercise);
-        String info;
-        if (items.get(position).type.equals("yoo")) {
-            info = items.get(position).time + "분";
-        } else {
-            info = items.get(position).number + "회 * " + items.get(position).sett + "세트 "
-                    + items.get(position).weight + " kg";
-        }
-        holder.personInfo.setText(info);
+        String date = days.get(position);
+        int num = items.get(date).length();
+        String year = date.split("-")[0];
+        String month = date.split("-")[1];
+        String day = date.split("-")[2];
+        holder.personDate.setText(year + "년 " + month + "월 " + day + "일 ");
+        holder.personNum.setText(Integer.toString(num) + " 건");
     }
 
     @Override
@@ -58,15 +64,26 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView personDate;
-        TextView personExercise;
-        TextView personInfo;
+        TextView personNum;
+        CardView cardView;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             personDate = itemView.findViewById(R.id.person_date);
-            personExercise = itemView.findViewById(R.id.person_exercise);
-            personInfo = itemView.findViewById(R.id.person_info);
+            personNum = itemView.findViewById(R.id.person_num);
+            cardView = itemView.findViewById(R.id.cardView);
 
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    idx = getAdapterPosition();
+                    String date = days.get(idx);
+                    Intent intent = new Intent(context, Trainer_PersonInfo.class);
+                    intent.putExtra("array", String.valueOf(items.get(date)));
+                    ((Activity) context).startActivityForResult(intent, 0);
+                }
+            });
         }
     }
 }

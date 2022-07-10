@@ -53,16 +53,6 @@ public class DateRecyclerViewAdapter extends RecyclerView.Adapter<DateRecyclerVi
         int num = items.get(name).length();
         holder.dateName.setText(names.get(position));
         holder.dateNum.setText(Integer.toString(num) + " 건");
-
-        //holder.dateExercise.setText(items.get(position).exercise);
-//        String info;
-//        if (items.get(position).type.equals("yoo")) {
-//            info = items.get(position).time + "분";
-//        } else {
-//            info = items.get(position).number + "회 * " + items.get(position).sett + "세트 "
-//                    + items.get(position).weight + " kg";
-//        }
-//        holder.dateInfo.setText(info);
     }
 
     @Override

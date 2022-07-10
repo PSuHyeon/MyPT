@@ -1,6 +1,7 @@
 package com.example.testest;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,13 +38,14 @@ public class ClickInfoRecyclerViewAdapter extends RecyclerView.Adapter<ClickInfo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.clickrecyclerviewitem, parent, false);
-        ClickInfoRecyclerViewAdapter.ViewHolder viewHolder = new ClickInfoRecyclerViewAdapter.ViewHolder(view);
-
+        ViewHolder viewHolder = new ViewHolder(view);
+        Log.d("dd", "dd");
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ClickInfoRecyclerViewAdapter.ViewHolder holder, int position) {
+        Log.d("items.get(position).exercise", items.get(position).exercise);
         holder.clickExercise.setText(items.get(position).exercise);
         String info;
         if (items.get(position).type.equals("yoo")) {
@@ -72,9 +74,10 @@ public class ClickInfoRecyclerViewAdapter extends RecyclerView.Adapter<ClickInfo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            Log.d("dd", "dd");
             clickExercise = itemView.findViewById(R.id.click_exercise);
             clickInfo = itemView.findViewById(R.id.click_info);
-            checkBox = itemView.findViewById(R.id.checkbox);
+            checkBox = itemView.findViewById(R.id.clickCheckBox);
         }
     }
 }

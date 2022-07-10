@@ -91,6 +91,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/infoDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="2022 / 07 / 08"
