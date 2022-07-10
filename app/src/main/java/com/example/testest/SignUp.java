@@ -136,7 +136,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 RadioButton selectedButton_ = (RadioButton) findViewById(whoRadioGroup.getCheckedRadioButtonId());
-                if (selectedButton_.getText() == "TRAINEE") {
+                if (selectedButton_.getText().toString().equals("TRAINEE")) {
                     if (idTextView.getEditText().getText().toString().length() == 0 ||
                             pwTextView.getEditText().getText().toString().length() == 0 ||
                             nameTextView.getEditText().getText().toString().length() == 0 ||
@@ -146,6 +146,7 @@ public class SignUp extends AppCompatActivity {
                             weightSpinner.getSelectedItem().toString() == "몸무게" ||
                             heightSpinner.getSelectedItem().toString() == "키" ||
                             purposeTextView.getEditText().getText().toString().length() == 0) {
+                        Log.d("ddddd", "ddddd");
                         Toast.makeText(getApplicationContext(), "Fill the blank!", Toast.LENGTH_SHORT).show();
                         return;
                     }
