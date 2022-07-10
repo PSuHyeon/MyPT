@@ -63,6 +63,8 @@ public class SignUp extends AppCompatActivity {
         purposeTextView = findViewById(R.id.purposeEditText);
         doneButton = findViewById(R.id.doneButton);
         check_button = findViewById(R.id.id_check);
+        traineeCheckBox.setChecked(true);
+
         // spinner (성별, 몸무게, 키 채우기)
         genderList.add("성별");
         genderList.add("남자");
@@ -130,10 +132,10 @@ public class SignUp extends AppCompatActivity {
         });
         // 로그인 액티비티로 되돌아가기
         doneButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 RadioButton selectedButton_ = (RadioButton) findViewById(whoRadioGroup.getCheckedRadioButtonId());
-
                 if (selectedButton_.getText() == "TRAINEE") {
                     if (idTextView.getEditText().getText().toString().length() == 0 ||
                             pwTextView.getEditText().getText().toString().length() == 0 ||
