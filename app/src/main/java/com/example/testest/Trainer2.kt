@@ -43,7 +43,7 @@ class Trainer2 : Fragment() {
         val trainees = ArrayList<Trainee>()
         val text = activity.findViewById<TextView>(R.id.test)
 
-        val url = "http://172.10.18.125:80/get_trainee_info"
+        val url = "http://192.249.18.125:80/get_trainee_info"
 
         val request = object : JsonArrayRequest(
             Request.Method.GET,

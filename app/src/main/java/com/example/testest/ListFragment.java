@@ -129,7 +129,7 @@ public class ListFragment extends Fragment {
 
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url ="http://172.10.18.125:80/get_exercise";
+        String url ="http://192.249.18.125:80/get_exercise";
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("date", ""+selectedDate);
         params.put("keyid", menu.key_id);

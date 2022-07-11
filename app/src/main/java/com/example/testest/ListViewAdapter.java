@@ -96,7 +96,7 @@ public class ListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 RequestQueue queue = Volley.newRequestQueue(context);
-                String url ="http://172.10.18.125:80/delete";
+                String url ="http://192.249.18.125:80/delete";
                 HashMap<String, String> params = new HashMap<String, String>();
                 params.put("name", items.get(i).name);
                 params.put("id", items.get(i).id);
@@ -157,7 +157,7 @@ public class ListViewAdapter extends BaseAdapter {
                 if (b == true && temp == 1) {
 
                     RequestQueue queue = Volley.newRequestQueue(context);
-                    String url ="http://172.10.18.125:80/checkbox";
+                    String url ="http://192.249.18.125:80/checkbox";
                     HashMap<String, String> params = new HashMap<String, String>();
                     params.put("name", items.get(i).name);
                     params.put("id", items.get(i).id);
@@ -203,7 +203,7 @@ public class ListViewAdapter extends BaseAdapter {
                 } else if (temp == 1) {
 
                     RequestQueue queue = Volley.newRequestQueue(context);
-                    String url ="http://172.10.18.125:80/checkbox";
+                    String url ="http://192.249.18.125:80/checkbox";
                     HashMap<String, String> params = new HashMap<String, String>();
                     params.put("name", items.get(i).name);
                     params.put("id", items.get(i).id);

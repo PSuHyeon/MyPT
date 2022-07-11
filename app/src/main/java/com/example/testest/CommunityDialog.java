@@ -33,7 +33,7 @@ public class CommunityDialog extends Dialog {
     CommunityFragment communityFragment;
     private CustomDialogListener customDialogListener;
     Menu menu = new Menu();
-
+    CommunityFragment cm = new CommunityFragment();
     // 현재 시간 구하기
     long now = System.currentTimeMillis();
     Date date = new Date(now);
