@@ -39,7 +39,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="5"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="3">
 
                 <TextView
                     android:layout_width="0dp"
@@ -56,6 +56,15 @@
                     android:layout_weight="1"
                     android:id="@+id/item_kg"
                     android:text="몸무게"
+                    android:padding="5dp"
+                    android:textSize="20dp"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/item_id"
+                    android:text="아이디"
                     android:padding="5dp"
                     android:textSize="20dp"
                     />

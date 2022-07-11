@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Trainer22"
+            android:name=".chatroom"
             android:exported="false" />
         <activity
             android:name=".Trainer_PersonInfo"
@@ -27,9 +27,10 @@
             android:exported="false" />
         <activity
             android:name=".Menu"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_menu"
-            android:theme="@style/Theme.Testest.NoActionBar" />
+            android:theme="@style/Theme.Testest.NoActionBar">
+        </activity>
         <activity
             android:name=".SignUp"
             android:exported="false" />
@@ -41,6 +42,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

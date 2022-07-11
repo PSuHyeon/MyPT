@@ -117,6 +117,7 @@ class MainActivity : AppCompatActivity() {
             val position = data?.getStringExtra("who")
             val age = data?.getStringExtra("age")
             val weight = data?.getStringExtra("weight")
+            Log.d("weight", "" + weight)
             var params = HashMap<String,String>()
             params["id"] = id!!
             params["password"] = password!!

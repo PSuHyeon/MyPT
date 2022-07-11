@@ -27,7 +27,7 @@ public class Menu extends AppCompatActivity {
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private ListFragment listFragment = new ListFragment();
-    private ChatFragment chatFragment = new ChatFragment();
+    private Trainer2 trainer = new Trainer2();
     private CommunityFragment communityFragment = new CommunityFragment();
     public static String key_id = "";
     public static String name = "";
@@ -58,7 +58,7 @@ public class Menu extends AppCompatActivity {
                     transaction.replace(R.id.frame, listFragment).commitAllowingStateLoss();
                     break;
                 case R.id.menu_chat:
-                    transaction.replace(R.id.frame, chatFragment).commitAllowingStateLoss();
+                    transaction.replace(R.id.frame, trainer).commitAllowingStateLoss();
                     break;
                 case R.id.menu_community:
                     transaction.replace(R.id.frame, communityFragment).commitAllowingStateLoss();

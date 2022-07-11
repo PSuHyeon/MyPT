@@ -63,6 +63,8 @@ public class SignUp extends AppCompatActivity {
         purposeTextView = findViewById(R.id.purposeEditText);
         doneButton = findViewById(R.id.doneButton);
         check_button = findViewById(R.id.id_check);
+        trainerCheckBox.setChecked(true);
+
         // spinner (성별, 몸무게, 키 채우기)
         genderList.add("성별");
         genderList.add("남자");
@@ -134,7 +136,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
                 RadioButton selectedButton_ = (RadioButton) findViewById(whoRadioGroup.getCheckedRadioButtonId());
 
-                if (selectedButton_.getText() == "TRAINEE") {
+                if (selectedButton_.getText().toString().equals("TRAINEE")) {
                     if (idTextView.getEditText().getText().toString().length() == 0 ||
                             pwTextView.getEditText().getText().toString().length() == 0 ||
                             nameTextView.getEditText().getText().toString().length() == 0 ||
@@ -153,7 +155,7 @@ public class SignUp extends AppCompatActivity {
                     intent.putExtra("id", idTextView.getEditText().getText().toString());
                     intent.putExtra("pw", pwTextView.getEditText().getText().toString());
                     intent.putExtra("name", nameTextView.getEditText().getText().toString());
-                    intent.putExtra("age", ageTextView.getEditText().toString());
+                    intent.putExtra("age", ageTextView.getEditText().getText().toString());
                     intent.putExtra("phone", phoneTextView.getEditText().toString());
                     intent.putExtra("gender", genderSpinner.getSelectedItem().toString());
                     intent.putExtra("weight", weightSpinner.getSelectedItem().toString());
@@ -175,7 +177,8 @@ public class SignUp extends AppCompatActivity {
                     intent.putExtra("id", idTextView.getEditText().getText().toString());
                     intent.putExtra("pw", pwTextView.getEditText().getText().toString());
                     intent.putExtra("name", nameTextView.getEditText().getText().toString());
-                    intent.putExtra("age", ageTextView.getEditText().toString());
+                    intent.putExtra("age", ageTextView.getEditText().getText().toString());
+//                    intent.putExtra("weight", weightSpinner.getSelectedItem().toString());
                     intent.putExtra("phone", phoneTextView.getEditText().toString());
                     intent.putExtra("gender", genderSpinner.getSelectedItem().toString());
                 }

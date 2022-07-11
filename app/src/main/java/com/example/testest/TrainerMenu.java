@@ -89,7 +89,7 @@ public class TrainerMenu extends AppCompatActivity {
 
     private FragmentManager trainerFragmentManager = getSupportFragmentManager();
     private Trainer1 trainerFragment1 = new Trainer1();
-    private Trainer2 trainerFragment2 = new Trainer2();
+    private Trainer2 trainerFragment2 = new Trainer2(); //테스트용으로 바궈둠
     private Trainer3 trainerFragment3 = new Trainer3();
 //    public static String key_id = "";
 //    public static String name = "";
