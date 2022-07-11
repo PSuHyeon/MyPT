@@ -164,10 +164,11 @@ class NewUpload {
     String date;
     String name;
     String contents;
-
-    public NewUpload(String date, String name, String contents) {
+    String id;
+    public NewUpload(String date, String name, String contents, String keyId) {
         this.date = date;
         this.name = name;
         this.contents = contents;
+        this.id = id;
     }
 }

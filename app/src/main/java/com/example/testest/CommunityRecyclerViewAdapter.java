@@ -49,7 +49,7 @@ public class CommunityRecyclerViewAdapter extends RecyclerView.Adapter<Community
         holder.communityNameTextView.setText(items.get(position).name);
         holder.communityDateTextView.setText(items.get(position).date);
         holder.communityCardTextView.setText(items.get(position).contents);
-
+        holder.feedId.setText(items.get(position).id);
         // 구글 드라이브 접근
         DownloadImageTask downloadImageTask = new DownloadImageTask(holder.communityImageView);
         BitmapDrawable drawable = new BitmapDrawable(bitmap);
@@ -73,7 +73,7 @@ public class CommunityRecyclerViewAdapter extends RecyclerView.Adapter<Community
         ImageView communityImageView;
         TextView communityCardTextView;
         CardView communityCardView;
-
+        TextView feedId;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             communityNameTextView = itemView.findViewById(R.id.communityNameTextView);
@@ -81,11 +81,11 @@ public class CommunityRecyclerViewAdapter extends RecyclerView.Adapter<Community
             communityImageView = itemView.findViewById(R.id.communityImageView);
             communityCardTextView = itemView.findViewById(R.id.communityCardTextView);
             communityCardView = itemView.findViewById(R.id.communityCardView);
-
+            feedId = itemView.findViewById(R.id.feedId);
             communityCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dialog = new ReplyDialog(context);
+                    dialog = new ReplyDialog(context, feedId.getText().toString());
                     dialog.show();
                 }
             });
