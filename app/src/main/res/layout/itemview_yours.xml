@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:gravity="left"
+    android:weightSum="10"
+    >
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:weightSum="15"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:id="@+id/your_name"
+            android:hint="name"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:text="네문자"
+            android:layout_gravity="left"
+            android:autoSizeTextType="uniform"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/your_text"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:text="네시간"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/your_time"
+            android:autoSizeTextType="uniform"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
