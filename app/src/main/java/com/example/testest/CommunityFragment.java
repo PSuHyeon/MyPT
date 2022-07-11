@@ -47,7 +47,6 @@ public class CommunityFragment extends Fragment {
     ArrayList<NewUpload> items;
     CommunityRecyclerViewAdapter adapter;
 
-
     public CommunityFragment() {
     }
 
