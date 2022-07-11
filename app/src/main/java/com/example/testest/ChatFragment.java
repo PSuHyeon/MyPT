@@ -47,7 +47,7 @@ public class ChatFragment extends Fragment {
 
         RecyclerView recyclerView = activity.findViewById(R.id.chat_recyclerView);
         ArrayList<Trainee> trainees = new ArrayList<Trainee>();
-        String url = "http://172.10.18.125:80/get_trainee_info";
+        String url = "http://192.249.18.125:80/get_trainee_info";
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
 

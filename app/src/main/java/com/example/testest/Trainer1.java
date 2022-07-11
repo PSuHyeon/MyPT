@@ -193,14 +193,13 @@ public class Trainer1 extends Fragment {
                         personSpinner.setSelection(0);
 
                         RequestQueue queue = Volley.newRequestQueue(getActivity());
-                        String url ="http://172.10.18.125:80/get_trainee";
+                        String url ="http://192.249.18.125:80/get_trainee";
                         StringRequest Request = new StringRequest(com.android.volley.Request.Method.GET, url,
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
                                         // Display the first 500 characters of the response string.
                                         ArrayList<String> personList = new ArrayList<String>(Arrays.asList(response.split(",")));
-                                        Log.d("byhuman", ""+personList);
                                         personList.set(0, "회원명");
                                         ArrayAdapter<String> personAdapter = new ArrayAdapter<>(getContext(), com.airbnb.lottie.R.layout.support_simple_spinner_dropdown_item, personList);
                                         personSpinner.setAdapter(personAdapter);
@@ -242,7 +241,7 @@ public class Trainer1 extends Fragment {
                     date = year + "-" + month + "-" + day; // 최종날짜 (2022-06-08 형식)
 
                     RequestQueue queue = Volley.newRequestQueue(getActivity());
-                    String url ="http://172.10.18.125:80/get_by_date";
+                    String url ="http://192.249.18.125:80/get_by_date";
                     HashMap<String, String> params = new HashMap<String, String>();
                     params.put("date", date);
                     JSONObject jsonObject = new JSONObject(params);
@@ -338,7 +337,7 @@ public class Trainer1 extends Fragment {
                     trainee = personSpinner.getSelectedItem().toString();
 
                     RequestQueue queue = Volley.newRequestQueue(getActivity());
-                    String url ="http://172.10.18.125:80/get_by_name";
+                    String url ="http://192.249.18.125:80/get_by_name";
                     HashMap<String, String> params = new HashMap<String, String>();
                     params.put("name", trainee);
                     JSONObject jsonObject = new JSONObject(params);

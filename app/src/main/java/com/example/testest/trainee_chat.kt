@@ -12,11 +12,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
 import com.example.testest.Menu.key_id
+import com.example.testest.Menu.name
 import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class trainee_chat : Fragment() {
@@ -45,7 +53,35 @@ class trainee_chat : Fragment() {
         val send_button = activity.findViewById<Button>(R.id.sendButton)
         val text = activity.findViewById<EditText>(R.id.type_text)
 
-        var mSocket: Socket = IO.socket("http://172.10.18.125:443")
+        val url = "http://192.249.18.125:80/get_chat_info/" + key_id
+
+        val request = object : JsonArrayRequest(
+            Request.Method.GET,
+            url,null, Response.Listener {
+                for (i in 0 until it.length()){
+                    val jsonObject = it.getJSONObject(i)
+                    val name = jsonObject.getString("name")
+                    val text = jsonObject.getString("text")
+                    val time = jsonObject.getString("time")
+                    val keyId = jsonObject.getString("key_id")
+                    arrayList.add(ChatModel(name, keyId, text, time))
+                    (chat_recycler.adapter as ChatAdapter2).notifyDataSetChanged()
+                }
+            }, Response.ErrorListener {
+
+            }
+        ) {
+
+        }
+        request.retryPolicy = DefaultRetryPolicy(
+            DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+            // 0 means no retry
+            0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
+            1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        )
+        VolleySingleton.getInstance(context1).addToRequestQueue(request)
+
+        var mSocket: Socket = IO.socket("http://192.249.18.125:443")
         mSocket.connect()
 
         mSocket.emit("connect user", key_id)
@@ -56,10 +92,13 @@ class trainee_chat : Fragment() {
             }
             else{
                 val jsonObject = JSONObject()
-                jsonObject.put("name", "")
+                jsonObject.put("name", name)
                 jsonObject.put("text", text.text.toString())
                 jsonObject.put("key_id", key_id)
-                jsonObject.put("time", System.currentTimeMillis())
+                val now = System.currentTimeMillis()
+                val date = Date(now)
+                val sdf = SimpleDateFormat("yyyy-MM-dd--hh-mm")
+                jsonObject.put("time", sdf.format(date))
                 jsonObject.put("room_id",key_id)
                 text.setText("")
                 mSocket.emit("chat message", jsonObject)
