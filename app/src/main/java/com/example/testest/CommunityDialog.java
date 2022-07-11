@@ -3,7 +3,9 @@ package com.example.testest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -59,6 +61,13 @@ public class CommunityDialog extends Dialog {
 
         // uri로 이미지 띄우기
         newImageView.setImageURI(uri);
+//        Bitmap bitmap;try{
+//             bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+//        }
+//        catch (Exception e){
+//
+//        }
+//
 
         shutdownClick.setOnClickListener(new View.OnClickListener() {
             @Override

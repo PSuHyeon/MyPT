@@ -27,11 +27,15 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -89,35 +93,35 @@ public class CommunityFragment extends Fragment {
                         }
                     });
                     communityDialog.show();
-//                    RequestQueue queue = Volley.newRequestQueue(getContext());
-//                    String url ="http://172.10.18.125:80/getfeed";
-//
-//                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                            new Response.Listener<String>() {
-//                                @Override
-//                                public void onResponse(String response) {
-//                                    Gson gson = new Gson();
-//                                    Type listType = new TypeToken<ArrayList<NewUpload>>(){}.getType();
-//                                    ArrayList<NewUpload> getfeed = new Gson().fromJson(String.valueOf(response), listType);
-//
-//                                    items = getfeed;
-//                                    communityRecyclerView = rootView.findViewById(R.id.communityRecyclerView);
-//                                    adapter = new CommunityRecyclerViewAdapter(communityRecyclerView, getContext(), items);
-//                                    communityRecyclerView.setAdapter(adapter);
-//
-//                                    Log.d("check", "" + response);
-//                                }
-//                            }, new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Log.d("check", "got error");
-//                        }
-//                    });
-//
-//                    // Add the request to the RequestQueue.
-//                    queue.add(stringRequest);
+                    RequestQueue queue = Volley.newRequestQueue(getContext());
+                    String url ="http://172.10.18.125:80/getfeed";
 
-                    //adapter = new CommunityRecyclerViewAdapter(communityRecyclerView, getContext(), items);
+                    JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url,null,
+                            new Response.Listener<JSONArray>() {
+                                @Override
+                                public void onResponse(JSONArray response) {
+                                    Gson gson = new Gson();
+                                    Type listType = new TypeToken<ArrayList<NewUpload>>(){}.getType();
+                                    ArrayList<NewUpload> getfeed = new Gson().fromJson(String.valueOf(response), listType);
+
+                                    items = getfeed;
+                                    communityRecyclerView = rootView.findViewById(R.id.communityRecyclerView);
+                                    adapter = new CommunityRecyclerViewAdapter(communityRecyclerView, getContext(), items);
+                                    communityRecyclerView.setAdapter(adapter);
+
+                                    Log.d("check", "" + response);
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("check", "got error");
+                        }
+                    });
+
+                    // Add the request to the RequestQueue.
+                    queue.add(stringRequest);
+
+                    adapter = new CommunityRecyclerViewAdapter(communityRecyclerView, getContext(), items);
                     communityRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     communityRecyclerView.setAdapter(adapter);
                     // uri, contents, name, date 전달하면 됨 (데베 저장) ArrayList
