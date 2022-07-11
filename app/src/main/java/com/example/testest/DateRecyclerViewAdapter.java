@@ -82,6 +82,7 @@ public class DateRecyclerViewAdapter extends RecyclerView.Adapter<DateRecyclerVi
                     String name = names.get(idx);
                     Intent intent = new Intent(context, Trainer_PersonInfo.class);
                     intent.putExtra("array", String.valueOf(items.get(name)));
+                    intent.putExtra("name", name);
                     ((Activity) context).startActivityForResult(intent, 0);
                 }
             });
