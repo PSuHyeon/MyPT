@@ -83,7 +83,7 @@ public class CommunityDialog extends Dialog {
                             @Override
                             public void onResponse(JSONObject response) {
                                 // Display the first 500 characters of the response string.
-
+                                Log.d("upload", "success");
                             }
                         }, new Response.ErrorListener() {
 

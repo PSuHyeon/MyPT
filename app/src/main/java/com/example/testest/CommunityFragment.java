@@ -21,9 +21,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class CommunityFragment extends Fragment {
@@ -74,16 +84,43 @@ public class CommunityFragment extends Fragment {
                     communityDialog.setDialogListener(new CommunityDialog.CustomDialogListener() {
                         @Override
                         public void onButtonClicked(String contents) {
-                            Log.d("contents", contents);
-                            items.add(new NewUpload("우다연", "2022년 07월 11일", uri, contents));
-                            adapter = new CommunityRecyclerViewAdapter(communityRecyclerView, getContext(), items);
-                            communityRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            communityRecyclerView.setAdapter(adapter);
-                            // uri, contents, name, date 전달하면 됨 (데베 저장) ArrayList
+                            //items.add(new NewUpload("우다연", "2022년 07월 11일", uri, contents));
 
                         }
                     });
                     communityDialog.show();
+//                    RequestQueue queue = Volley.newRequestQueue(getContext());
+//                    String url ="http://172.10.18.125:80/getfeed";
+//
+//                    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+//                            new Response.Listener<String>() {
+//                                @Override
+//                                public void onResponse(String response) {
+//                                    Gson gson = new Gson();
+//                                    Type listType = new TypeToken<ArrayList<NewUpload>>(){}.getType();
+//                                    ArrayList<NewUpload> getfeed = new Gson().fromJson(String.valueOf(response), listType);
+//
+//                                    items = getfeed;
+//                                    communityRecyclerView = rootView.findViewById(R.id.communityRecyclerView);
+//                                    adapter = new CommunityRecyclerViewAdapter(communityRecyclerView, getContext(), items);
+//                                    communityRecyclerView.setAdapter(adapter);
+//
+//                                    Log.d("check", "" + response);
+//                                }
+//                            }, new Response.ErrorListener() {
+//                        @Override
+//                        public void onErrorResponse(VolleyError error) {
+//                            Log.d("check", "got error");
+//                        }
+//                    });
+//
+//                    // Add the request to the RequestQueue.
+//                    queue.add(stringRequest);
+
+                    //adapter = new CommunityRecyclerViewAdapter(communityRecyclerView, getContext(), items);
+                    communityRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    communityRecyclerView.setAdapter(adapter);
+                    // uri, contents, name, date 전달하면 됨 (데베 저장) ArrayList
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -95,15 +132,13 @@ public class CommunityFragment extends Fragment {
 }
 
 class NewUpload {
-    String name;
     String date;
-    Uri uri;
+    String name;
     String contents;
 
-    public NewUpload(String name, String date, Uri uri, String contents) {
-        this.name = name;
+    public NewUpload(String date, String name, String contents) {
         this.date = date;
-        this.uri = uri;
+        this.name = name;
         this.contents = contents;
     }
 }
