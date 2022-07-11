@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.3660537719726563" />
         <entry key="app/src/main/res/layout/activity_trainer_menu.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/activity_trainer_person_info.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/chat.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/clickrecyclerview.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/clickrecyclerviewitem.xml" value="0.25" />
         <entry key="app/src/main/res/layout/content_menu.xml" value="0.25" />
@@ -32,6 +33,7 @@
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.21835443037974683" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.15450861195542046" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.25915222167968754" />
+        <entry key="app/src/main/res/layout/fragment_trainee_chat.xml" value="0.33489583333333334" />
         <entry key="app/src/main/res/layout/fragment_trainer1.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_trainer2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_trainer3.xml" value="0.17708333333333334" />

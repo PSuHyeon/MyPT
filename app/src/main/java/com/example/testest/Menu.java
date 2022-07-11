@@ -27,7 +27,7 @@ public class Menu extends AppCompatActivity {
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private ListFragment listFragment = new ListFragment();
-    private Trainer2 trainer = new Trainer2();
+    private trainee_chat trainer = new trainee_chat();
     private CommunityFragment communityFragment = new CommunityFragment();
     private TimerFragment timerFragment = new TimerFragment();
     public static String key_id = "";

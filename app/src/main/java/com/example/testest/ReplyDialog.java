@@ -32,10 +32,6 @@ public class ReplyDialog extends Dialog {
     androidx.appcompat.widget.AppCompatButton communityReplyAddButton;
     RecyclerView communityReplyRecyclerView;
     Button btn_stutdown;
-    Menu menu = new Menu();
-    long now = System.currentTimeMillis();
-    Date date = new Date(now);
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     public ReplyDialog(@NonNull Context context) {
         super(context);
@@ -48,47 +44,7 @@ public class ReplyDialog extends Dialog {
         communityReplyAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 서버 접근
-//                RequestQueue queue = Volley.newRequestQueue(getContext());
-//                String url ="http://172.10.18.125:80/feed";
-//                HashMap<String, String> params = new HashMap<String, String>();
-//                params.put("number", "");
-//                params.put("sett", "");
-//                params.put("weight", "");
-//                params.put("contents", "yoo");
-//                params.put("date", selectedDate);
-//                params.put("time", time);
-//                params.put("name", menu.name);
-//                params.put("id", menu.key_id);
-//                JSONObject jsonObject = new JSONObject(params);
-//                // Request a string response from the provided URL.
-//                JsonObjectRequest Request = new JsonObjectRequest(com.android.volley.Request.Method.POST, url,null,
-//                        new Response.Listener<JSONObject>() {
-//                            @Override
-//                            public void onResponse(JSONObject response) {
-//                                // Display the first 500 characters of the response string.
-//
-//                            }
-//                        }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.d("check", "got error");
-//                    }
-//
-//                }
-//                ){
-//                    @Override
-//                    public byte[] getBody() {
-//                        return jsonObject.toString().getBytes();
-//                    }
-//                };
-//                Request.setRetryPolicy(new DefaultRetryPolicy(
-//                        0,
-//                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-//                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//
-//                // Add the request to the RequestQueue.
-//                queue.add(Request);
+
             }
         });
 

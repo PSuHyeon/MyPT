@@ -29,7 +29,7 @@ class chatroom : AppCompatActivity() {
 
         val arrayList = ArrayList<ChatModel>()
         val chat_recycler = findViewById<RecyclerView>(R.id.recycler_view)
-        val madapter = ChatAdapter2(this, arrayList)
+        val madapter = ChatAdapter2(this, arrayList, "-1")
 
         chat_recycler.adapter = madapter
         chat_recycler.layoutManager = LinearLayoutManager(this)
@@ -42,6 +42,7 @@ class chatroom : AppCompatActivity() {
         mSocket.connect()
 
         val key_id = intent.getStringExtra("id")
+        Log.d("key_id", ""+ key_id)
         mSocket.emit("connect user", key_id)
 
         send_button.setOnClickListener {
@@ -78,7 +79,7 @@ class chatroom : AppCompatActivity() {
 }
 class ChatModel(val name: String, val key_id: String, val text: String, val time: String)
 
-class ChatAdapter2(val context: Context, val arrayList: ArrayList<ChatModel>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class ChatAdapter2(val context: Context, val arrayList: ArrayList<ChatModel>, val key_id: String): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     fun addItem(item: ChatModel){
         if (arrayList != null) {
@@ -87,7 +88,7 @@ class ChatAdapter2(val context: Context, val arrayList: ArrayList<ChatModel>): R
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (arrayList.get(position).key_id == "-1"){
+        if (arrayList.get(position).key_id == key_id){
             return 1
         }
         else{
