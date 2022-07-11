@@ -91,6 +91,7 @@ public class TrainerMenu extends AppCompatActivity {
     private Trainer1 trainerFragment1 = new Trainer1();
     private Trainer2 trainerFragment2 = new Trainer2(); //테스트용으로 바궈둠
     private Trainer3 trainerFragment3 = new Trainer3();
+    FragmentTransaction transaction;
 //    public static String key_id = "";
 //    public static String name = "";
     @Override
@@ -103,30 +104,29 @@ public class TrainerMenu extends AppCompatActivity {
 //        key_id = intent.getStringExtra("keyid");
 //        name = intent.getStringExtra("name");
 
-        FragmentTransaction transaction = trainerFragmentManager.beginTransaction();
-        transaction.replace(R.id.trainer_frame, trainerFragment1).commitAllowingStateLoss();
+        transaction = trainerFragmentManager.beginTransaction();
+
+        getSupportFragmentManager().beginTransaction().add(R.id.trainer_frame, new Trainer1()).commit();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.trainer_menu_bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new TrainerMenu.ItemSelectedListener());
-    }
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                transaction = trainerFragmentManager.beginTransaction();
 
-    class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            FragmentTransaction transaction = trainerFragmentManager.beginTransaction();
-
-            switch (menuItem.getItemId()) {
-                case R.id.trainer_menu_list:
-                    transaction.replace(R.id.trainer_frame, trainerFragment1).commitAllowingStateLoss();
-                    break;
-                case R.id.trainer_menu_chat:
-                    transaction.replace(R.id.trainer_frame, trainerFragment2).commitAllowingStateLoss();
-                    break;
-                case R.id.trainer_menu_community:
-                    transaction.replace(R.id.trainer_frame, trainerFragment3).commitAllowingStateLoss();
-                    break;
+                switch (item.getItemId()) {
+                    case R.id.trainer_menu_list:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.trainer_frame, new Trainer1()).commit();
+                        break;
+                    case R.id.trainer_menu_chat:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.trainer_frame, new Trainer2()).commit();
+                        break;
+                    case R.id.trainer_menu_community:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.trainer_frame, new Trainer3()).commit();
+                        break;
+                }
+                return true;
             }
-            return true;
-        }
+        });
     }
 }

@@ -65,6 +65,11 @@ public class MooDialog extends Dialog {
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
 
+                if (chip.equals("") || number.equals("") || set.equals("") || weight.equals("")) {
+                    Toast.makeText(context, "빈칸을 채워주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Log.d("chipGroup.getCheckedChipId()", chip.getText().toString());
                 RequestQueue queue = Volley.newRequestQueue(getContext());
                 String url ="http://172.10.18.125:80/moo";

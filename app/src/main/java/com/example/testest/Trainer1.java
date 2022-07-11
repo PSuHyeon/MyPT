@@ -325,11 +325,15 @@ public class Trainer1 extends Fragment {
                     // 서버 요청 필요
 
                 } else { // 회원별
+                    personSpinner.setVisibility(View.VISIBLE);
+
 
                     if (personSpinner.getSelectedItem().toString() == "회원명") {
                         Toast.makeText(getContext(), "회원명을 선택하세요", Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    //recyclerItems.clear();
+                    //personadapter.notifyDataSetChanged();
                     String trainee; // 선택된 회원
                     trainee = personSpinner.getSelectedItem().toString();
 
@@ -351,15 +355,14 @@ public class Trainer1 extends Fragment {
 
                                     if (response.length() == 0 && clickPersonNum == 0) {
                                         recyclerItems.clear();
-                                        personadapter = new PersonRecyclerViewAdapter(dateRecyclerView, getContext(), days, recyclerItems);
-                                        personadapter.notifyDataSetChanged();
                                         Toast.makeText(getContext(), "해당 회원의 운동 정보가 없습니다.", Toast.LENGTH_SHORT).show();
                                         return;
                                     } else if (response.length() == 0) {
+                                        personSpinner.setVisibility(View.VISIBLE);
                                         Log.d("recyclerItems before", String.valueOf(recyclerItems.size()));
-                                        recyclerItems.clear();
+                                        //recyclerItems.clear();
+                                        personadapter = new PersonRecyclerViewAdapter(dateRecyclerView, getContext(), days, recyclerItems);
                                         Log.d("recyclerItems after", String.valueOf(recyclerItems.size()));
-                                        days = new ArrayList<String>();
                                         personadapter.notifyDataSetChanged();
                                         Toast.makeText(getContext(), "해당 회원의 운동 정보가 없습니다.", Toast.LENGTH_SHORT).show();
                                         return;

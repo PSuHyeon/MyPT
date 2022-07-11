@@ -63,7 +63,7 @@ public class SignUp extends AppCompatActivity {
         purposeTextView = findViewById(R.id.purposeEditText);
         doneButton = findViewById(R.id.doneButton);
         check_button = findViewById(R.id.id_check);
-        trainerCheckBox.setChecked(true);
+        traineeCheckBox.setChecked(true);
 
         // spinner (성별, 몸무게, 키 채우기)
         genderList.add("성별");

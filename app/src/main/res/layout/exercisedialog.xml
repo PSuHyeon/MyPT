@@ -163,6 +163,7 @@
         android:id="@+id/yootime"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:layout_marginStart="30dp"/>
         </LinearLayout>
 
