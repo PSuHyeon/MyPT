@@ -43,7 +43,6 @@ public class CommunityFragment extends Fragment {
     ArrayList<NewUpload> items;
     CommunityRecyclerViewAdapter adapter;
 
-
     public CommunityFragment() {
     }
 
@@ -85,6 +84,7 @@ public class CommunityFragment extends Fragment {
                         @Override
                         public void onButtonClicked(String contents) {
                             //items.add(new NewUpload("우다연", "2022년 07월 11일", uri, contents));
+                            //
 
                         }
                     });
