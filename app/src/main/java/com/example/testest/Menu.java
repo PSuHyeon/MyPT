@@ -29,6 +29,7 @@ public class Menu extends AppCompatActivity {
     private ListFragment listFragment = new ListFragment();
     private ChatFragment chatFragment = new ChatFragment();
     private CommunityFragment communityFragment = new CommunityFragment();
+    private TimerFragment timerFragment = new TimerFragment();
     public static String key_id = "";
     public static String name = "";
     @Override
@@ -63,6 +64,8 @@ public class Menu extends AppCompatActivity {
                 case R.id.menu_community:
                     transaction.replace(R.id.frame, communityFragment).commitAllowingStateLoss();
                     break;
+                case R.id.menu_timer:
+                    transaction.replace(R.id.frame, timerFragment).commitAllowingStateLoss();
             }
                 return true;
         }

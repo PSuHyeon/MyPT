@@ -13,4 +13,8 @@
         android:id="@+id/menu_community"
         android:title="COMMUNITY"/>
 
+    <item
+        android:id="@+id/menu_timer"
+        android:title="TIMER"/>
+
 </menu>

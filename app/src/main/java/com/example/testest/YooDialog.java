@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -51,8 +52,14 @@ public class YooDialog extends Dialog {
                     time = timeEditText.getText().toString();
                 } catch (Exception e) {
                 }
+
                 chip = chipGroup.findViewById(chipGroup.getCheckedChipId());
                 exercise = chip.getText().toString();
+
+                if (chip.equals("") || time.equals("")) {
+                    Toast.makeText(context, "빈칸을 채워주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Log.d("chipGroup.getCheckedChipId()", chip.getText().toString());
                 RequestQueue queue = Volley.newRequestQueue(getContext());

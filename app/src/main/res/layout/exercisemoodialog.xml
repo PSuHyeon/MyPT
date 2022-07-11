@@ -10,44 +10,6 @@
         android:layout_height="340dp"
         android:orientation="vertical">
 
-        <!--
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TYPE"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        android:textStyle="bold"/>
-
-    <RadioGroup
-        android:id="@+id/typeRadioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="30dp">
-
-        <RadioButton
-            android:id="@+id/moo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="유산소"
-            android:checked="true"/>
-
-            <RadioButton
-                android:id="@+id/yoo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:text="무산소"/>
-        </LinearLayout>
-    </RadioGroup>-->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -155,6 +117,7 @@
                 android:id="@+id/moonumber"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:layout_marginStart="10dp"
                 android:layout_gravity="center"/>
         </LinearLayout>
@@ -177,6 +140,7 @@
                 android:id="@+id/mooset"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:layout_marginStart="10dp"
                 android:layout_gravity="center"/>
         </LinearLayout>
@@ -199,6 +163,7 @@
                 android:id="@+id/mooweight"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:layout_marginStart="15dp"
                 android:layout_gravity="center"/>
         </LinearLayout>

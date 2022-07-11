@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
         val sign_in_button = findViewById<Button>(R.id.sign_in)
         val sign_up_button = findViewById<TextView>(R.id.sign_up)
         val naver_login = findViewById<Button>(R.id.naver_login_button)
-        val id_text = findViewById<TextView>(R.id.id_text)
-        val pass_text = findViewById<TextView>(R.id.password_text)
+        val id_text = findViewById<com.google.android.material.textfield.TextInputLayout>(R.id.id_text)
+        val pass_text = findViewById<com.google.android.material.textfield.TextInputLayout>(R.id.password_text)
 
 
         requestQueue = Volley.newRequestQueue(applicationContext)

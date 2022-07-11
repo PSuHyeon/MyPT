@@ -60,7 +60,6 @@ public class SignUp extends AppCompatActivity {
         phoneTextView = findViewById(R.id.contactEditText);
         weightSpinner = findViewById(R.id.weightSpinner);
         heightSpinner = findViewById(R.id.heightSpinner);
-        purposeTextView = findViewById(R.id.purposeEditText);
         doneButton = findViewById(R.id.doneButton);
         check_button = findViewById(R.id.id_check);
         traineeCheckBox.setChecked(true);
