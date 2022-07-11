@@ -1,6 +1,8 @@
 package com.example.testest;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +15,17 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class CommunityRecyclerViewAdapter extends RecyclerView.Adapter<CommunityRecyclerViewAdapter.ViewHolder> implements View.OnClickListener{
-    RecyclerView CommunityRecyclerViewAdapter;
+    RecyclerView CommunityRecyclerView;
     Context context;
     ArrayList<NewUpload> items;
     ReplyDialog dialog;
+    Bitmap bitmap;
 
-    public CommunityRecyclerViewAdapter(RecyclerView communityRecyclerViewAdapter, Context context, ArrayList<NewUpload> items) {
-        CommunityRecyclerViewAdapter = communityRecyclerViewAdapter;
+    public CommunityRecyclerViewAdapter(RecyclerView CommunityRecyclerView, Context context, ArrayList<NewUpload> items) {
+        CommunityRecyclerView = CommunityRecyclerView;
         this.context = context;
         this.items = items;
     }
@@ -44,8 +48,18 @@ public class CommunityRecyclerViewAdapter extends RecyclerView.Adapter<Community
     public void onBindViewHolder(@NonNull CommunityRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.communityNameTextView.setText(items.get(position).name);
         holder.communityDateTextView.setText(items.get(position).date);
-        holder.communityImageView.setImageURI(items.get(position).uri);
         holder.communityCardTextView.setText(items.get(position).contents);
+
+        // 구글 드라이브 접근
+        DownloadImageTask downloadImageTask = new DownloadImageTask(holder.communityImageView);
+        BitmapDrawable drawable = new BitmapDrawable(bitmap);
+        try {
+            bitmap = downloadImageTask.execute("https://drive.google.com/uc?export=download&id=1-FkYrdLO_N9Gol9-ZpLEUA85uvpHSDrM").get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

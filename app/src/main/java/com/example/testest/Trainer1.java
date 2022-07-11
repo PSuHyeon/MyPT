@@ -321,7 +321,6 @@ public class Trainer1 extends Fragment {
 
                     // Add the request to the RequestQueue.
                     queue.add(Request);
-                    // 서버 요청 필요
 
                 } else { // 회원별
                     personSpinner.setVisibility(View.VISIBLE);
