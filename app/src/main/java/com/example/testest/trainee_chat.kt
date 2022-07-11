@@ -1,59 +1,85 @@
 package com.example.testest
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.testest.Menu.key_id
+import io.socket.client.IO
+import io.socket.client.Socket
+import io.socket.emitter.Emitter
+import org.json.JSONObject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [trainee_chat.newInstance] factory method to
- * create an instance of this fragment.
- */
 class trainee_chat : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+    lateinit var context1: Context
+    override fun onAttach(context: Context) {
+        context1 = context
+        super.onAttach(context)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trainee_chat, container, false)
+        val arrayList = ArrayList<ChatModel>()
+        val activity = inflater.inflate(R.layout.chat, container, false)
+        val chat_recycler = activity.findViewById<RecyclerView>(R.id.recycler_view)
+        val madapter = ChatAdapter2(context1, arrayList, key_id)
+
+        chat_recycler.adapter = madapter
+        chat_recycler.layoutManager = LinearLayoutManager(context1)
+        chat_recycler.setHasFixedSize(true)
+
+        val send_button = activity.findViewById<Button>(R.id.sendButton)
+        val text = activity.findViewById<EditText>(R.id.type_text)
+
+        var mSocket: Socket = IO.socket("http://172.10.18.125:443")
+        mSocket.connect()
+
+        mSocket.emit("connect user", key_id)
+
+        send_button.setOnClickListener {
+            if (text.text.toString() == ""){
+                Toast.makeText(context1, "no text", Toast.LENGTH_SHORT)
+            }
+            else{
+                val jsonObject = JSONObject()
+                jsonObject.put("name", "")
+                jsonObject.put("text", text.text.toString())
+                jsonObject.put("key_id", key_id)
+                jsonObject.put("time", System.currentTimeMillis())
+                jsonObject.put("room_id",key_id)
+                text.setText("")
+                mSocket.emit("chat message", jsonObject)
+            }
+        }
+
+
+        mSocket.on("chat message", Emitter.Listener { args ->
+            getActivity()?.runOnUiThread {
+                val data = args[0] as JSONObject
+                val name = data.getString("name")
+                val text = data.getString("text")
+                val time = data.getString("time")
+                val key_id = data.getString("key_id")
+                madapter.addItem(ChatModel(name, key_id, text, time))
+                madapter.notifyDataSetChanged()
+            }
+        })
+        return activity
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment trainee_chat.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            trainee_chat().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }
