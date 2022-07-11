@@ -1,7 +1,9 @@
 package com.example.testest;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -22,9 +25,15 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.gson.Gson;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import java.util.ArrayList;
@@ -40,8 +49,11 @@ public class MooDialog extends Dialog {
     String number;
     String set;
     String weight;
+    MaterialCalendarView materialCalendarView;
+    Activity activity;
+    CalendarDay dateday;
 
-    public MooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView, View rootView) {
+    public MooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView, View rootView, Activity activity) {
         super(context);
         Menu menu = new Menu();
         setContentView(R.layout.exercisemoodialog);
@@ -118,6 +130,23 @@ public class MooDialog extends Dialog {
                 listItem.add(new Exercise(menu.key_id, menu.name, selectedDate, "moo", exercise, "", number, set, weight, "no"));
                 ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
                 listView.setAdapter(listViewAdapter);
+
+                // 점 찍기
+                materialCalendarView = rootView.findViewById(R.id.calendarView);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = null;
+                try {
+                    date = formatter.parse(selectedDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                dateday = CalendarDay.from(cal);
+                materialCalendarView.addDecorators(new EventDecorator(Color.BLUE, dateday, MooDialog.this.activity));
+
+
+
                 dismiss();
             }
         });

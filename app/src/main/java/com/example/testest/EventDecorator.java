@@ -7,33 +7,34 @@ import android.widget.TextView;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
+import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 
 import java.util.Collection;
 import java.util.HashSet;
 
 public class EventDecorator implements DayViewDecorator {
-    private final Drawable drawable;
     private int color;
-    private HashSet<CalendarDay> dates;
-    private TextView textView;
-    public EventDecorator(Collection<CalendarDay> dates, Activity context, TextView textView) {
-        drawable = context.getResources().getDrawable(R.drawable.calendar_background);
+    private CalendarDay dates;
+    //private TextView textView;
 
-        this.dates = new HashSet<>(dates);
-        this.textView = textView;
+    public EventDecorator(int color, CalendarDay dates, Activity context) {
+        this.color = color;
+        this.dates = dates;
+        //this.textView = textView;
     }
 
     @Override
     public boolean shouldDecorate(CalendarDay day){
-        return dates.contains(day);
+        return dates != null && day.equals(dates);
     }
 
     @Override
     public void decorate(DayViewFacade view) {
-        view.setSelectionDrawable(drawable);
+
+        view.addSpan(new DotSpan(5, color));
     }
 
-    public void setText(String text){
-        textView.setText(text);
-    }
+    //public void setText(String text){
+    //    textView.setText(text);
+    //}
 }

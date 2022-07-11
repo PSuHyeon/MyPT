@@ -1,7 +1,9 @@
 package com.example.testest;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,26 +21,32 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 public class YooDialog extends Dialog {
     ChipGroup chipGroup;
     EditText timeEditText;
-    EditText numberEditText;
-    EditText setEditText;
     Button doneButton;
     Chip chip;
     String exercise;
     String time;
     Menu menu = new Menu();
-    ArrayList<Exercise> myExList;
+    MaterialCalendarView materialCalendarView;
+    Activity activity;
+    CalendarDay dateday;
 
-    public YooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView, View rootView) {
+    public YooDialog(@NonNull Context context, String selectedDate, ArrayList<Exercise> listItem, ListViewAdapter listViewAdapter, ListView listView, View rootView, Activity activity) {
         super(context);
         setContentView(R.layout.exercisedialog);
 
@@ -105,15 +113,24 @@ public class YooDialog extends Dialog {
                 // Add the request to the RequestQueue.
                 queue.add(Request);
 
-
-
-
-
                 listItem.add(new Exercise(menu.key_id,menu.name, selectedDate, "yoo", exercise, time, "", "", "", "no"));
                 ListViewAdapter listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
                 listView.setAdapter(listViewAdapter);
 
-//                Exercise exercise = new Exercise(menu.key_id, ,  );
+                // 점 찍기
+                materialCalendarView = rootView.findViewById(R.id.calendarView);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = null;
+                try {
+                    date = formatter.parse(selectedDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                dateday = CalendarDay.from(cal);
+                materialCalendarView.addDecorators(new EventDecorator(Color.BLUE, dateday, activity));
+
                 dismiss();
             }
         });

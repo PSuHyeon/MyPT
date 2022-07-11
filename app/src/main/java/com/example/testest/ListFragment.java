@@ -2,6 +2,7 @@ package com.example.testest;
 
 import android.app.Dialog;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -98,8 +99,9 @@ public class ListFragment extends Fragment {
         addyooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                yooDialog = new YooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView, rootView);
+                yooDialog = new YooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView, rootView, getActivity());
                 yooDialog.show();
+                //materialCalendarView.addDecorators(new EventDecorator(Color.RED, CalendarDay.today(), getActivity()));
             }
         });
 
@@ -107,8 +109,9 @@ public class ListFragment extends Fragment {
         addmooButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mooDialog = new MooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView, rootView);
+                mooDialog = new MooDialog(getContext(), selectedDate, listItem, listViewAdapter, listView, rootView, getActivity());
                 mooDialog.show();
+
             }
         });
 
@@ -125,7 +128,7 @@ public class ListFragment extends Fragment {
         String month = Integer.toString(Integer.parseInt(selectedDate.split("-")[1]) + 1);
         String day = selectedDate.split("-")[2];
         selectedDate = selectedDate.split("-")[0] + "-" + month + "-" + day;
-        dateTextView.setText(month + " / " + day);
+        dateTextView.setText(month + "월 " + day + "일 ");
 
 
         RequestQueue queue = Volley.newRequestQueue(getContext());

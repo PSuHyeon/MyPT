@@ -26,6 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,6 +40,8 @@ public class ListViewAdapter extends BaseAdapter {
     Context context;
     View rootView;
     int temp = 0;
+    MaterialCalendarView materialCalendarView;
+
     public ListViewAdapter(ArrayList<Exercise> items, Context context, View rootView) {
         this.items = items;
         this.context = context;
@@ -95,6 +98,7 @@ public class ListViewAdapter extends BaseAdapter {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 RequestQueue queue = Volley.newRequestQueue(context);
                 String url ="http://192.249.18.125:80/delete";
                 HashMap<String, String> params = new HashMap<String, String>();
@@ -113,7 +117,7 @@ public class ListViewAdapter extends BaseAdapter {
                         new Response.Listener<JSONArray>() {
                             @Override
                             public void onResponse(JSONArray response) {
-                                // Display the first 500 characters of the response string.
+
 
                             }
                         }, new Response.ErrorListener() {
@@ -138,6 +142,12 @@ public class ListViewAdapter extends BaseAdapter {
                 queue.add(Request);
                 items.remove(i);
                 notifyDataSetChanged();
+
+                if (items.size() == 0) {
+                    materialCalendarView = rootView.findViewById(R.id.calendarView);
+                    materialCalendarView.removeDecorators();
+                    materialCalendarView.addDecorators(new OnDateDecorator());
+                }
 
                 if (checkBox.isChecked() == true) {
                     TextView completeTextView = rootView.findViewById(R.id.completeTextView);
