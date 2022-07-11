@@ -90,8 +90,9 @@ public class TrainerMenu extends AppCompatActivity {
     private FragmentManager trainerFragmentManager = getSupportFragmentManager();
     private Trainer1 trainerFragment1 = new Trainer1();
     private Trainer2 trainerFragment2 = new Trainer2(); //테스트용으로 바궈둠
-    private Trainer3 trainerFragment3 = new Trainer3();
+    private CommunityFragment communityFragment = new CommunityFragment();
     FragmentTransaction transaction;
+    Menu menu = new Menu();
 //    public static String key_id = "";
 //    public static String name = "";
     @Override
@@ -100,9 +101,9 @@ public class TrainerMenu extends AppCompatActivity {
         setContentView(R.layout.activity_trainer_menu);
 
         Intent intent = getIntent();
-//        Log.d("keyid", ""+ intent.getStringExtra("keyid"));
-//        key_id = intent.getStringExtra("keyid");
-//        name = intent.getStringExtra("name");
+        Log.d("keyid", ""+ intent.getStringExtra("keyid"));
+        menu.key_id = intent.getStringExtra("keyid");
+        menu.name = intent.getStringExtra("name");
 
         transaction = trainerFragmentManager.beginTransaction();
 
@@ -122,7 +123,7 @@ public class TrainerMenu extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.trainer_frame, new Trainer2()).commit();
                         break;
                     case R.id.trainer_menu_community:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.trainer_frame, new Trainer3()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.trainer_frame, communityFragment).commit();
                         break;
                 }
                 return true;

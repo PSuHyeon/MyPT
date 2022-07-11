@@ -80,8 +80,8 @@ class MainActivity : AppCompatActivity() {
                         }
                         else{
                             val intent = Intent(this@MainActivity, TrainerMenu::class.java)
-                            intent.putExtra("keyid", temp.get(0))
-                            intent.putExtra("name", temp.get(1))
+                            intent.putExtra("keyid", "-1")
+                            intent.putExtra("name", "Trainer")
                             Toast.makeText(this@MainActivity, "${temp.get(1)} 코치님 환영합니다", Toast.LENGTH_SHORT).show()
                             startActivity(intent)
                         }
@@ -105,6 +105,8 @@ class MainActivity : AppCompatActivity() {
         val trainer_sign_in_button = findViewById<Button>(R.id.trainer_sign_in)
         trainer_sign_in_button.setOnClickListener{
             val intent = Intent(this@MainActivity, TrainerMenu::class.java)
+            intent.putExtra("keyid", "-1")
+            intent.putExtra("name", "Trainer")
             startActivity(intent)
         }
     }
@@ -218,8 +220,8 @@ class MainActivity : AppCompatActivity() {
                             }
                             else{
                                 val intent = Intent(this@MainActivity, TrainerMenu::class.java)
-                                intent.putExtra("keyid", temp.get(0))
-                                intent.putExtra("name", temp.get(1))
+                                intent.putExtra("keyid", "-1")
+                                intent.putExtra("name", "Trainer")
                                 Toast.makeText(this@MainActivity, "${temp.get(1)} 코치님 환영합니다", Toast.LENGTH_SHORT).show()
                                 startActivity(intent)
                             }
