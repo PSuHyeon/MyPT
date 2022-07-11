@@ -1,24 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:weightSum="10"
+    >
 
     <TextView
         android:id="@+id/replyNameTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="우다연"
-        android:textSize="12sp"
         android:textStyle="bold"
-        android:layout_marginStart="10dp"/>
+        android:gravity="center"
+        android:layout_weight="1"
+        />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:weightSum="3"
+        android:orientation="vertical"
+        android:layout_weight="9">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            >
+            <TextView
+                android:id="@+id/replyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:text="우다연"
+                android:paddingLeft="10dp"/>
+        </ScrollView>
 
-    <TextView
-        android:id="@+id/replyTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="우다연"
-        android:textSize="12sp"
-        android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="날짜"
+            android:autoSizeTextType="uniform"
+            android:id="@+id/replyDate"
+            android:paddingLeft="10dp"
+            />
+    </LinearLayout>
+
+
 
 </LinearLayout>
