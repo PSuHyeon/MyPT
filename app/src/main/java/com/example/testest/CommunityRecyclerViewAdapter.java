@@ -1,5 +1,7 @@
 package com.example.testest;
 
+import static com.example.testest.CommunityDialog.StringToBitmap;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -50,16 +52,18 @@ public class CommunityRecyclerViewAdapter extends RecyclerView.Adapter<Community
         holder.communityDateTextView.setText(items.get(position).date);
         holder.communityCardTextView.setText(items.get(position).contents);
         holder.feedId.setText(items.get(position).id);
+        Log.d("item", ""+items.get(position).image);
+        holder.communityImageView.setImageBitmap(StringToBitmap(items.get(position).image));
         // 구글 드라이브 접근
-        DownloadImageTask downloadImageTask = new DownloadImageTask(holder.communityImageView);
-        BitmapDrawable drawable = new BitmapDrawable(bitmap);
-        try {
-            bitmap = downloadImageTask.execute("https://drive.google.com/uc?export=download&id=1-FkYrdLO_N9Gol9-ZpLEUA85uvpHSDrM").get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        DownloadImageTask downloadImageTask = new DownloadImageTask(holder.communityImageView);
+//        BitmapDrawable drawable = new BitmapDrawable(bitmap);
+//        try {
+//            bitmap = downloadImageTask.execute("https://drive.google.com/uc?export=download&id=1-FkYrdLO_N9Gol9-ZpLEUA85uvpHSDrM").get();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

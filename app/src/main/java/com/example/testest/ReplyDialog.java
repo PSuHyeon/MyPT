@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -88,6 +89,10 @@ public class ReplyDialog extends Dialog {
         communityReplyAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (communityReplyEditText.getText().toString().equals("")){
+                    Toast.makeText(context, "댓글을 입력해주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 RequestQueue queue = Volley.newRequestQueue(getContext());
                 String url ="http://172.10.18.125:80/newReply/" + feedId;
                 HashMap<String, String> params = new HashMap<String, String>();
@@ -96,7 +101,7 @@ public class ReplyDialog extends Dialog {
                 params.put("text", communityReplyEditText.getText().toString());
                 communityReplyEditText.setText("");
                 long nano = System.currentTimeMillis();
-                params.put("time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(nano));
+                params.put("time", new SimpleDateFormat("yy-MM-dd HH:mm").format(nano));
                 JSONObject jsonObject = new JSONObject(params);
                 JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, url, null,
                         new Response.Listener<JSONObject>() {
