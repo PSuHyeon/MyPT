@@ -1,6 +1,4 @@
-# MyPT Application
-
-### Application concept: Communcation between trainer and trainee
+# MyPT Application: Real time member management application for trainers
 
 ## 1. Trainer
 
