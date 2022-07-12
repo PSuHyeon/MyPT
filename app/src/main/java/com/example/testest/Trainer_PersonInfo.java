@@ -61,9 +61,9 @@ public class Trainer_PersonInfo extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
 
                         try{
-                            height.setText(response.getString("height"));
-                            weight.setText(response.getString("weight"));
-                            age.setText(response.getString("age"));
+                            height.setText(response.getString("height") + " cm");
+                            weight.setText(response.getString("weight")  + " kg");
+                            age.setText(response.getString("age") + "살");
                             gender.setText(response.getString("gender"));
                         }
                         catch (Exception e){
