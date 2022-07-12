@@ -73,6 +73,7 @@
             android:layout_marginTop="15dp"
             android:id="@+id/sign_in"
             android:textColorHint="#ffffff"
+            android:fontFamily="@font/hahmletsemibold"
             android:text="로그인" />
     </LinearLayout>
 
@@ -85,7 +86,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/round_button"
         android:text="네이버 로그인"
-        android:textSize="20dp"
+        android:fontFamily="@font/hahmletsemibold"
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:id="@+id/naver_login_button" />
@@ -97,6 +98,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/hahmletsemibold"
         android:id="@+id/sign_up"
         android:textColorHint="#ffffff"
         android:background="@drawable/button_round"

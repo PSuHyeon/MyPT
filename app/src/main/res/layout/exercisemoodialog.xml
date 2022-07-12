@@ -28,6 +28,9 @@
         android:layout_height="wrap_content"
         android:text="EXERCISE"
         android:textSize="20sp"
+
+                android:fontFamily="@font/hahmletsemibold"
+                android:textColor="@color/black"
         android:layout_marginTop="20dp"
         android:layout_marginStart="5dp"
         android:textStyle="bold"/>
@@ -48,6 +51,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hahmletsemibold"
             android:checked="true"
             android:text="스쿼트"/>
 
@@ -56,6 +60,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hahmletsemibold"
             android:checked="true"
             android:text="벤치프레스"/>
 
@@ -64,6 +69,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hahmletsemibold"
             android:checked="true"
             android:text="데드리프트"/>
 
@@ -72,6 +78,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hahmletsemibold"
             android:checked="true"
             android:text="턱걸기"/>
 
@@ -80,6 +87,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hahmletsemibold"
             android:checked="true"
             android:text="팔굽혀펴기"/>
 
@@ -88,6 +96,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hahmletsemibold"
             android:checked="true"
             android:text="윗몸일으키기"/>
 
@@ -96,6 +105,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hahmletsemibold"
             android:checked="true"
             android:text="크런치"/>
 
@@ -104,6 +114,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hahmletsemibold"
             android:checked="true"
             android:text="기타"/>
 
@@ -129,8 +140,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NUMBER"
+                android:fontFamily="@font/hahmletsemibold"
+                android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
                 android:textStyle="bold"/>
 
@@ -147,13 +160,14 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회"
             android:textSize="15sp"
+            android:fontFamily="@font/hahmletsemibold"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"/>
 
@@ -179,8 +193,10 @@
                 android:layout_height="wrap_content"
                 android:text="SET"
                 android:textSize="20sp"
+                android:fontFamily="@font/hahmletsemibold"
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="25dp"
                 android:layout_marginEnd="5dp"
                 android:textStyle="bold"/>
 
@@ -205,6 +221,7 @@
                 android:layout_height="wrap_content"
                 android:text="세트"
                 android:textSize="15sp"
+                android:fontFamily="@font/hahmletsemibold"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"/>
@@ -227,9 +244,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="WEIGHT"
+                android:fontFamily="@font/hahmletsemibold"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:layout_marginTop="15dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="5dp"
                 android:textStyle="bold"/>
             </LinearLayout>
 
@@ -242,13 +261,14 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="kg"
+                android:fontFamily="@font/hahmletsemibold"
                 android:textSize="15sp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="5dp"
@@ -265,6 +285,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/hahmletsemibold"
         android:text="완료"/>
 
     </LinearLayout>

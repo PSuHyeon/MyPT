@@ -20,10 +20,12 @@
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/round_textview.xml" value="0.1125" />
         <entry key="app/src/main/res/drawable/topborder.xml" value="0.17" />
+        <entry key="app/src/main/res/font/font.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25064646402994795" />
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.19881134033203127" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.3855239868164063" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/activity_trainer_menu.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/activity_trainer_person_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/chat.xml" value="0.17487640380859376" />

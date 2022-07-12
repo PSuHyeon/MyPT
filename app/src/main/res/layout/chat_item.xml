@@ -34,11 +34,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"
-                android:fontFamily="@font/newf"
+                android:fontFamily="@font/hahmletregular"
                 android:hint="이름"
                 android:padding="5dp"
                 android:textColor="@color/black"
-                android:textSize="30dp" />
+                android:textSize="25sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,22 +52,22 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:fontFamily="@font/newf"
                     android:padding="5dp"
                     android:text="나이"
+                    android:fontFamily="@font/hahmletregular"
                     android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/item_kg"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:fontFamily="@font/newf"
                     android:padding="5dp"
                     android:text="몸무게"
+                    android:fontFamily="@font/hahmletregular"
                     android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/item_id"
@@ -75,9 +75,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autoSizeTextType="uniform"
-                    android:fontFamily="@font/newf"
                     android:padding="5dp"
                     android:text="아이디"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/hahmletregular"
                     android:textColor="@color/black" />
             </LinearLayout>
 

@@ -45,8 +45,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:text="우다연"
+            android:fontFamily="@font/hahmletsemibold"
             android:textColor="@color/black"
             android:textSize="20sp"/>
 
@@ -63,6 +64,7 @@
                 android:layout_marginTop="10dp"
                 android:text="2022년 07월 08일"
                 android:textAlignment="textEnd"
+                android:fontFamily="@font/hahmletregular"
                 android:textColor="@color/black"
                 android:textSize="15sp"/>
 
@@ -92,6 +94,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="10dp"
                     android:text="어쩌구어쩌구어쩌구"
+                    android:fontFamily="@font/hahmletregular"
                     android:textColor="@color/black"
                     android:textSize="15sp"/>
 
@@ -110,6 +113,7 @@
                     android:layout_marginBottom="10dp"
                     android:textColor="#5BA680"
                     android:text="댓글 보기"
+                    android:fontFamily="@font/hahmletregular"
                     android:textSize="12sp"/>
                 <TextView
                     android:layout_width="10dp"

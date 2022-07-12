@@ -33,6 +33,7 @@
         android:id="@+id/exerciseTypeTextView"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/hahmletregular"
         android:textSize="10sp"
         android:text="유산소"/>
 
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:text="윗몸일으키기"
+        android:fontFamily="@font/hahmletregular"
         android:textStyle="bold"/>
 
     </LinearLayout>
@@ -53,6 +55,7 @@
         android:textSize="15sp"
         android:text="30분"
         android:textAlignment="textEnd"
+        android:fontFamily="@font/hahmletregular"
         android:layout_marginTop="12dp"/>
 
     <androidx.appcompat.widget.AppCompatButton

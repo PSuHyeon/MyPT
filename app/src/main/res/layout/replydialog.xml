@@ -25,6 +25,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="20dp"
             android:text="댓글"
+            android:fontFamily="@font/hahmletsemibold"
             android:textSize="15sp"/>
 
 
@@ -72,6 +73,7 @@
             android:gravity="center"
             android:textAlignment="center"
             android:onClick="shutDownClick"
+            android:fontFamily="@font/hahmletsemibold"
             android:text="닫기"/>
 
 </LinearLayout>
