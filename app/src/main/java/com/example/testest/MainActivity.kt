@@ -180,10 +180,18 @@ class MainActivity : AppCompatActivity() {
                             params["password"] = "naver"
                             params["name"] = username!!
                             params["position"] = "TRAINEE"
-                            params["age"] = "no info"
-                            params["weight"] = "no info"
-                            params["height"] = "no info"
-                            params["gender"] = "no info"
+                            if (username == "박수현"){
+                                params["age"] = "22"
+                                params["weight"] = "65"
+                                params["height"] = "174"
+                                params["gender"] = "남자"
+                            }
+                            else{
+                                params["age"] = "23"
+                                params["weight"] = "50"
+                                params["height"] = "167"
+                                params["gender"] = "여자"
+                            }
                             val jsonObject = JSONObject(Gson().toJson(params))
                             val request = object : JsonObjectRequest(
                                 Request.Method.POST,
