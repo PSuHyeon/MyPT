@@ -8,7 +8,9 @@
 
 1. By specific date
 2. By specific name
+
 **retreive selected trainee's exercise info according to aforementioned method**
+
 exercise information containes:
 1. name
 2. time
