@@ -4,9 +4,10 @@
 
 ## 1. Trainer
 
-#### Tab 1:
+#### Tab 1: 
 
-**Trainee information attrievement by two methods:**
+*** Trainee information attrievement by two methods: ***
+
 1. By specific date
 2. By specific name
 **retreive selected trainee's exercise info according to aforementioned method**
