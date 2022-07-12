@@ -31,6 +31,10 @@ exercise information contains:
 1. uploading image with comment
 2. reply message for each feed
 
+  ![image](https://user-images.githubusercontent.com/99390261/178479594-3679f523-4d3e-4c35-9646-8be1453cda31.png)
+  
+  ![image](https://user-images.githubusercontent.com/99390261/178479542-ee35c70d-5982-48c9-b5e1-48c99d40934d.png)
+
 ## 2. Trainee
 
 #### Tab 1:
@@ -61,6 +65,10 @@ exercise information contains:
 #### Tab 3: 
 
 **above mentioned community**
+  
+
+
+
 
 #### Tab 4:
 
