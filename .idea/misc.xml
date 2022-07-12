@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/allborder.xml" value="0.1325" />
+        <entry key="app/src/main/res/drawable/bottomborder.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/button_round.xml" value="0.106" />
         <entry key="app/src/main/res/drawable/calendar_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/calendar_not_select_background.xml" value="0.1" />
@@ -26,12 +27,10 @@
         <entry key="app/src/main/res/layout/communitynewdialog.xml" value="0.3177083333333333" />
         <entry key="app/src/main/res/layout/communityrecyclerview.xml" value="0.1" />
         <entry key="app/src/main/res/layout/communityreplyrecyclerviewitem.xml" value="0.31666666666666665" />
-        <entry key="app/src/main/res/layout/communityrecyclerview.xml" value="0.20652173913043478" />
-        <entry key="app/src/main/res/layout/communityreplyrecyclerviewitem.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/content_menu.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/exercisedialog.xml" value="0.3387568265071754" />
-        <entry key="app/src/main/res/layout/exercisemoodialog.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/exercisemoodialog.xml" value="0.30043792724609375" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.20878623188405798" />
         <entry key="app/src/main/res/layout/fragment_community.xml" value="0.21835443037974683" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.15450861195542046" />
@@ -45,7 +44,6 @@
         <entry key="app/src/main/res/layout/personrecyclerviewitem.xml" value="0.361773681640625" />
         <entry key="app/src/main/res/layout/recyclerviewitem.xml" value="0.24172185430463577" />
         <entry key="app/src/main/res/layout/replydialog.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/replydialog.xml" value="0.182518115942029" />
         <entry key="app/src/main/res/layout/trainerdatelistitem.xml" value="0.23002522786458335" />
         <entry key="app/src/main/res/menu/main_menu_bottom.xml" value="0.1" />
         <entry key="app/src/main/res/menu/trainer_main_menu_bottom.xml" value="0.17708333333333334" />

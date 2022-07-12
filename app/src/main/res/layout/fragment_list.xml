@@ -19,7 +19,7 @@ tools:context=".ListFragment">
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        app:mcv_selectionColor="#a9dbf0cb"
+        app:mcv_selectionColor="#DDEFC9"
         app:mcv_showOtherDates="defaults" />
 
         <LinearLayout
@@ -30,7 +30,14 @@ tools:context=".ListFragment">
             android:gravity="center"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bottomborder"
+            android:paddingBottom="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
     <TextView
         android:id="@+id/dateTextView"
@@ -62,7 +69,7 @@ tools:context=".ListFragment">
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@drawable/circlebutton"
-            android:backgroundTint="#a9dbf0cb"
+            android:backgroundTint="#5BA680"
             android:drawableTop="@drawable/add"/>
 
             <TextView
@@ -82,7 +89,7 @@ tools:context=".ListFragment">
                 android:layout_marginEnd="5dp"
                 android:layout_gravity="center"
                 android:background="@drawable/circlebutton"
-                android:backgroundTint="#A9F1D7B1"
+                android:backgroundTint="#FAAA34"
                 android:drawableTop="@drawable/add"/>
 
             <View
@@ -108,9 +115,12 @@ tools:context=".ListFragment">
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="20dp"
+                android:layout_marginTop="2dp"
                 android:text="0"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
+
+        </LinearLayout>
 
         </LinearLayout>
 
@@ -132,8 +142,7 @@ tools:context=".ListFragment">
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/allborder"/>
+        android:layout_marginEnd="20dp"/>
 
             <View
                 android:layout_width="20dp"

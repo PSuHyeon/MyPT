@@ -5,11 +5,11 @@
         android:useLevel="true"
         android:shape="ring"
         android:thickness="10dp" >
-       <!-- <gradient
-            android:centerColor="#DBFF3B"
-            android:endColor="#D5FF3B"
-            android:startColor="#E2FF3B"
-            android:type="sweep" /> -->
+       <gradient
+            android:centerColor="#5BA680"
+            android:endColor="#5DA581"
+            android:startColor="#7AC8A1"
+            android:type="sweep" />
     </shape>
     <solid android:color="@color/cardview_light_background"/>
 </layer-list>

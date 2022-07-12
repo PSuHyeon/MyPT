@@ -40,8 +40,8 @@ public class ReplyDialog extends Dialog {
     androidx.appcompat.widget.AppCompatButton communityReplyAddButton;
     RecyclerView communityReplyRecyclerView;
     Button btn_stutdown;
-    ReplyAdapter madapter;
-    ArrayList<Reply> replyarray = new ArrayList<Reply>();
+//    ReplyAdapter madapter;
+//    ArrayList<Reply> replyarray = new ArrayList<Reply>();
     Menu menu = new Menu();
     public ReplyDialog(@NonNull Context context, String feedId) {
         super(context);
@@ -52,8 +52,8 @@ public class ReplyDialog extends Dialog {
         btn_stutdown = findViewById(R.id.btn_shutdown);
         communityReplyRecyclerView = findViewById(R.id.communityReplyRecyclerView);
 
-        madapter = new ReplyAdapter(getContext(), replyarray);
-        communityReplyRecyclerView.setAdapter(madapter);
+        //madapter = new ReplyAdapter(getContext(), replyarray);
+        //communityReplyRecyclerView.setAdapter(madapter);
         RequestQueue queue = Volley.newRequestQueue(getContext());
         String url ="http://172.10.18.125:80/getReply/" + feedId;
 
@@ -62,12 +62,12 @@ public class ReplyDialog extends Dialog {
                     @Override
                     public void onResponse(JSONArray response) {
                         Gson gson = new Gson();
-                        Type listType = new TypeToken<ArrayList<Reply>>(){}.getType();
-                        ArrayList<Reply> getfeed = new Gson().fromJson(String.valueOf(response), listType);
+//                        Type listType = new TypeToken<ArrayList<Reply>>(){}.getType();
+//                        ArrayList<Reply> getfeed = new Gson().fromJson(String.valueOf(response), listType);
 
-                        replyarray = getfeed;
-                        madapter = new ReplyAdapter(getContext(),replyarray);
-                        communityReplyRecyclerView.setAdapter(madapter);
+//                        replyarray = getfeed;
+//                        madapter = new ReplyAdapter(getContext(),replyarray);
+//                        communityReplyRecyclerView.setAdapter(madapter);
                         communityReplyRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
                     }
@@ -98,11 +98,11 @@ public class ReplyDialog extends Dialog {
                             @Override
                             public void onResponse(JSONObject response) {
 
-                                Reply getfeed = new Gson().fromJson(String.valueOf(response), Reply.class);
-                                Log.d("final", ""+getfeed);
-                                replyarray.add(getfeed);
-                                madapter = new ReplyAdapter(getContext(),replyarray);
-                                communityReplyRecyclerView.setAdapter(madapter);
+//                                Reply getfeed = new Gson().fromJson(String.valueOf(response), Reply.class);
+//                                Log.d("final", ""+getfeed);
+//                                replyarray.add(getfeed);
+//                                madapter = new ReplyAdapter(getContext(),replyarray);
+//                                communityReplyRecyclerView.setAdapter(madapter);
                                 communityReplyRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
                             }
