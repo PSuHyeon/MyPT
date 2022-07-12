@@ -32,6 +32,11 @@ exercise information contains:
 
 **Create private chatting room with every trainee**
 
+![image](https://user-images.githubusercontent.com/99390261/178480965-c706dbcb-6064-444e-bd4b-176a40aa935a.png)
+
+![image](https://user-images.githubusercontent.com/99390261/178480991-d36d38d4-50e1-410c-9992-cfab7a1f378e.png)
+
+
 #### Tab 3: 
 
 **Community available for all users including trainees and trainers**
