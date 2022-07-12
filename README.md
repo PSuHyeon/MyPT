@@ -50,7 +50,7 @@ exercise information containes:
 # Application specification
 * Naver Login SDK (네아로);
   * Support login using naver Id; 
-  <img width="275" alt="image" src="https://user-images.githubusercontent.com/99390261/178462554-aa5c3de1-80e2-4e56-ac04-ca6092fb4743.png">
+<img width="266" alt="image" src="https://user-images.githubusercontent.com/99390261/178462792-8f53417e-d561-46b7-94af-2e8fb208c19c.png">
 
 * Nodejs server with mysql databases:
   * login_information databases;
