@@ -1,6 +1,6 @@
 # MyPT Application
 
-## Application concept: Communcation between trainer and trainee
+### Application concept: Communcation between trainer and trainee
 
 ## Two login options available:
 
