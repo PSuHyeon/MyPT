@@ -20,6 +20,7 @@ tools:context=".ListFragment">
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         app:mcv_selectionColor="#DDEFC9"
+        android:fontFamily="@font/hahmletsemibold"
         app:mcv_showOtherDates="defaults" />
 
         <LinearLayout
@@ -47,7 +48,8 @@ tools:context=".ListFragment">
         android:layout_gravity="center"
         android:textAlignment="center"
         android:text="6월 22일"
-        android:layout_marginStart="10dp"
+        android:fontFamily="@font/hahmletsemibold"
+        android:layout_marginStart="11dp"
         android:background="@drawable/round_textview"
         android:textSize="15sp"/>
 
@@ -59,6 +61,7 @@ tools:context=".ListFragment">
                 android:layout_marginStart="10dp"
                 android:layout_gravity="center"
                 android:text="유산소"
+                android:fontFamily="@font/hahmletsemibold"
                 android:textSize="15sp"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -80,6 +83,7 @@ tools:context=".ListFragment">
                 android:layout_marginStart="5dp"
                 android:layout_gravity="center"
                 android:text="무산소"
+                android:fontFamily="@font/hahmletsemibold"
                 android:textSize="15sp"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -118,6 +122,7 @@ tools:context=".ListFragment">
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="2dp"
                 android:text="0"
+                android:fontFamily="@font/hahmletsemibold"
                 android:textSize="15sp"/>
 
         </LinearLayout>

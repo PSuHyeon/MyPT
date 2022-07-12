@@ -68,7 +68,7 @@ public class SignUp extends AppCompatActivity {
         genderList.add("성별");
         genderList.add("남자");
         genderList.add("여자");
-        weightList.add("몸무게");
+        weightList.add("체중");
         heightList.add("키");
 
         for (int i = 1; i <= 200; i++) {

@@ -143,7 +143,7 @@ public class MooDialog extends Dialog {
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(date);
                 dateday = CalendarDay.from(cal);
-                materialCalendarView.addDecorators(new EventDecorator(Color.BLUE, dateday, MooDialog.this.activity));
+                materialCalendarView.addDecorators(new EventDecorator(Color.parseColor("#5BA680"), dateday, MooDialog.this.activity));
 
 
 

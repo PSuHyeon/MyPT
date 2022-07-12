@@ -12,57 +12,53 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="30dp"
-        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="30sp"
+        android:fontFamily="@font/hahmletbold"
         android:text="Create Account"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/person"
-            android:layout_marginStart="30dp"
+            android:src="@drawable/running"
+            android:layout_marginStart="25dp"
             android:layout_marginEnd="5dp"
             android:layout_marginTop="30dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="40dp"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:text="You are"/>
+
+
 
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp">
 
             <RadioButton
                 android:id="@+id/traineeCheckBox"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/hahmletregular"
                 android:layout_height="wrap_content"
                 android:text="TRAINEE"
                 android:checked="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="5dp"
                 android:onClick="onRadioButtonClicked"/>
 
             <RadioButton
                 android:id="@+id/trainerCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hahmletregular"
                 android:text="TRAINER"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="20dp"
                 android:onClick="onRadioButtonClicked"/>
 
         </RadioGroup>
@@ -95,9 +91,11 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
+            android:fontFamily="@font/hahmletregular"
             android:text="확인"
             android:id="@+id/id_check"
             android:layout_marginLeft="10dp"
+            android:textColor="#FFFFFF"
             android:background="@drawable/round_button"
             />
     </LinearLayout>
@@ -115,7 +113,8 @@
         android:layout_marginTop="15dp">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -135,7 +134,7 @@
             android:layout_marginTop="15dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -173,34 +172,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
 
         <Spinner
             android:id="@+id/genderSpinner"
-            android:layout_width="0dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:textAlignment="center" />
 
         <Spinner
             android:id="@+id/weightSpinner"
-            android:layout_width="0dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:textAlignment="center" />
 
         <Spinner
             android:id="@+id/heightSpinner"
-            android:layout_width="0dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginTop="15dp"/>
+            android:layout_weight="1"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
@@ -210,6 +213,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:text="DONE"/>
+        android:fontFamily="@font/hahmletregular"
+        android:text="완료"/>
 
 </LinearLayout>

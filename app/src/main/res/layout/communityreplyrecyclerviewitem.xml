@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="우다연"
+        android:fontFamily="@font/hahmletsemibold"
         android:textStyle="bold"
         android:gravity="center"
         android:layout_weight="1"
@@ -32,6 +33,7 @@
                 android:layout_height="match_parent"
                 android:textSize="20dp"
                 android:text="우다연"
+                android:fontFamily="@font/hahmletregular"
                 android:paddingLeft="10dp"/>
         </ScrollView>
 
@@ -42,6 +44,7 @@
             android:text="날짜"
             android:autoSizeTextType="uniform"
             android:id="@+id/replyDate"
+            android:fontFamily="@font/hahmletregular"
             android:paddingLeft="10dp"
             />
     </LinearLayout>

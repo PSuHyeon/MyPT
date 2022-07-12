@@ -49,7 +49,17 @@ public class CommunityRecyclerViewAdapter extends RecyclerView.Adapter<Community
     @Override
     public void onBindViewHolder(@NonNull CommunityRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.communityNameTextView.setText(items.get(position).name);
-        holder.communityDateTextView.setText(items.get(position).date);
+
+        String year, month, day, hour, minute;
+        year = items.get(position).date.split("-")[0];
+        month = items.get(position).date.split("-")[1];
+        day = items.get(position).date.split("-")[2];
+        day = day.split(" ")[0];
+        hour = items.get(position).date.split("-")[2].split(" ")[1].split(":")[0];
+        minute = items.get(position).date.split("-")[2].split(" ")[1].split(":")[1];
+
+        String time = year + "년 " + month + "월 " + day + "일\n " + hour + "시 " + minute + "분";
+        holder.communityDateTextView.setText(time);
         holder.communityCardTextView.setText(items.get(position).contents);
         holder.feedId.setText(items.get(position).id);
         Log.d("item", ""+items.get(position).image);

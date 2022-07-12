@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="vertical"
+    android:background="@drawable/bottomborder"
     >
 
     <LinearLayout
@@ -14,29 +15,31 @@
         android:layout_margin="10dp"
         >
         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2.5"
-            android:background="@drawable/person"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/running"
             />
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="7.5"
             android:orientation="vertical"
-            android:weightSum="10"
-            >
+            android:weightSum="10">
+
             <TextView
+                android:id="@+id/item_name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"
-                android:padding="5dp"
-                android:id="@+id/item_name"
+                android:fontFamily="@font/hahmletregular"
                 android:hint="이름"
-                android:textSize="30dp"
-                android:fontFamily="@font/newf"
-                android:gravity="center"
-                />
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -45,41 +48,39 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:id="@+id/item_age"
-                    android:fontFamily="@font/newf"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
                     android:text="나이"
-                    android:padding="5dp"
-                    android:textSize="25dp"
-                    android:gravity="center"
-                    />
+                    android:fontFamily="@font/hahmletregular"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:id="@+id/item_kg"
-                    android:text="몸무게"
-                    android:padding="5dp"
-                    android:textSize="25dp"
-                    android:fontFamily="@font/newf"
-                    android:gravity="center"
-                    />
-                <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:id="@+id/item_id"
-                    android:text="아이디"
                     android:padding="5dp"
-                    android:fontFamily="@font/newf"
+                    android:text="몸무게"
+                    android:fontFamily="@font/hahmletregular"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/item_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:autoSizeTextType="uniform"
-                    android:gravity="center"
-                    />
+                    android:padding="5dp"
+                    android:text="아이디"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/hahmletregular"
+                    android:textColor="@color/black" />
             </LinearLayout>
-
-
 
 
         </LinearLayout>

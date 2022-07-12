@@ -38,7 +38,8 @@
                     android:layout_marginStart="15dp"
                     android:text="2022년 7월 xx일"
                     android:textColor="#5BA680"
-                    android:textSize="20sp" />
+                    android:fontFamily="@font/hahmletsemibold"
+                    android:textSize="18sp" />
 
                 <View
                     android:layout_width="0dp"
@@ -53,6 +54,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="30dp"
                     android:text="3 건"
+                    android:fontFamily="@font/hahmletsemibold"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
