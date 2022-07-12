@@ -129,7 +129,7 @@ public class YooDialog extends Dialog {
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(date);
                 dateday = CalendarDay.from(cal);
-                materialCalendarView.addDecorators(new EventDecorator(Color.BLUE, dateday, activity));
+                materialCalendarView.addDecorators(new EventDecorator(Color.parseColor("#5BA680"), dateday, activity));
 
                 dismiss();
             }
