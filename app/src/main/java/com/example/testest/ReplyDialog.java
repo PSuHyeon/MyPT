@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
@@ -43,6 +44,9 @@ public class ReplyDialog extends Dialog {
 //    ReplyAdapter madapter;
 //    ArrayList<Reply> replyarray = new ArrayList<Reply>();
     Menu menu = new Menu();
+    NewReply replyItems;
+    CommunityReplyAdapter communityReplyAdapter;
+
     public ReplyDialog(@NonNull Context context, String feedId) {
         super(context);
         setContentView(R.layout.replydialog);
@@ -51,6 +55,7 @@ public class ReplyDialog extends Dialog {
         communityReplyAddButton = findViewById(R.id.communityReplyAddButton);
         btn_stutdown = findViewById(R.id.btn_shutdown);
         communityReplyRecyclerView = findViewById(R.id.communityReplyRecyclerView);
+        communityReplyRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //madapter = new ReplyAdapter(getContext(), replyarray);
         //communityReplyRecyclerView.setAdapter(madapter);
@@ -98,6 +103,31 @@ public class ReplyDialog extends Dialog {
                             @Override
                             public void onResponse(JSONObject response) {
 
+                                //Gson gson = new Gson();
+//                                Type listType = new TypeToken<ArrayList<Exercise>>(){}.getType();
+//                                ArrayList<Exercise> myExList = new Gson().fromJson(String.valueOf(response), listType);
+//
+//                                listItem = myExList;
+//                                listView = rootView.findViewById(R.id.listView);
+//                                listViewAdapter = new ListViewAdapter(listItem, getContext(), rootView);
+//
+//                                listView.setAdapter(listViewAdapter);
+                                Log.d("response", String.valueOf(response));
+                                try {
+                                    Log.d("response.getString()", response.getString("name"));
+                                    replyItems = new NewReply(feedId, response.getString("time"), response.getString("text"), response.getString("name"));
+//                                    replyItems.rp_name = ;
+//                                    replyItems.rp_text = response.getString("text");
+//                                    replyItems.rp_time = response.getString("time");
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                Gson gson = new Gson();
+                                //replyItems = new Gson().fromJson(String.valueOf(response), NewReply.class);
+                                //Log.d("rp_name", replyItems.rp_name);
+                                communityReplyAdapter = new CommunityReplyAdapter(getContext(),replyItems, communityReplyRecyclerView );
+                                communityReplyRecyclerView.setAdapter(communityReplyAdapter);
 //                                Reply getfeed = new Gson().fromJson(String.valueOf(response), Reply.class);
 //                                Log.d("final", ""+getfeed);
 //                                replyarray.add(getfeed);

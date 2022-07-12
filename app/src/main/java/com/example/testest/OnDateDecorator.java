@@ -29,6 +29,7 @@ public class OnDateDecorator implements DayViewDecorator {
     public void decorate(DayViewFacade view) {
         view.addSpan(new StyleSpan(Typeface.BOLD));
         view.addSpan(new RelativeSizeSpan(1.4f));
+        //view.addSpan(new ForegroundColorSpan(Color.parseColor("#5BA680")));
         view.addSpan(new ForegroundColorSpan(Color.parseColor("#FAAA34")));
     }
 

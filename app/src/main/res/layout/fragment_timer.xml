@@ -23,6 +23,7 @@
         android:progress="100"
         android:progressDrawable="@drawable/circle_outer"
         android:rotation="-90"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,17 +77,79 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewTime"
         app:layout_constraintVertical_bias="0.45" />
 
-    <ImageView
-        android:id="@+id/imageViewStartStop"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/progressBarCircle"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/play"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle" />
+        <ImageView
+            android:id="@+id/imageViewStartStop"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/progressBarCircle"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/play"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarCircle"
+            app:layout_constraintBottom_toTopOf="@id/horizontalProgressBar"/>
+
+        <ProgressBar
+            android:id="@+id/horizontalProgressBar"
+            android:max="100"
+            android:progress="0"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:progressDrawable="@drawable/horizontal_progressbar"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewStartStop"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="50dp"/>
+
+        <TextView
+            android:id="@+id/infoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="운동할 횟수를 입력해주세요"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editNum"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/numTextView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalProgressBar"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/editNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:minEms="5"
+            android:hint="Number"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/infoTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numTextView" />
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

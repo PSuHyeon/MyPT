@@ -47,8 +47,9 @@ tools:context=".ListFragment">
         android:layout_gravity="center"
         android:textAlignment="center"
         android:text="6월 22일"
+        android:textStyle="bold"
         android:background="@drawable/round_textview"
-        android:textSize="20sp"/>
+        android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/yooTextView"
@@ -58,7 +59,7 @@ tools:context=".ListFragment">
                 android:layout_marginStart="10dp"
                 android:layout_gravity="center"
                 android:text="유산소"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/yooaddButton"
@@ -79,7 +80,7 @@ tools:context=".ListFragment">
                 android:layout_marginStart="5dp"
                 android:layout_gravity="center"
                 android:text="무산소"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/mooaddButton"

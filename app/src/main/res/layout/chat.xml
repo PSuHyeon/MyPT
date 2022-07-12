@@ -10,26 +10,38 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/recycler_view"
-        android:layout_weight="9"/>
+        android:layout_weight="9"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingTop="10dp"
         >
         <EditText
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="8"
+            android:layout_weight="7"
             android:id="@+id/type_text"
             android:hint="메세지를 입력하세요"
+            android:layout_marginEnd="10dp"
             />
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:text="send"
+            android:layout_marginBottom="10dp"
+            android:text="전송"
             android:id="@+id/sendButton"
+            android:background="@drawable/button_roundgreen"
             />
 
     </LinearLayout>

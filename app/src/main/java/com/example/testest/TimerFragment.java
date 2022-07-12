@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,14 @@ public class TimerFragment extends Fragment implements View.OnClickListener{
     private ImageView imageViewReset;
     private ImageView imageViewStartStop;
     private CountDownTimer countDownTimer;
+    private ProgressBar horizontalProgressBar;
+    private EditText editNum;
+    TextView numTextView;
+    private androidx.appcompat.widget.AppCompatButton addButton;
+    int num;
+    int progress;
+    int percent = 0;
+    int status = 0;
 
 
     public TimerFragment() {
@@ -54,9 +63,14 @@ public class TimerFragment extends Fragment implements View.OnClickListener{
         textViewTime = rootView.findViewById(R.id.textViewTime);
         imageViewReset = rootView.findViewById(R.id.imageViewReset);
         imageViewStartStop = rootView.findViewById(R.id.imageViewStartStop);
+        horizontalProgressBar = rootView.findViewById(R.id.horizontalProgressBar);
+        editNum = rootView.findViewById(R.id.editNum);
+        numTextView = rootView.findViewById(R.id.numTextView);
+        //addButton = rootView.findViewById(R.id.numAddButton);
 
         imageViewReset.setOnClickListener(this);
         imageViewStartStop.setOnClickListener(this);
+        //addButton.setOnClickListener(this);
 
         return rootView;
     }
@@ -70,6 +84,8 @@ public class TimerFragment extends Fragment implements View.OnClickListener{
             case R.id.imageViewStartStop:
                 startStop();
                 break;
+            //case R.id.numAddButton:
+
         }
     }
 
@@ -100,6 +116,34 @@ public class TimerFragment extends Fragment implements View.OnClickListener{
 
             startCountDownTimer();
 
+            num = Integer.parseInt(editNum.getText().toString());
+            progress = (int) Math.ceil(100/num);
+
+            int nowValue = horizontalProgressBar.getProgress();
+            int maxValue = horizontalProgressBar.getMax();
+
+            if(maxValue == nowValue) {
+                nowValue = 0;
+            } else {
+                horizontalProgressBar.setVisibility(View.VISIBLE);
+                nowValue += progress;
+                Log.d("progress", "progress");
+                percent += progress;
+
+            }
+
+            if(nowValue == 0){
+                //horizontalProgressBar.setVisibility(View.GONE);
+            }
+
+
+            if (status == 0) {
+                horizontalProgressBar.setProgress(nowValue);
+                numTextView.setText(Integer.toString(percent) + "%");
+            }
+
+
+
         } else {
 
             imageViewReset.setVisibility(View.GONE);
@@ -107,7 +151,7 @@ public class TimerFragment extends Fragment implements View.OnClickListener{
             editTextMinute.setEnabled(true);
 
             timerStatus = TimerStatus.STOPPED;
-
+            status = 1;
             stopCountDownTimer();
 
         }
@@ -161,6 +205,7 @@ public class TimerFragment extends Fragment implements View.OnClickListener{
                 editTextMinute.setEnabled(true);
 
                 timerStatus = TimerStatus.STOPPED;
+                status = 0;
             }
 
         }.start();
@@ -171,6 +216,7 @@ public class TimerFragment extends Fragment implements View.OnClickListener{
      *  카운트 다운 정지 및 초기화
      */
     private void stopCountDownTimer() {
+
         countDownTimer.cancel();
     }
 

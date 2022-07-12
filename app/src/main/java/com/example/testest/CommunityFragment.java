@@ -172,3 +172,17 @@ class NewUpload {
         this.id = id;
     }
 }
+
+class NewReply {
+    String feedid;
+    String rp_time;
+    String rp_text;
+    String rp_name;
+
+    public NewReply(String feedid, String rp_time, String rp_text, String rp_name) {
+        this.feedid = feedid;
+        this.rp_time = rp_time;
+        this.rp_text = rp_text;
+        this.rp_name = rp_name;
+    }
+}
