@@ -16,12 +16,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_weight="9"
+            >
 
             <TextView
                 android:id="@+id/click_exercise"
@@ -49,18 +52,16 @@
         </LinearLayout>
 
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+
 
             <CheckBox
                 android:id="@+id/clickCheckBox"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:layout_weight="1"/>
 
         </LinearLayout>
 

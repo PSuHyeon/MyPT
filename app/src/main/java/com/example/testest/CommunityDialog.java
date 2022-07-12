@@ -3,7 +3,11 @@ package com.example.testest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -47,6 +52,23 @@ public class CommunityDialog extends Dialog {
     public void setDialogListener(CustomDialogListener customDialogListener) {
         this.customDialogListener = customDialogListener;
     }
+    public static String BitmapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
+        byte[] bytes = baos.toByteArray();
+        String temp = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return temp;
+    }
+    public static Bitmap StringToBitmap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
 
     public CommunityDialog(@NonNull Context context, Uri uri) {
         super(context);
@@ -56,9 +78,18 @@ public class CommunityDialog extends Dialog {
         shutdownClick = findViewById(R.id.btn_shutdown);
         newImageView = findViewById(R.id.newImageView);
         shutdownClick = findViewById(R.id.btn_shutdown);
-
+        HashMap<String, String> params = new HashMap<String, String>();
         // uri로 이미지 띄우기
-        newImageView.setImageURI(uri);
+        Bitmap bitmap = null;
+        try{
+            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+            params.put("image", BitmapToString(bitmap));
+            newImageView.setImageBitmap(bitmap);
+        }
+        catch (Exception e){
+            Log.d("error", ""+e);
+            params.put("image", "error");
+        }
 
         shutdownClick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,11 +100,11 @@ public class CommunityDialog extends Dialog {
                 // 서버 접근
                 RequestQueue queue = Volley.newRequestQueue(getContext());
                 String url ="http://172.10.18.125:80/feed";
-                HashMap<String, String> params = new HashMap<String, String>();
                 params.put("contents", text_contents);
                 params.put("date", getTime);
                 params.put("name", menu.name);
                 params.put("id", menu.key_id);
+
                 // image, position
 
                 JSONObject jsonObject = new JSONObject(params);

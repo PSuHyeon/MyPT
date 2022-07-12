@@ -178,6 +178,9 @@ public class SignUp extends AppCompatActivity {
 //                    intent.putExtra("weight", weightSpinner.getSelectedItem().toString());
                     intent.putExtra("phone", phoneTextView.getEditText().toString());
                     intent.putExtra("gender", genderSpinner.getSelectedItem().toString());
+                    intent.putExtra("weight", weightSpinner.getSelectedItem().toString());
+                    intent.putExtra("height", heightSpinner.getSelectedItem().toString());
+                    intent.putExtra("purpose", purposeTextView.getEditText().toString());
                 }
 
                 setResult(RESULT_OK, intent);
