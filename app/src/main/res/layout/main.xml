@@ -7,6 +7,19 @@
     android:gravity="center"
     android:weightSum="10">
 
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="MyPT"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:fontFamily="@font/honeybaby1"
+        android:textColor="#5BA680"
+        android:layout_marginBottom="50dp"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,15 +104,6 @@
 
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/trainer_sign_in"
-        android:textColorHint="#ffffff"
-        android:background="@drawable/button_round"
-        android:text="트레이너 로그인" />
 
 
 

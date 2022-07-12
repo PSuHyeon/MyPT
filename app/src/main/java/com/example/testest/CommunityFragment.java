@@ -64,7 +64,7 @@ public class CommunityFragment extends Fragment {
         communityRecyclerView = rootView.findViewById(R.id.communityRecyclerView);
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url ="http://172.10.18.125:80/getfeed";
+        String url ="http://192.249.18.125:80/getfeed";
 
         JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -118,7 +118,7 @@ public class CommunityFragment extends Fragment {
                         public void onButtonClicked(String contents) {
                             //items.add(new NewUpload("우다연", "2022년 07월 11일", uri, contents));
                             RequestQueue queue = Volley.newRequestQueue(getContext());
-                            String url ="http://172.10.18.125:80/getfeed";
+                            String url ="http://192.249.18.125:80/getfeed";
 
                             JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                                     new Response.Listener<JSONArray>() {

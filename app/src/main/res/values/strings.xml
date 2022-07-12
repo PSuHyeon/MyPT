@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">testest</string>
+    <string name="app_name">MyPT</string>
     <string name="social_login_info_naver_client_id">VeDjGJp4nkPOSUPC1Hk0</string>
     <string name="social_login_info_naver_client_secret">fK26t6FeDS</string>
     <string name="social_login_info_naver_client_name">네이버아이디 로그인</string>

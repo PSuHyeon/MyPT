@@ -61,7 +61,7 @@ public class ReplyDialog extends Dialog {
         madapter = new ReplyAdapter(getContext(), replyarray);
         communityReplyRecyclerView.setAdapter(madapter);
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url ="http://172.10.18.125:80/getReply/" + feedId;
+        String url ="http://192.249.18.125:80/getReply/" + feedId;
 
         JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONArray>() {
@@ -94,7 +94,7 @@ public class ReplyDialog extends Dialog {
                     return;
                 }
                 RequestQueue queue = Volley.newRequestQueue(getContext());
-                String url ="http://172.10.18.125:80/newReply/" + feedId;
+                String url ="http://192.249.18.125:80/newReply/" + feedId;
                 HashMap<String, String> params = new HashMap<String, String>();
                 params.put("name", menu.name);
                 params.put("feedid", feedId);
