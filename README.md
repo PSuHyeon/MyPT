@@ -4,7 +4,7 @@
 
 ## 1. Trainer
 
-##### Tab 1:
+#### Tab 1:
 
 **Trainee information attrievement by two methods:**
 1. By specific date
@@ -18,11 +18,11 @@ exercise information containes:
 5. number
 6. current state (whether one had finished)
 
-##### Tab 2:
+#### Tab 2:
 
 **Create private chatting room with every trainee**
 
-##### Tab 3: 
+#### Tab 3: 
 
 **Community available for all users including trainees and trainers**
 1. uploading image with comment
@@ -30,19 +30,19 @@ exercise information containes:
 
 ## 2. Trainee
 
-##### Tab 1:
+#### Tab 1:
 
 **Create exercise information for each date in the calender provided**
 
-##### Tab 2: 
+#### Tab 2: 
 
 **Chatting room with trainer**
 
-##### Tab 3: 
+#### Tab 3: 
 
 **above mentioned community**
 
-##### Tab 4:
+#### Tab 4:
 
 **Timer with number input for the ease of trainees' training**
 
