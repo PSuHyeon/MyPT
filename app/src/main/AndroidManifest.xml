@@ -19,16 +19,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Testest"
         android:usesCleartextTraffic="true"
+        android:windowSoftInputMode="adjustResize"
         tools:targetApi="31">
         <activity
             android:name=".chatroom"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Testest.NoActionBar"/>
         <activity
             android:name=".Trainer_PersonInfo"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Testest.NoActionBar"/>
         <activity
             android:name=".TrainerMenu"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Testest.NoActionBar"/>
         <activity
             android:name=".Menu"
             android:exported="true"
@@ -38,16 +42,22 @@
         </activity>
         <activity
             android:name=".SignUp"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Testest.NoActionBar"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Testest.NoActionBar">
+        </activity>
+        <activity android:name=".Splash"
+            android:exported="true"
+            android:theme="@style/Theme.Testest.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

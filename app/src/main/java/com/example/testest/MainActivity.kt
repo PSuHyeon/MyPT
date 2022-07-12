@@ -105,13 +105,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 트레이너 로그인
-        val trainer_sign_in_button = findViewById<Button>(R.id.trainer_sign_in)
-        trainer_sign_in_button.setOnClickListener{
-            val intent = Intent(this@MainActivity, TrainerMenu::class.java)
-            intent.putExtra("keyid", "-1")
-            intent.putExtra("name", "Trainer")
-            startActivity(intent)
-        }
+//        val trainer_sign_in_button = findViewById<Button>(R.id.trainer_sign_in)
+//        trainer_sign_in_button.setOnClickListener{
+//            val intent = Intent(this@MainActivity, TrainerMenu::class.java)
+//            intent.putExtra("keyid", "-1")
+//            intent.putExtra("name", "Trainer")
+//            startActivity(intent)
+//        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

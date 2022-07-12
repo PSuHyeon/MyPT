@@ -51,7 +51,7 @@ public class Trainer_PersonInfo extends AppCompatActivity {
         TextView gender = findViewById(R.id.person_gender);
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://172.10.18.125:80/getUser";
+        String url ="http://192.249.18.125:80/getUser";
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("name", name);
         JSONObject jsonObject = new JSONObject(params);

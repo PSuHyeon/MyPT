@@ -6,15 +6,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ClickInfoRecyclerViewAdapter extends RecyclerView.Adapter<ClickInfoRecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
     RecyclerView clickInfoRecyclerView;
@@ -41,9 +52,10 @@ public class ClickInfoRecyclerViewAdapter extends RecyclerView.Adapter<ClickInfo
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
-
+    int temp = 0;
     @Override
     public void onBindViewHolder(@NonNull ClickInfoRecyclerViewAdapter.ViewHolder holder, int position) {
+
         holder.clickExercise.setText(items.get(position).exercise);
         String info;
         if (items.get(position).type.equals("yoo")) {
@@ -56,8 +68,9 @@ public class ClickInfoRecyclerViewAdapter extends RecyclerView.Adapter<ClickInfo
         if (items.get(position).current.equals("yes")) {
             holder.checkBox.setChecked(true);
         }
+        temp = 1;
 
-        holder.clickInfo.setText(info);
+
     }
 
     @Override
@@ -76,5 +89,6 @@ public class ClickInfoRecyclerViewAdapter extends RecyclerView.Adapter<ClickInfo
             clickInfo = itemView.findViewById(R.id.click_info);
             checkBox = itemView.findViewById(R.id.clickCheckBox);
         }
+
     }
 }

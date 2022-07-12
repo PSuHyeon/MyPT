@@ -99,7 +99,7 @@ public class CommunityDialog extends Dialog {
 
                 // 서버 접근
                 RequestQueue queue = Volley.newRequestQueue(getContext());
-                String url ="http://172.10.18.125:80/feed";
+                String url ="http://192.249.18.125:80/feed";
                 params.put("contents", text_contents);
                 params.put("date", getTime);
                 params.put("name", menu.name);

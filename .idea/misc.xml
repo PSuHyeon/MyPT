@@ -3,11 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable-anydpi/add.xml" value="0.1105" />
         <entry key="app/src/main/res/drawable/allborder.xml" value="0.1325" />
-        <entry key="app/src/main/res/drawable/bottomborder.xml" value="0.1175" />
         <entry key="app/src/main/res/drawable/button_round.xml" value="0.106" />
-        <entry key="app/src/main/res/drawable/button_roundgreen.xml" value="0.17" />
         <entry key="app/src/main/res/drawable/calendar_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/calendar_not_select_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/calendar_select_background.xml" value="0.1" />
@@ -21,10 +18,14 @@
         <entry key="app/src/main/res/drawable/round_textview.xml" value="0.1125" />
         <entry key="app/src/main/res/drawable/topborder.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25064646402994795" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.30364583333333334" />
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.19881134033203127" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.3660537719726563" />
         <entry key="app/src/main/res/layout/activity_trainer_menu.xml" value="0.17708333333333334" />
+        <entry key="app/src/main/res/layout/activity_trainer_person_info.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/chat.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/chat_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_trainer_person_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/chat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/chat_item.xml" value="0.29635416666666664" />
@@ -33,6 +34,8 @@
         <entry key="app/src/main/res/layout/communitynewdialog.xml" value="0.3177083333333333" />
         <entry key="app/src/main/res/layout/communityrecyclerview.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/communityreplyrecyclerviewitem.xml" value="0.31666666666666665" />
+        <entry key="app/src/main/res/layout/communityrecyclerview.xml" value="0.20652173913043478" />
+        <entry key="app/src/main/res/layout/communityreplyrecyclerviewitem.xml" value="0.30833333333333335" />
         <entry key="app/src/main/res/layout/content_menu.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/exercisedialog.xml" value="0.3387568265071754" />
@@ -47,6 +50,8 @@
         <entry key="app/src/main/res/layout/fragment_trainer1.xml" value="0.33547210693359375" />
         <entry key="app/src/main/res/layout/fragment_trainer2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_trainer3.xml" value="0.17708333333333334" />
+        <entry key="app/src/main/res/layout/itemview_mine.xml" value="0.3451086956521739" />
+        <entry key="app/src/main/res/layout/itemview_yours.xml" value="0.3451086956521739" />
         <entry key="app/src/main/res/layout/itemview_mine.xml" value="0.253143310546875" />
         <entry key="app/src/main/res/layout/itemview_yours.xml" value="0.41162414550781257" />
         <entry key="app/src/main/res/layout/listviewitem.xml" value="0.28225806451612906" />
