@@ -47,11 +47,29 @@ exercise information containes:
 **Timer with number input for the ease of trainees' training**
 
 # Application specification
+* Naver Login SDK (네아로);
+  * Support login using naver Id; 
+  
 * Nodejs server with mysql databases:
-** login_information databases;
-** user_information databases;
-** exercise_information for each users databases;
-** Chat room information for each users;
-** Chatting log history for each chat room;
-** feed information for the community;
-** Reply message history for each feed;
+  * login_information databases;
+  * user_information databases;
+  * exercise_information for each users databases;
+  * Chat room information for each users;
+  * Chatting log history for each chat room;
+  * feed information for the community;
+  * Reply message history for each feed;
+ 
+* Socket io connection for real time chat connection for individual trainees;
+  * Exploit join to create individaul room for socket system
+  * use io.to(room).emit() to send socket event to specific room
+
+* Calender view to store information for each dates;
+  * data stored with calender view date information
+
+* Recycler view to maintain and show information dynamically
+  * feed information
+  * replies for feed
+  * exercise information for each dates
+  * chat messages
+  * trainee lists in trainer tab
+ 
