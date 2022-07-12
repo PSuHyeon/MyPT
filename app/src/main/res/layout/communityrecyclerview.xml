@@ -109,14 +109,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginBottom="10dp"
-                    android:text="댓글 3개"
+                    android:text="댓글 보기"
                     android:textSize="12sp"/>
                 <TextView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:id="@+id/feedId"
+                    android:textColor="#ffffff"
+                    android:textSize="5sp"
                     android:autoSizeTextType="uniform"
                     />
 

@@ -5,6 +5,17 @@
     android:orientation="vertical"
     android:weightSum="10">
 
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2022년 7월 12일"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
 
         android:layout_width="match_parent"

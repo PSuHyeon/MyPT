@@ -138,12 +138,49 @@ class ChatAdapter2(val context: Context, val arrayList: ArrayList<ChatModel>, va
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is MyHolder){
             holder.chat_text.text = arrayList.get(position).text
-            holder.chat_time.text = arrayList.get(position).time
+            //holder.chat_time.text = arrayList.get(position).time
+            val year: String ; val month: String ; val day: String
+
+
+            var token = arrayList.get(position).time.split("-")
+            Log.d("token all", "" + token);
+            Log.d("token", token.size.toString());
+
+            if (token.size == 5) {
+                var hour = token[3]
+                var minute = token[4]
+
+                var textTime = "" + hour + "시 " + minute + "분"
+                holder.chat_time.text = textTime
+            } else {
+                var hour = token[4]
+                var minute = token[5]
+
+                var textTime = "" + hour + "시 " + minute + "분"
+                holder.chat_time.text = textTime
+            }
+
+
         }
         if (holder is YourHolder){
             holder.chat_text.text = arrayList.get(position).text
-            holder.chat_time.text = arrayList.get(position).time
+            //holder.chat_time.text = arrayList.get(position).time
             holder.chat_name.text =arrayList.get(position).name
+
+            var token = arrayList.get(position).time.split("-")
+            if (token.size == 5) {
+                var hour = token[3]
+                var minute = token[4]
+
+                var textTime = "" + hour + "시 " + minute + "분"
+                holder.chat_time.text = textTime
+            } else {
+                var hour = token[4]
+                var minute = token[5]
+
+                var textTime = "" + hour + "시 " + minute + "분"
+                holder.chat_time.text = textTime
+            }
 
         }
     }

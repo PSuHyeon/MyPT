@@ -26,12 +26,12 @@
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_trainer_menu.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/activity_trainer_person_info.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/chat.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/chat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/chat_item.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/clickrecyclerview.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/clickrecyclerviewitem.xml" value="0.25" />
         <entry key="app/src/main/res/layout/communitynewdialog.xml" value="0.3177083333333333" />
-        <entry key="app/src/main/res/layout/communityrecyclerview.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/communityrecyclerview.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/communityreplyrecyclerviewitem.xml" value="0.31666666666666665" />
         <entry key="app/src/main/res/layout/content_menu.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.24895833333333334" />
@@ -47,8 +47,8 @@
         <entry key="app/src/main/res/layout/fragment_trainer1.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_trainer2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_trainer3.xml" value="0.17708333333333334" />
-        <entry key="app/src/main/res/layout/itemview_mine.xml" value="0.2647767154836817" />
-        <entry key="app/src/main/res/layout/itemview_yours.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/itemview_mine.xml" value="0.253143310546875" />
+        <entry key="app/src/main/res/layout/itemview_yours.xml" value="0.41162414550781257" />
         <entry key="app/src/main/res/layout/listviewitem.xml" value="0.28225806451612906" />
         <entry key="app/src/main/res/layout/main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/personrecyclerviewitem.xml" value="0.361773681640625" />

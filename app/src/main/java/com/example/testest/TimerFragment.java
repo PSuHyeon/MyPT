@@ -104,6 +104,12 @@ public class TimerFragment extends Fragment implements View.OnClickListener{
 
         if (timerStatus == TimerStatus.STOPPED) {
 
+            if (editNum.getText().toString().equals("")) {
+                Log.d("numTextView.getText().toString()", numTextView.getText().toString());
+                Toast.makeText(getContext(), "운동할 횟수를 입력해주세요", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
 
             setTimerValues();
             setProgressBarValues();
