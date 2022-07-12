@@ -37,6 +37,7 @@
             android:name=".Menu"
             android:exported="true"
             android:label="@string/title_activity_menu"
+            android:windowSoftInputMode="adjustResize|adjustPan"
             android:theme="@style/Theme.Testest.NoActionBar">
         </activity>
         <activity

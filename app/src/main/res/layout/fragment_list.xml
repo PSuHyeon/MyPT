@@ -15,10 +15,10 @@ tools:context=".ListFragment">
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginStart="5dp"
+        android:layout_height="360dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="10dp"
         app:mcv_selectionColor="#DDEFC9"
         app:mcv_showOtherDates="defaults" />
 
@@ -42,14 +42,14 @@ tools:context=".ListFragment">
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:layout_weight="1"
         android:layout_gravity="center"
         android:textAlignment="center"
         android:text="6월 22일"
-        android:textStyle="bold"
+        android:layout_marginStart="10dp"
         android:background="@drawable/round_textview"
-        android:textSize="18sp"/>
+        android:textSize="15sp"/>
 
             <TextView
                 android:id="@+id/yooTextView"
@@ -59,7 +59,7 @@ tools:context=".ListFragment">
                 android:layout_marginStart="10dp"
                 android:layout_gravity="center"
                 android:text="유산소"
-                android:textSize="18sp"/>
+                android:textSize="15sp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/yooaddButton"
@@ -80,7 +80,7 @@ tools:context=".ListFragment">
                 android:layout_marginStart="5dp"
                 android:layout_gravity="center"
                 android:text="무산소"
-                android:textSize="18sp"/>
+                android:textSize="15sp"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/mooaddButton"
@@ -115,11 +115,10 @@ tools:context=".ListFragment">
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="2dp"
                 android:text="0"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:textSize="15sp"/>
 
         </LinearLayout>
 

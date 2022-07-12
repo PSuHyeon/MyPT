@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -29,11 +30,11 @@ import kotlin.collections.ArrayList
 
 class trainee_chat : Fragment() {
 
-
     lateinit var context1: Context
     override fun onAttach(context: Context) {
         context1 = context
         super.onAttach(context)
+
     }
 
     override fun onCreateView(
@@ -41,6 +42,7 @@ class trainee_chat : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         val arrayList = ArrayList<ChatModel>()
         val activity = inflater.inflate(R.layout.chat, container, false)
         val chat_recycler = activity.findViewById<RecyclerView>(R.id.recycler_view)
