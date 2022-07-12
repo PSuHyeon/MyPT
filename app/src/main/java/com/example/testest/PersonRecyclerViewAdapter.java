@@ -3,6 +3,7 @@ package com.example.testest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
     HashMap<String, JSONArray> items;
     ArrayList<String> days;
     int idx;
-
+    Trainer1 trainer1 = new Trainer1();
     public PersonRecyclerViewAdapter(RecyclerView recyclerView, Context context, ArrayList<String> days, HashMap<String, JSONArray> items) {
         this.recyclerView = recyclerView;
         this.context = context;
@@ -80,6 +81,8 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
                     idx = getAdapterPosition();
                     String date = days.get(idx);
                     Intent intent = new Intent(context, Trainer_PersonInfo.class);
+                    Log.d("hererer", trainer1.trainee);
+                    intent.putExtra("name", trainer1.trainee);
                     intent.putExtra("array", String.valueOf(items.get(date)));
                     ((Activity) context).startActivityForResult(intent, 0);
                 }

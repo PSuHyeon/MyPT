@@ -56,7 +56,7 @@ public class Trainer1 extends Fragment {
     PersonRecyclerViewAdapter personadapter;
     int clickDateNum = 0;
     int clickPersonNum;
-
+    public static String trainee;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -332,7 +332,8 @@ public class Trainer1 extends Fragment {
                     }
                     //recyclerItems.clear();
                     //personadapter.notifyDataSetChanged();
-                    String trainee; // 선택된 회원
+
+                    // 선택된 회원
                     trainee = personSpinner.getSelectedItem().toString();
 
                     RequestQueue queue = Volley.newRequestQueue(getActivity());

@@ -80,8 +80,8 @@ class MainActivity : AppCompatActivity() {
                         }
                         else{
                             val intent = Intent(this@MainActivity, TrainerMenu::class.java)
-                            intent.putExtra("keyid", temp.get(0))
-                            intent.putExtra("name", temp.get(1))
+                            intent.putExtra("keyid", "-1")
+                            intent.putExtra("name", "Trainer")
                             Toast.makeText(this@MainActivity, "${temp.get(1)} 코치님 환영합니다", Toast.LENGTH_SHORT).show()
                             startActivity(intent)
                         }
@@ -105,6 +105,8 @@ class MainActivity : AppCompatActivity() {
         val trainer_sign_in_button = findViewById<Button>(R.id.trainer_sign_in)
         trainer_sign_in_button.setOnClickListener{
             val intent = Intent(this@MainActivity, TrainerMenu::class.java)
+            intent.putExtra("keyid", "-1")
+            intent.putExtra("name", "Trainer")
             startActivity(intent)
         }
     }
@@ -117,6 +119,8 @@ class MainActivity : AppCompatActivity() {
             val position = data?.getStringExtra("who")
             val age = data?.getStringExtra("age")
             val weight = data?.getStringExtra("weight")
+            val height = data?.getStringExtra("height")
+            val gender = data?.getStringExtra("gender")
             Log.d("weight", "" + weight)
             var params = HashMap<String,String>()
             params["id"] = id!!
@@ -125,6 +129,8 @@ class MainActivity : AppCompatActivity() {
             params["position"] = position!!
             params["age"] = age!!
             params["weight"] = weight!!
+            params["height"] = height!!
+            params["gender"] = gender!!
             val jsonObject = JSONObject(Gson().toJson(params))
 
             val url = "http://192.249.18.125:80/sign_up"
@@ -173,11 +179,17 @@ class MainActivity : AppCompatActivity() {
                             params["position"] = "TRAINEE"
                             params["age"] = "no info"
                             params["weight"] = "no info"
+                            params["height"] = "no info"
+                            params["gender"] = "no info"
                             val jsonObject = JSONObject(Gson().toJson(params))
                             val request = object : JsonObjectRequest(
                                 Request.Method.POST,
                                 url,null, Response.Listener {
                                     keyid = "" + it.get("keyid")
+                                    val intent = Intent(this@MainActivity, Menu::class.java)
+                                    intent.putExtra("keyid", keyid)
+                                    intent.putExtra("name", username)
+                                    startActivity(intent)
                                 }, Response.ErrorListener {
 
                                 }
@@ -193,10 +205,7 @@ class MainActivity : AppCompatActivity() {
                                 1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
                             )
                             requestQueue?.add(request)
-                            val intent = Intent(this@MainActivity, Menu::class.java)
-                            intent.putExtra("keyid", keyid)
-                            intent.putExtra("name", username)
-                            startActivity(intent)
+
                             Toast.makeText(this@MainActivity, "네이버 아이디 회원가입 성공", Toast.LENGTH_SHORT).show()
                         }
                         else{
@@ -211,8 +220,8 @@ class MainActivity : AppCompatActivity() {
                             }
                             else{
                                 val intent = Intent(this@MainActivity, TrainerMenu::class.java)
-                                intent.putExtra("keyid", temp.get(0))
-                                intent.putExtra("name", temp.get(1))
+                                intent.putExtra("keyid", "-1")
+                                intent.putExtra("name", "Trainer")
                                 Toast.makeText(this@MainActivity, "${temp.get(1)} 코치님 환영합니다", Toast.LENGTH_SHORT).show()
                                 startActivity(intent)
                             }
