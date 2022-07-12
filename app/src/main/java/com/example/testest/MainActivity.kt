@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.oauth.NidOAuthLogin
@@ -60,10 +62,11 @@ class MainActivity : AppCompatActivity() {
 
 
         sign_in_button.setOnClickListener {
-
-            val id = findViewById<TextView>(R.id.id_text)
-            val pw = findViewById<TextView>(R.id.password_text)
-            val url = "http://192.249.18.125:80/login/" +id.text.toString() + "," + pw.text.toString()
+            
+            val id = findViewById<TextInputLayout>(R.id.id_text)
+            val pw = findViewById<TextInputLayout>(R.id.password_text)
+            val url = "http://192.249.18.125:80/login/" +id.editText?.text.toString() + "," + pw.editText?.text.toString()
+            Log.d("url", url)
             val request = object : StringRequest(
                 Request.Method.GET,
                 url, {
