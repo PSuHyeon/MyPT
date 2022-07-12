@@ -39,10 +39,13 @@ exercise information contains:
 
 main calender
 ![image](https://user-images.githubusercontent.com/99390261/178467814-5cf40e3d-8d30-4ab9-8763-1ec9340b7e93.png)
+
 adding exercise
 ![image](https://user-images.githubusercontent.com/99390261/178467917-5af96509-cc3e-40b8-8893-4e2106758b0e.png)
+
 item inserted
 ![image](https://user-images.githubusercontent.com/99390261/178467983-e9c20c21-096a-4cc6-a35e-373d8e54df44.png)
+
 
 
 #### Tab 2: 
