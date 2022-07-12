@@ -11,6 +11,7 @@
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:layout_weight="10"
+        android:layout_margin="10dp"
         >
         <ImageView
             android:layout_width="0dp"
@@ -32,7 +33,9 @@
                 android:padding="5dp"
                 android:id="@+id/item_name"
                 android:hint="이름"
-                android:textSize="25dp"
+                android:textSize="30dp"
+                android:fontFamily="@font/newf"
+                android:gravity="center"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,9 +49,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:id="@+id/item_age"
+                    android:fontFamily="@font/newf"
                     android:text="나이"
                     android:padding="5dp"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
+                    android:gravity="center"
                     />
                 <TextView
                     android:layout_width="0dp"
@@ -57,7 +62,9 @@
                     android:id="@+id/item_kg"
                     android:text="몸무게"
                     android:padding="5dp"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
+                    android:fontFamily="@font/newf"
+                    android:gravity="center"
                     />
                 <TextView
                     android:layout_width="0dp"
@@ -66,7 +73,9 @@
                     android:id="@+id/item_id"
                     android:text="아이디"
                     android:padding="5dp"
-                    android:textSize="20dp"
+                    android:fontFamily="@font/newf"
+                    android:autoSizeTextType="uniform"
+                    android:gravity="center"
                     />
             </LinearLayout>
 

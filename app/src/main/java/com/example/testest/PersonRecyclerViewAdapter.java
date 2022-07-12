@@ -81,7 +81,6 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
                     idx = getAdapterPosition();
                     String date = days.get(idx);
                     Intent intent = new Intent(context, Trainer_PersonInfo.class);
-                    Log.d("hererer", trainer1.trainee);
                     intent.putExtra("name", trainer1.trainee);
                     intent.putExtra("array", String.valueOf(items.get(date)));
                     ((Activity) context).startActivityForResult(intent, 0);

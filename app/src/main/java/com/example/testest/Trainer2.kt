@@ -114,10 +114,10 @@ class ChatAdapter(val context: Context, val traineeList: ArrayList<Trainee>): Re
     }
 
     override fun onBindViewHolder(holder: TraineeHolder, position: Int) {
-        holder.trainee_name.text = traineeList.get(position).name
-        holder.age.text = traineeList.get(position).age
-        holder.kg.text = traineeList.get(position).kg
-        holder.id.text = traineeList.get(position).key_id
+        holder.trainee_name.text = traineeList.get(position).name + "님"
+        holder.age.text = traineeList.get(position).age +"살"
+        holder.kg.text = traineeList.get(position).kg + "kg"
+        holder.id.text = "회원번호: " + traineeList.get(position).key_id
     }
 
     override fun getItemCount(): Int {
