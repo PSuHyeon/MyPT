@@ -58,8 +58,13 @@ exercise information containes:
   * Chat room information for each users;
   * Chatting log history for each chat room;
   * feed information for the community;
-   * upload feed image by bitmap -> String convertion and following String -> bitmap.
+   * upload feed image by (bitmap -> String) convertion and following (String -> bitmap).
   * Reply message history for each feed;
+ 
+* The followings are set of mysql databases;
+ * Users 
+ <img width="503" alt="image" src="https://user-images.githubusercontent.com/99390261/178460860-baf6b734-5fcd-42da-ae64-a0561194ffa4.png">
+
  
 * Socket io connection for real time chat connection for individual trainees;
   * Exploit join to create individaul room for socket system
