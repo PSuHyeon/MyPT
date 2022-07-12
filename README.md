@@ -2,9 +2,7 @@
 
 ### Application concept: Communcation between trainer and trainee
 
-## Two login options available:
-
-### 1. Trainer
+## 1. Trainer
 
 ##### Tab 1:
 
@@ -30,7 +28,7 @@ exercise information containes:
 1. uploading image with comment
 2. reply message for each feed
 
-### 2. Trainee
+## 2. Trainee
 
 ##### Tab 1:
 
@@ -47,3 +45,13 @@ exercise information containes:
 ##### Tab 4:
 
 **Timer with number input for the ease of trainees' training**
+
+# Application specification
+* Nodejs server with mysql databases:
+** login_information databases;
+** user_information databases;
+** exercise_information for each users databases;
+** Chat room information for each users;
+** Chatting log history for each chat room;
+** feed information for the community;
+** Reply message history for each feed;
