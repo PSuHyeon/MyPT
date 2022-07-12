@@ -13,6 +13,13 @@
 
 **retreive selected trainee's exercise info according to aforementioned method**
 
+![image](https://user-images.githubusercontent.com/99390261/178480804-7eeeab2a-ab90-4c9b-9473-dfd7d89fea79.png)
+
+![image](https://user-images.githubusercontent.com/99390261/178480846-ae150f76-9daa-4371-b7b5-dabafb3bae90.png)
+
+![image](https://user-images.githubusercontent.com/99390261/178480861-f313cadb-145c-407e-b589-8e08fd6c2c90.png)
+
+
 exercise information contains:
 1. name
 2. time
@@ -66,13 +73,12 @@ exercise information contains:
 
 **above mentioned community**
   
-
-
-
-
 #### Tab 4:
 
 **Timer with number input for the ease of trainees' training**
+
+![image](https://user-images.githubusercontent.com/99390261/178480676-0e19cc12-0512-4f23-ac01-93bcfd9a1437.png)
+
 
 # Application specification
 * Naver Login SDK (네아로);
