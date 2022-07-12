@@ -24,11 +24,11 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/date"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"/>
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/calendar" />
 
                 <TextView
                     android:id="@+id/person_date"
@@ -37,8 +37,8 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="15dp"
                     android:text="2022년 7월 xx일"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textColor="#5BA680"
+                    android:textSize="20sp" />
 
                 <View
                     android:layout_width="0dp"
@@ -49,11 +49,12 @@
                     android:id="@+id/person_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="17dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="30dp"
                     android:text="3 건"
-                    android:textSize="20sp" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 

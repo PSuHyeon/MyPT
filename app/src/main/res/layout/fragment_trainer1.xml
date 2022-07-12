@@ -18,7 +18,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/person"
+            android:src="@drawable/exercise"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="5dp"
             android:layout_marginTop="30dp"/>
@@ -70,23 +70,23 @@
             android:id="@+id/yearSpinner"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="20dp" />
+            android:layout_weight="1"
+            android:layout_marginStart="20dp"/>
 
         <Spinner
             android:id="@+id/monthSpinner"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="20dp" />
+            android:layout_weight="1"
+            android:layout_marginStart="5dp" />
 
         <Spinner
             android:id="@+id/daySpinner"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginEnd="20dp"/>
 
     </LinearLayout>
 
@@ -109,13 +109,15 @@
             android:layout_marginTop="10dp"
             android:text="완료"/>
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dateRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp" />
+            android:layout_marginEnd="20dp"/>
+
 
     </LinearLayout>
 </FrameLayout>
