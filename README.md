@@ -1,4 +1,4 @@
-# MyPT Application: </br> Real time member management application for trainers
+# MyPT Application: </br></br> Real time member management application for trainers
 
 ## 1. Trainer
 
