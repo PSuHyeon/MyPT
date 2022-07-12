@@ -54,7 +54,7 @@ exercise information contains:
 #### Tab 2: 
 
 **Chatting room with trainer**
-![image](https://user-images.githubusercontent.com/99390261/178468253-5ec7cec9-575c-4818-8e5b-fd817e5ace54.png)
+  ![image](https://user-images.githubusercontent.com/99390261/178468253-5ec7cec9-575c-4818-8e5b-fd817e5ace54.png)
 
 
 #### Tab 3: 
