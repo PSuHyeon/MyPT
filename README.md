@@ -58,6 +58,7 @@ exercise information containes:
   * Chat room information for each users;
   * Chatting log history for each chat room;
   * feed information for the community;
+   * upload feed image by bitmap -> String convertion and following String -> bitmap.
   * Reply message history for each feed;
  
 * Socket io connection for real time chat connection for individual trainees;
@@ -74,3 +75,9 @@ exercise information containes:
   * chat messages
   * trainee lists in trainer tab
  
+# Applicatio Design 
+
+* Used Dialog and chips for concise exercise selection.
+* Check boxs and Delete icon in each items in exercise list for concise state insertion and deletion.
+* Use nine patch image for natural chat box. 
+* 
