@@ -143,8 +143,7 @@ public class SignUp extends AppCompatActivity {
                             phoneTextView.getEditText().getText().toString().length() == 0 ||
                             genderSpinner.getSelectedItem().toString() == "성별" ||
                             weightSpinner.getSelectedItem().toString() == "몸무게" ||
-                            heightSpinner.getSelectedItem().toString() == "키" ||
-                            purposeTextView.getEditText().getText().toString().length() == 0) {
+                            heightSpinner.getSelectedItem().toString() == "키") {
                         Toast.makeText(getApplicationContext(), "Fill the blank!", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -159,7 +158,6 @@ public class SignUp extends AppCompatActivity {
                     intent.putExtra("gender", genderSpinner.getSelectedItem().toString());
                     intent.putExtra("weight", weightSpinner.getSelectedItem().toString());
                     intent.putExtra("height", heightSpinner.getSelectedItem().toString());
-                    intent.putExtra("purpose", purposeTextView.getEditText().toString());
                 } else {
                     if (idTextView.getEditText().getText().toString().length() == 0 ||
                             pwTextView.getEditText().getText().toString().length() == 0 ||
@@ -198,7 +196,6 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Hello, Trainer!", Toast.LENGTH_SHORT).show();
                     weightSpinner.setVisibility(View.GONE);
                     heightSpinner.setVisibility(View.GONE);
-                    purposeTextView.setVisibility(View.GONE);
                 }
                 break;
 
@@ -207,7 +204,6 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Hello, Trainee!", Toast.LENGTH_SHORT).show();
                     weightSpinner.setVisibility(View.VISIBLE);
                     heightSpinner.setVisibility(View.VISIBLE);
-                    purposeTextView.setVisibility(View.VISIBLE);
                 }
                 break;
 

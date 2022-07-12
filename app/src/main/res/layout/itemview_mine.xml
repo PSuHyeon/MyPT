@@ -1,37 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:layout_gravity="right"
     android:gravity="right"
+    android:layout_marginTop="10dp"
     android:weightSum="10"
     >
+
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
-        android:weightSum="10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:text="내문자"
+
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
             android:layout_gravity="right"
-            android:textSize="20dp"
-            android:layout_marginRight="30dp"
-            android:id="@+id/my_text"
-            />
+            android:gravity="right"
+            android:weightSum="10"
+            android:background="@drawable/greenword2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:text="내문자"
+                android:textSize="14sp"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/black"
+                android:id="@+id/my_text"
+                />
+
+        </FrameLayout>
+
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_height="wrap_content"
             android:text="시간"
             android:layout_gravity="right"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="50dp"
+            android:textSize="12sp"
             android:id="@+id/my_time"
             />
-
     </LinearLayout>
 
 
