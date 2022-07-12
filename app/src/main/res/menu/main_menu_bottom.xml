@@ -3,18 +3,22 @@
 
     <item
         android:id="@+id/menu_list"
-        android:title="LIST"/>
+        android:title="LIST"
+        android:icon="@drawable/list"/>
 
     <item
         android:id="@+id/menu_chat"
-        android:title="CHAT"/>
+        android:title="CHAT"
+        android:icon="@drawable/chat"/>
 
     <item
         android:id="@+id/menu_community"
-        android:title="COMMUNITY"/>
+        android:title="COMMUNITY"
+        android:icon="@drawable/community"/>
 
     <item
         android:id="@+id/menu_timer"
-        android:title="TIMER"/>
+        android:title="TIMER"
+        android:icon="@drawable/timer"/>
 
 </menu>
