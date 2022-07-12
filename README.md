@@ -62,6 +62,7 @@ exercise information containes:
   * Reply message history for each feed;
  
 * The followings are set of mysql databases;
+
   * Users
  <img width="503" alt="image" src="https://user-images.githubusercontent.com/99390261/178460860-baf6b734-5fcd-42da-ae64-a0561194ffa4.png">
   * Exercises
