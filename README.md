@@ -92,9 +92,9 @@ exercise information containes:
   * chat messages
   * trainee lists in trainer tab
  
-# Applicatio Design 
+# Application Design 
 
 * Used Dialog and chips for concise exercise selection.
 * Check boxs and Delete icon in each items in exercise list for concise state insertion and deletion.
 * Use nine patch image for natural chat box. 
-* 
+* Use type recycler view to distinguish message from trainer and message sent from me.
