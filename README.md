@@ -2,8 +2,11 @@
 
 ## Application concept: Communcation between trainer and trainee
 
-## Two tabs available:
+## Two login options available:
 
-### 1. Trainer Tab
+### 1. Trainer
+Tab 1. Trainee information attrievement by two methods:
+1. by 
 
-### 2. Trainee Tab
+
+### 2. Trainee
