@@ -62,8 +62,16 @@ exercise information containes:
   * Reply message history for each feed;
  
 * The followings are set of mysql databases;
- * Users 
+  * Users
  <img width="503" alt="image" src="https://user-images.githubusercontent.com/99390261/178460860-baf6b734-5fcd-42da-ae64-a0561194ffa4.png">
+  * Exercises
+ <img width="492" alt="image" src="https://user-images.githubusercontent.com/99390261/178461253-c413f7ed-0276-49b3-ba9e-86445d9d0096.png">
+  * Feed information
+ <img width="502" alt="image" src="https://user-images.githubusercontent.com/99390261/178461355-909f9c9a-4df9-4b9e-9af1-1fb1a196ca10.png">
+  * Feed reply information
+ <img width="484" alt="image" src="https://user-images.githubusercontent.com/99390261/178461498-54173382-5fc2-4eb0-a149-2e66c4954107.png">
+  * Chat_log information
+<img width="494" alt="image" src="https://user-images.githubusercontent.com/99390261/178461590-0a2271b1-3c59-483e-91d8-b0a8f22acd83.png">
 
  
 * Socket io connection for real time chat connection for individual trainees;
