@@ -13,7 +13,7 @@
 
 **retreive selected trainee's exercise info according to aforementioned method**
 
-exercise information containes:
+exercise information contains:
 1. name
 2. time
 3. weight
